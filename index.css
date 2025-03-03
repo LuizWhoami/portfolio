@@ -1,6 +1,6 @@
 body { 
     color: white;
-    background-color: black;
+    background-color: rgb(80, 80, 80);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -10,6 +10,7 @@ ul {
     list-style: none;
     align-items: center;
     padding: 16px;
+    background-color: rgb(61, 61, 61);
 }
 
 a {
