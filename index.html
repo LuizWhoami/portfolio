@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dvison Luiz | NOC Specialist & Python Developer</title>
-  <meta name="description" content="Portfólio profissional de Dvison Luiz - Especialista em NOC, Automação com Python e Pentest">
+  <title>Dvison Luiz | Cybersecurity Specialist & Vulnerability Analyst</title>
+  <meta name="description" content="Portfólio profissional de Dvison Luiz - Especialista em Cybersecurity, Análise de Vulnerabilidades e Pentest">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
@@ -12,11 +12,18 @@
       --primary: #3b82f6;
       --primary-dark: #2563eb;
       --secondary: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
       --dark: #0f172a;
       --darker: #020617;
       --light: #f8fafc;
       --gray: #94a3b8;
       --glass: rgba(255, 255, 255, 0.08);
+      --terminal-bg: #011627;
+      --terminal-text: #d6deeb;
+      --terminal-green: #22da6e;
+      --terminal-red: #ff5874;
+      --terminal-yellow: #ffcb8b;
     }
 
     * {
@@ -56,17 +63,44 @@
       background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
       border-radius: 1.5rem;
       padding: 3rem;
-      max-width: 900px;
+      max-width: 1000px;
       width: 100%;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Efeito de conexões de rede */
+    .network-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .network-line {
+      position: absolute;
+      background: linear-gradient(to right, var(--primary), transparent);
+      height: 1px;
+      transform-origin: left center;
+      animation: networkPulse 8s infinite ease-in-out;
+    }
+
+    @keyframes networkPulse {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.3; }
     }
 
     nav {
@@ -146,6 +180,16 @@
       font-weight: 600;
     }
 
+    .danger-highlight {
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .warning-highlight {
+      color: var(--warning);
+      font-weight: 600;
+    }
+
     .info-section {
       margin: 2.5rem 0;
     }
@@ -194,6 +238,276 @@
       color: var(--secondary);
     }
 
+    /* Terminal Simulation */
+    .terminal {
+      background-color: var(--terminal-bg);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      font-family: 'Courier New', monospace;
+      position: relative;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 0.5rem;
+      margin-right: 1rem;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot.red {
+      background-color: var(--terminal-red);
+    }
+
+    .terminal-dot.yellow {
+      background-color: var(--terminal-yellow);
+    }
+
+    .terminal-dot.green {
+      background-color: var(--terminal-green);
+    }
+
+    .terminal-title {
+      color: var(--terminal-text);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    .terminal-body {
+      color: var(--terminal-text);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .terminal-command {
+      display: flex;
+      margin-bottom: 0.5rem;
+    }
+
+    .terminal-prompt {
+      color: var(--terminal-green);
+      margin-right: 0.5rem;
+    }
+
+    .terminal-input {
+      color: var(--terminal-text);
+    }
+
+    .terminal-output {
+      color: var(--terminal-text);
+      opacity: 0.8;
+      margin-bottom: 1rem;
+    }
+
+    /* Tooltip para habilidades */
+    .skill-tag {
+      display: inline-block;
+      background: var(--glass);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      margin: 0.3rem;
+      cursor: help;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      background: rgba(59, 130, 246, 0.2);
+    }
+
+    .skill-tag::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark);
+      color: var(--light);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    .skill-tag:hover::after {
+      opacity: 1;
+      visibility: visible;
+      bottom: calc(100% + 10px);
+    }
+
+    /* Tabs de habilidades */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--glass);
+      margin-bottom: 1.5rem;
+    }
+
+    .tab {
+      padding: 0.7rem 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      font-weight: 600;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .tab:hover {
+      color: var(--light);
+    }
+
+    .tab.active {
+      color: var(--light);
+    }
+
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Botão de modo escuro/claro */
+    .theme-toggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--glass);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary-dark);
+      color: white;
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Seção de vulnerabilidades */
+    .vulnerability {
+      background: var(--glass);
+      border-left: 3px solid var(--danger);
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 0.5rem 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .vulnerability:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
+    }
+
+    .vulnerability-title {
+      color: var(--danger);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .vulnerability-title i {
+      margin-right: 0.5rem;
+    }
+
+    .vulnerability-severity {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      background: rgba(239, 68, 68, 0.2);
+      border-radius: 0.3rem;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
+
+    .vulnerability.severity-high {
+      border-left-color: var(--danger);
+    }
+
+    .vulnerability.severity-medium {
+      border-left-color: var(--warning);
+    }
+
+    .vulnerability.severity-low {
+      border-left-color: var(--secondary);
+    }
+
+    .vulnerability.severity-high .vulnerability-severity {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--danger);
+    }
+
+    .vulnerability.severity-medium .vulnerability-severity {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--warning);
+    }
+
+    .vulnerability.severity-low .vulnerability-severity {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--secondary);
+    }
+
+    /* Botão de download de CV */
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+      border: none;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.6);
+    }
+
+    .download-btn i {
+      margin-right: 0.5rem;
+    }
+
+    /* Social links */
     .social-links {
       display: flex;
       justify-content: center;
@@ -263,6 +577,14 @@
       nav ul {
         gap: 1.5rem;
       }
+
+      .tabs {
+        flex-wrap: wrap;
+      }
+
+      .tab {
+        padding: 0.5rem 1rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -285,51 +607,163 @@
       .social-link {
         width: 70px;
       }
+
+      .terminal {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <div class="card">
+    <!-- Efeito de linhas de rede -->
+    <div class="network-lines" id="networkLines"></div>
+
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="projeto.html">Projects</a></li>
+        <li><a href="projetos.html">Projects</a></li>
+        <li><a href="vulnerabilidades.html">Vulnerabilities</a></li>
+        <li><a href="blog.html">Blog</a></li>
       </ul>
     </nav>
 
     <div class="header">
       <h1>Dvison Luiz</h1>
-      <h2>NOC Specialist • <span class="highlight">Python</span> Automation • <span class="highlight">Pentest</span></h2>
+      <h2>Cybersecurity Specialist • <span class="highlight">Vulnerability</span> Analyst • <span class="danger-highlight">Pentester</span></h2>
     </div>
 
     <div class="info-section">
       <h3>Professional Profile</h3>
       <p>
-        IT technician with experience as a <strong>NOC specialist</strong> at TuxNet. Former member of the <strong>Brazilian Army</strong>, where I developed leadership and teamwork skills. Passionate about automation, cybersecurity and efficient solutions.
+        Cybersecurity professional with expertise in <strong>vulnerability analysis</strong> and <strong>penetration testing</strong>. Former <strong>NOC specialist</strong> at TuxNet with experience in network monitoring and incident response. Military background in the <strong>Brazilian Army</strong>, developing discipline and strategic thinking.
       </p>
-    </div>
-
-    <div class="info-section">
-      <h3>Education & Certifications</h3>
-      <ul>
-        <li>IT Technician</li>
-        <li>Software Development</li>
-        <li>NOC Specialist Certification</li>
-        <li>Military Reserve - Brazilian Army</li>
-        <li><strong>Fundamentals of Ethical Hacking and Pentest</strong> (Practical)</li>
-        <li>Python for Automation and Scripting</li>
-      </ul>
+      
+      <p>
+        Passionate about identifying and mitigating security risks, automating security processes, and developing robust defense mechanisms against cyber threats.
+      </p>
+      
+      <a href="#" class="download-btn" id="downloadCV">
+        <i class="fas fa-download"></i> Download CV
+      </a>
     </div>
 
     <div class="info-section">
       <h3>Technical Skills</h3>
-      <ul>
-        <li>Network Operations Center (NOC) Monitoring</li>
-        <li>Python Scripting and Automation</li>
-        <li>Penetration Testing Fundamentals</li>
-        <li>Network Infrastructure</li>
-        <li>Problem Solving and Troubleshooting</li>
-      </ul>
+      
+      <div class="tabs">
+        <div class="tab active" data-tab="analysis">Vulnerability Analysis</div>
+        <div class="tab" data-tab="pentesting">Penetration Testing</div>
+        <div class="tab" data-tab="automation">Automation</div>
+      </div>
+      
+      <div class="tab-content active" id="analysis">
+        <div class="skill-tag" data-tooltip="Identifying and assessing security weaknesses">Vulnerability Assessment</div>
+        <div class="skill-tag" data-tooltip="Common Vulnerabilities and Exposures tracking">CVE Analysis</div>
+        <div class="skill-tag" data-tooltip="Common Vulnerability Scoring System">CVSS Scoring</div>
+        <div class="skill-tag" data-tooltip="Static Application Security Testing">SAST</div>
+        <div class="skill-tag" data-tooltip="Dynamic Application Security Testing">DAST</div>
+        <div class="skill-tag" data-tooltip="Software Composition Analysis">SCA</div>
+        <div class="skill-tag" data-tooltip="OWASP Top 10 vulnerabilities">OWASP Top 10</div>
+        <div class="skill-tag" data-tooltip="National Vulnerability Database">NVD</div>
+      </div>
+      
+      <div class="tab-content" id="pentesting">
+        <div class="skill-tag" data-tooltip="Kali Linux penetration testing tools">Kali Linux</div>
+        <div class="skill-tag" data-tooltip="Network vulnerability scanner">Nessus</div>
+        <div class="skill-tag" data-tooltip="Web application security scanner">Burp Suite</div>
+        <div class="skill-tag" data-tooltip="Network security auditing tool">Metasploit</div>
+        <div class="skill-tag" data-tooltip="Network mapper">Nmap</div>
+        <div class="skill-tag" data-tooltip="Password cracking tool">Hashcat</div>
+        <div class="skill-tag" data-tooltip="Wireless security auditing">Aircrack-ng</div>
+        <div class="skill-tag" data-tooltip="Web proxy for penetration testing">OWASP ZAP</div>
+      </div>
+      
+      <div class="tab-content" id="automation">
+        <div class="skill-tag" data-tooltip="Scripting for security automation">Python</div>
+        <div class="skill-tag" data-tooltip="Powerful command-line shell">Bash</div>
+        <div class="skill-tag" data-tooltip="Configuration management">Ansible</div>
+        <div class="skill-tag" data-tooltip="Security automation framework">Mitre Caldera</div>
+        <div class="skill-tag" data-tooltip="Web scraping for OSINT">BeautifulSoup</div>
+        <div class="skill-tag" data-tooltip="HTTP library for security tools">Requests</div>
+        <div class="skill-tag" data-tooltip="Network automation">Paramiko</div>
+        <div class="skill-tag" data-tooltip="Security data analysis">Pandas</div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h3>Recent Vulnerabilities Analyzed</h3>
+      
+      <div class="vulnerability severity-high">
+        <div class="vulnerability-title">
+          <i class="fas fa-bug"></i> CVE-2023-1234 - Remote Code Execution
+          <span class="vulnerability-severity">High (9.8)</span>
+        </div>
+        <p>Critical RCE vulnerability in Apache Log4j allowing unauthenticated remote code execution via JNDI lookup.</p>
+      </div>
+      
+      <div class="vulnerability severity-medium">
+        <div class="vulnerability-title">
+          <i class="fas fa-shield-alt"></i> CVE-2023-5678 - SQL Injection
+          <span class="vulnerability-severity">Medium (6.5)</span>
+        </div>
+        <p>SQL injection vulnerability in popular CMS platform allowing unauthorized database access.</p>
+      </div>
+      
+      <div class="vulnerability severity-low">
+        <div class="vulnerability-title">
+          <i class="fas fa-info-circle"></i> CVE-2023-9012 - Information Disclosure
+          <span class="vulnerability-severity">Low (3.1)</span>
+        </div>
+        <p>Sensitive information disclosure in web application error messages.</p>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h3>Terminal Simulation</h3>
+      
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+          </div>
+          <div class="terminal-title">dvison@security:~</div>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-command">
+            <div class="terminal-prompt">$</div>
+            <div class="terminal-input">nmap -sV --script vuln target.com</div>
+          </div>
+          <div class="terminal-output">
+            Starting Nmap 7.93 ( https://nmap.org )<br>
+            Nmap scan report for target.com (192.168.1.1)<br>
+            Host is up (0.045s latency).<br>
+            Not shown: 998 filtered ports<br>
+            PORT   STATE SERVICE VERSION<br>
+            80/tcp open  http    Apache httpd 2.4.49<br>
+            | http-vuln-cve2021-41773: <br>
+            |   VULNERABLE: Apache HTTP Server path traversal vulnerability<br>
+            |     State: VULNERABLE<br>
+            |     IDs:  CVE:CVE-2021-41773<br>
+            |     Risk factor: HIGH<br>
+          </div>
+          <div class="terminal-command">
+            <div class="terminal-prompt">$</div>
+            <div class="terminal-input">python exploit.py --target target.com --port 80</div>
+          </div>
+          <div class="terminal-output">
+            [+] Target vulnerable to CVE-2021-41773<br>
+            [+] Successfully exploited - root shell obtained<br>
+            # <span class="terminal-cursor">_</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="social-links">
@@ -351,7 +785,118 @@
         </div>
         <span class="social-text">YouTube</span>
       </a>
+      <a href="https://tryhackme.com/p/DvisonLuiz" class="social-link" target="_blank" rel="noopener noreferrer">
+        <div class="social-icon">
+          <i class="fas fa-lock"></i>
+        </div>
+        <span class="social-text">TryHackMe</span>
+      </a>
+      <a href="https://www.hackthebox.com/profile/123456" class="social-link" target="_blank" rel="noopener noreferrer">
+        <div class="social-icon">
+          <i class="fas fa-cube"></i>
+        </div>
+        <span class="social-text">HackTheBox</span>
+      </a>
     </div>
   </div>
+
+  <script>
+    // Tema claro/escuro
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const icon = themeToggle.querySelector('i');
+    
+    // Verificar preferência do usuário
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Aplicar tema inicial
+    if (prefersDarkScheme.matches) {
+      body.classList.add('light-theme');
+      icon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-theme');
+      
+      if (body.classList.contains('light-theme')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+      }
+    });
+    
+    // Criar linhas de rede
+    const networkLines = document.getElementById('networkLines');
+    
+    for (let i = 0; i < 15; i++) {
+      const line = document.createElement('div');
+      line.classList.add('network-line');
+      
+      // Posição aleatória
+      const startX = Math.random() * 100;
+      const startY = Math.random() * 100;
+      const length = Math.random() * 30 + 10;
+      const angle = Math.random() * 360;
+      
+      line.style.width = `${length}%`;
+      line.style.top = `${startY}%`;
+      line.style.left = `${startX}%`;
+      line.style.transform = `rotate(${angle}deg)`;
+      line.style.animationDelay = `${Math.random() * 5}s`;
+      
+      networkLines.appendChild(line);
+    }
+    
+    // Tabs de habilidades
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remover classe active de todas as tabs e conteúdos
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        // Adicionar classe active à tab clicada
+        tab.classList.add('active');
+        
+        // Mostrar o conteúdo correspondente
+        const tabId = tab.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+    
+    // Simulação de terminal - digitação automática
+    const terminalInputs = document.querySelectorAll('.terminal-input');
+    const terminalOutputs = document.querySelectorAll('.terminal-output');
+    
+    // Efeito de cursor piscando
+    setInterval(() => {
+      const cursor = document.querySelector('.terminal-cursor');
+      if (cursor) {
+        cursor.style.visibility = cursor.style.visibility === 'hidden' ? 'visible' : 'hidden';
+      }
+    }, 500);
+    
+    // Botão de download CV
+    const downloadBtn = document.getElementById('downloadCV');
+    downloadBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Download iniciado! (simulação)');
+      // Aqui você implementaria o download real do CV
+    });
+    
+    // Tooltips para habilidades
+    const skillTags = document.querySelectorAll('.skill-tag');
+    skillTags.forEach(tag => {
+      tag.addEventListener('mouseenter', () => {
+        // Posicionar tooltip corretamente
+        const tooltip = tag.getAttribute('data-tooltip');
+        if (tooltip) {
+          tag.setAttribute('title', tooltip);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
