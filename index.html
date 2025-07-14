@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dvison Luiz | Cybersecurity Specialist & Vulnerability Analyst</title>
-  <meta name="description" content="Portfólio profissional de Dvison Luiz - Especialista em Cybersecurity, Análise de Vulnerabilidades e Pentest">
+  <title>Dvison Luiz | Cybersecurity Specialist & NOC Engineer</title>
+  <meta name="description" content="Portfólio profissional de Dvison Luiz - Especialista em Cybersecurity, Análise de Vulnerabilidades e NOC">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
@@ -556,6 +556,100 @@
       font-weight: 500;
     }
 
+    /* Seção de projetos */
+    .project {
+      background: var(--glass);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      transition: all 0.3s ease;
+      border-left: 3px solid var(--primary);
+    }
+
+    .project:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .project-link {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-link:hover {
+      color: var(--light);
+      text-decoration: underline;
+    }
+
+    .project-description {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+    }
+
+    /* Certificações */
+    .certification {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .certification-icon {
+      color: var(--secondary);
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .certification-content {
+      flex: 1;
+    }
+
+    .certification-title {
+      color: var(--light);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .certification-link {
+      color: var(--gray);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .certification-link:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
     /* Responsividade */
     @media (max-width: 768px) {
       body {
@@ -611,6 +705,12 @@
       .terminal {
         padding: 1rem;
       }
+
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -634,17 +734,17 @@
 
     <div class="header">
       <h1>Dvison Luiz</h1>
-      <h2>Cybersecurity Specialist • <span class="highlight">Vulnerability</span> Analyst • <span class="danger-highlight">Pentester</span></h2>
+      <h2>Cybersecurity Specialist • <span class="highlight">Vulnerability</span> Analyst • <span class="danger-highlight">NOC Engineer</span></h2>
     </div>
 
     <div class="info-section">
       <h3>Professional Profile</h3>
       <p>
-        Cybersecurity professional with expertise in <strong>vulnerability analysis</strong> and <strong>penetration testing</strong>. Former <strong>NOC specialist</strong> at TuxNet with experience in network monitoring and incident response. Military background in the <strong>Brazilian Army</strong>, developing discipline and strategic thinking.
+        Cybersecurity professional with expertise in <strong>vulnerability analysis</strong> and <strong>penetration testing</strong>. Former <strong>NOC specialist</strong> at TuxNet with experience in network monitoring, incident response and infrastructure management. Military background in the <strong>Brazilian Army</strong>, developing discipline and strategic thinking.
       </p>
       
       <p>
-        Passionate about identifying and mitigating security risks, automating security processes, and developing robust defense mechanisms against cyber threats.
+        As a NOC specialist, I monitored network infrastructure, identified and resolved incidents, and optimized network performance. This experience provided me with a solid understanding of network operations that complements my cybersecurity skills.
       </p>
       
       <a href="#" class="download-btn" id="downloadCV">
@@ -653,12 +753,101 @@
     </div>
 
     <div class="info-section">
+      <h3>Education & Certifications</h3>
+      
+      <div class="certification">
+        <div class="certification-icon">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <div class="certification-content">
+          <div class="certification-title">IT Technician</div>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7350181359895638018/" class="certification-link" target="_blank">
+            View Certification
+          </a>
+        </div>
+      </div>
+      
+      <div class="certification">
+        <div class="certification-icon">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <div class="certification-content">
+          <div class="certification-title">Software Development</div>
+          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7337845636031008771/" class="certification-link" target="_blank">
+            View Certification
+          </a>
+        </div>
+      </div>
+      
+      <h4 style="margin-top: 1.5rem; color: var(--light);">Licenses:</h4>
+      <ul>
+        <li>Introduction to Cybersecurity - CISCO</li>
+        <li>Boas Práticas em Cybersecurity - IBSEC</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h3>Technical Projects</h3>
+      
+      <div class="project">
+        <div class="project-header">
+          <div class="project-title">Proxy TCP</div>
+          <a href="https://github.com/LuizWhoami/Proxy-tcp" class="project-link" target="_blank">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+        </div>
+        <div class="project-description">
+          A lightweight TCP proxy server implementation in Python that allows monitoring and forwarding of TCP connections. The project includes features for traffic logging, connection filtering, and basic packet inspection. Useful for debugging network applications and understanding TCP communication patterns.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Sockets</span>
+          <span class="tech-tag">Networking</span>
+        </div>
+      </div>
+      
+      <div class="project">
+        <div class="project-header">
+          <div class="project-title">Netcat Implementation</div>
+          <a href="https://github.com/LuizWhoami/Netcat" class="project-link" target="_blank">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+        </div>
+        <div class="project-description">
+          A Python implementation of the classic Netcat tool, providing network debugging and exploration capabilities. Supports both TCP and UDP protocols, port scanning, file transfers, and can operate as a client or server. This project demonstrates deep understanding of network protocols and socket programming.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Networking</span>
+          <span class="tech-tag">CLI Tool</span>
+        </div>
+      </div>
+      
+      <div class="project">
+        <div class="project-header">
+          <div class="project-title">Connect TCP</div>
+          <a href="https://github.com/LuizWhoami/Connect-TCP" class="project-link" target="_blank">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+        </div>
+        <div class="project-description">
+          A simple yet powerful TCP connection utility that establishes and manages TCP connections between endpoints. Includes features for connection persistence, timeout handling, and basic protocol implementation. Developed to understand the fundamentals of reliable network communication and connection handling.
+        </div>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">TCP/IP</span>
+          <span class="tech-tag">Network Utilities</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
       <h3>Technical Skills</h3>
       
       <div class="tabs">
         <div class="tab active" data-tab="analysis">Vulnerability Analysis</div>
         <div class="tab" data-tab="pentesting">Penetration Testing</div>
-        <div class="tab" data-tab="automation">Automation</div>
+        <div class="tab" data-tab="noc">NOC Skills</div>
       </div>
       
       <div class="tab-content active" id="analysis">
@@ -683,120 +872,32 @@
         <div class="skill-tag" data-tooltip="Web proxy for penetration testing">OWASP ZAP</div>
       </div>
       
-      <div class="tab-content" id="automation">
-        <div class="skill-tag" data-tooltip="Scripting for security automation">Python</div>
-        <div class="skill-tag" data-tooltip="Powerful command-line shell">Bash</div>
-        <div class="skill-tag" data-tooltip="Configuration management">Ansible</div>
-        <div class="skill-tag" data-tooltip="Security automation framework">Mitre Caldera</div>
-        <div class="skill-tag" data-tooltip="Web scraping for OSINT">BeautifulSoup</div>
-        <div class="skill-tag" data-tooltip="HTTP library for security tools">Requests</div>
-        <div class="skill-tag" data-tooltip="Network automation">Paramiko</div>
-        <div class="skill-tag" data-tooltip="Security data analysis">Pandas</div>
-      </div>
-    </div>
-
-    <div class="info-section">
-      <h3>Recent Vulnerabilities Analyzed</h3>
-      
-      <div class="vulnerability severity-high">
-        <div class="vulnerability-title">
-          <i class="fas fa-bug"></i> CVE-2023-1234 - Remote Code Execution
-          <span class="vulnerability-severity">High (9.8)</span>
-        </div>
-        <p>Critical RCE vulnerability in Apache Log4j allowing unauthenticated remote code execution via JNDI lookup.</p>
-      </div>
-      
-      <div class="vulnerability severity-medium">
-        <div class="vulnerability-title">
-          <i class="fas fa-shield-alt"></i> CVE-2023-5678 - SQL Injection
-          <span class="vulnerability-severity">Medium (6.5)</span>
-        </div>
-        <p>SQL injection vulnerability in popular CMS platform allowing unauthorized database access.</p>
-      </div>
-      
-      <div class="vulnerability severity-low">
-        <div class="vulnerability-title">
-          <i class="fas fa-info-circle"></i> CVE-2023-9012 - Information Disclosure
-          <span class="vulnerability-severity">Low (3.1)</span>
-        </div>
-        <p>Sensitive information disclosure in web application error messages.</p>
-      </div>
-    </div>
-
-    <div class="info-section">
-      <h3>Terminal Simulation</h3>
-      
-      <div class="terminal">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <div class="terminal-dot red"></div>
-            <div class="terminal-dot yellow"></div>
-            <div class="terminal-dot green"></div>
-          </div>
-          <div class="terminal-title">dvison@security:~</div>
-        </div>
-        <div class="terminal-body">
-          <div class="terminal-command">
-            <div class="terminal-prompt">$</div>
-            <div class="terminal-input">nmap -sV --script vuln target.com</div>
-          </div>
-          <div class="terminal-output">
-            Starting Nmap 7.93 ( https://nmap.org )<br>
-            Nmap scan report for target.com (192.168.1.1)<br>
-            Host is up (0.045s latency).<br>
-            Not shown: 998 filtered ports<br>
-            PORT   STATE SERVICE VERSION<br>
-            80/tcp open  http    Apache httpd 2.4.49<br>
-            | http-vuln-cve2021-41773: <br>
-            |   VULNERABLE: Apache HTTP Server path traversal vulnerability<br>
-            |     State: VULNERABLE<br>
-            |     IDs:  CVE:CVE-2021-41773<br>
-            |     Risk factor: HIGH<br>
-          </div>
-          <div class="terminal-command">
-            <div class="terminal-prompt">$</div>
-            <div class="terminal-input">python exploit.py --target target.com --port 80</div>
-          </div>
-          <div class="terminal-output">
-            [+] Target vulnerable to CVE-2021-41773<br>
-            [+] Successfully exploited - root shell obtained<br>
-            # <span class="terminal-cursor">_</span>
-          </div>
-        </div>
+      <div class="tab-content" id="noc">
+        <div class="skill-tag" data-tooltip="Network monitoring and management">NOC Operations</div>
+        <div class="skill-tag" data-tooltip="Incident identification and resolution">Incident Response</div>
+        <div class="skill-tag" data-tooltip="Network performance monitoring">Performance Monitoring</div>
+        <div class="skill-tag" data-tooltip="Network troubleshooting">Troubleshooting</div>
+        <div class="skill-tag" data-tooltip="Zabbix monitoring system">Zabbix</div>
+        <div class="skill-tag" data-tooltip="Network monitoring solution">Nagios</div>
+        <div class="skill-tag" data-tooltip="Network protocols understanding">TCP/IP Stack</div>
+        <div class="skill-tag" data-tooltip="IT service management">ITSM</div>
       </div>
     </div>
 
     <div class="social-links">
-      <a href="https://github.com/Dvisonlui" class="social-link" target="_blank" rel="noopener noreferrer">
-        <div class="social-icon">
-          <i class="fab fa-github"></i>
-        </div>
-        <span class="social-text">GitHub</span>
-      </a>
       <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" class="social-link" target="_blank" rel="noopener noreferrer">
         <div class="social-icon">
           <i class="fab fa-linkedin-in"></i>
         </div>
         <span class="social-text">LinkedIn</span>
       </a>
-      <a href="https://www.youtube.com/channel/UClmmR_QRJD9n82XzOjMWJ9g" class="social-link" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/Dvisonlui" class="social-link" target="_blank" rel="noopener noreferrer">
         <div class="social-icon">
-          <i class="fab fa-youtube"></i>
+          <i class="fab fa-github"></i>
         </div>
-        <span class="social-text">YouTube</span>
+        <span class="social-text">GitHub</span>
       </a>
-      <a href="https://tryhackme.com/p/DvisonLuiz" class="social-link" target="_blank" rel="noopener noreferrer">
-        <div class="social-icon">
-          <i class="fas fa-lock"></i>
-        </div>
-        <span class="social-text">TryHackMe</span>
-      </a>
-      <a href="https://www.hackthebox.com/profile/123456" class="social-link" target="_blank" rel="noopener noreferrer">
-        <div class="social-icon">
-          <i class="fas fa-cube"></i>
-        </div>
-        <span class="social-text">HackTheBox</span>
-      </a>
+
     </div>
   </div>
 
