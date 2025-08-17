@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTF Challenges | Dvison Luiz</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #10b981;
+      --ctf: #f59e0b; /* Amarelo/laranja para CTFs */
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, var(--darker), var(--dark));
+      color: var(--light);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 20%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Barra de admin */
+    #adminBar {
+      background: rgba(245, 158, 11, 0.2);
+      padding: 0.5rem 2rem;
+      border-bottom: 1px solid var(--ctf);
+      display: none;
+    }
+
+    .admin-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .admin-btn {
+      background: var(--ctf);
+      color: var(--dark);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .admin-btn:hover {
+      background: #f97316;
+    }
+
+    #adminWelcome {
+      color: var(--light);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Botão de voltar */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .back-btn:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    /* Cabeçalho */
+    .page-header {
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.8rem;
+      background: linear-gradient(90deg, var(--primary), var(--ctf));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .ctf-title {
+      background: linear-gradient(90deg, var(--ctf), #fbbf24);
+    }
+
+    /* Área de upload */
+    .upload-area {
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px dashed var(--ctf);
+      display: none;
+    }
+
+    .upload-area h3 {
+      color: var(--ctf);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .form-group input, 
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: var(--light);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .upload-btn {
+      background: linear-gradient(45deg, var(--ctf), #fbbf24);
+      color: var(--dark);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .upload-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Filtros */
+    .filters {
+      margin-bottom: 2rem;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: var(--light);
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 1rem;
+    }
+
+    .tags-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag-filter {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--ctf);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tag-filter:hover {
+      background: var(--ctf);
+      color: var(--dark);
+    }
+
+    /* Lista de desafios */
+    .challenges-list {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .challenge-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .challenge-card h3 {
+      color: var(--ctf);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .challenge-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .challenge-tags {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--ctf);
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+    }
+
+    .difficulty {
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 5px;
+    }
+
+    .difficulty-easy {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+    }
+
+    .difficulty-medium {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--ctf);
+    }
+
+    .difficulty-hard {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+
+    .challenge-excerpt {
+      margin-bottom: 1.5rem;
+      color: var(--light);
+      font-size: 0.95rem;
+    }
+
+    .challenge-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .read-more {
+      background: transparent;
+      color: var(--ctf);
+      border: 1px solid var(--ctf);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .read-more:hover {
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .remove-btn {
+      background: transparent;
+      color: #ff4d4d;
+      border: 1px solid #ff4d4d;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .remove-btn:hover {
+      background: rgba(255, 77, 77, 0.1);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background: var(--dark);
+      margin: 2% auto;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: none;
+      border: none;
+    }
+
+    .close-btn:hover {
+      color: var(--light);
+    }
+
+    .modal h2 {
+      color: var(--ctf);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .modal-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    .modal-tags {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .modal-body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: var(--light);
+    }
+
+    .modal-body h1,
+    .modal-body h2,
+    .modal-body h3,
+    .modal-body h4,
+    .modal-body h5,
+    .modal-body h6 {
+      color: var(--ctf);
+      margin: 1.5rem 0 1rem;
+    }
+
+    .modal-body a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .modal-body a:hover {
+      text-decoration: underline;
+    }
+
+    .modal-body code {
+      font-family: 'Courier New', monospace;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+
+    .modal-body pre {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .modal-body blockquote {
+      border-left: 3px solid var(--ctf);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    .flag-form {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: 5px;
+      border: 1px dashed var(--ctf);
+    }
+
+    .flag-form input {
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: var(--light);
+    }
+
+    .flag-form button {
+      background: var(--ctf);
+      color: var(--dark);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 4rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--glass);
+      border-radius: 50%;
+      color: var(--gray);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    footer p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Botão de login */
+    .admin-login-btn {
+      background: transparent;
+      color: var(--gray);
+      border: 1px solid var(--gray);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .admin-login-btn:hover {
+      color: var(--ctf);
+      border-color: var(--ctf);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .modal-content {
+        margin: 1rem auto;
+        padding: 1.5rem;
+      }
+
+      .challenge-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .challenge-actions {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      .challenge-card {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de administração (oculta por padrão) -->
+  <div id="adminBar">
+    <div class="admin-controls">
+      <button id="logoutBtn" class="admin-btn">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+      <span id="adminWelcome"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <div class="page-header">
+      <h1 class="page-title ctf-title">Desafios CTF</h1>
+      <p>Coleção de desafios de Capture The Flag para praticar habilidades de segurança</p>
+      
+      <!-- Área de Upload (visível apenas para admin) -->
+      <div class="upload-area" id="uploadArea">
+        <h3><i class="fas fa-cloud-upload-alt"></i> Adicionar Novo Desafio</h3>
+        <form id="uploadForm">
+          <div class="form-group">
+            <label for="challengeTitle">Título do Desafio:</label>
+            <input type="text" id="challengeTitle" required>
+          </div>
+          <div class="form-group">
+            <label for="challengeCategory">Categoria:</label>
+            <select id="challengeCategory" required>
+              <option value="">Selecione...</option>
+              <option value="Web">Web</option>
+              <option value="Criptografia">Criptografia</option>
+              <option value="Forense">Forense</option>
+              <option value="Reversing">Reversing</option>
+              <option value="Pwn">Pwn</option>
+              <option value="Steganografia">Steganografia</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="challengeDifficulty">Dificuldade:</label>
+            <select id="challengeDifficulty" required>
+              <option value="Fácil">Fácil</option>
+              <option value="Médio">Médio</option>
+              <option value="Difícil">Difícil</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="challengePoints">Pontos:</label>
+            <input type="number" id="challengePoints" min="10" max="500" required>
+          </div>
+          <div class="form-group">
+            <label for="challengeFile">Arquivo README.md:</label>
+            <input type="file" id="challengeFile" accept=".md" required>
+          </div>
+          <button type="submit" class="upload-btn">
+            <i class="fas fa-upload"></i> Publicar Desafio
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Buscar desafios...">
+      <div class="tags-filter" id="tagsFilter"></div>
+    </div>
+
+    <!-- Lista de Desafios -->
+    <div class="challenges-list" id="challengesList">
+      <!-- Desafios serão carregados aqui via JavaScript -->
+    </div>
+
+    <!-- Modal para visualização do desafio -->
+    <div class="modal" id="challengeModal">
+      <div class="modal-content">
+        <button class="close-btn">&times;</button>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div class="modal-body markdown-body" id="modalBody"></div>
+        <div class="flag-form" id="flagForm">
+          <h4>Submeter Flag:</h4>
+          <input type="text" id="flagInput" placeholder="flag{...}">
+          <button id="submitFlag">Verificar</button>
+          <p id="flagResult"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/Dvisonlui" class="social-link" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" class="social-link" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UClmmR_QRJD9n82XzOjMWJ9g" class="social-link" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+    <button id="adminLoginBtn" class="admin-login-btn">
+      <i class="fas fa-lock"></i> Acesso Admin
+    </button>
+    <p>&copy; 2023 Dvison Luiz. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>
+    // Configuração do Marked e Highlight.js
+    marked.setOptions({
+      highlight: function(code, lang) {
+        if (hljs.getLanguage(lang)) {
+          return hljs.highlight(lang, code).value;
+        }
+        return hljs.highlightAuto(code).value;
+      },
+      langPrefix: 'hljs language-'
+    });
+
+    // Elementos do DOM
+    const uploadForm = document.getElementById('uploadForm');
+    const challengesList = document.getElementById('challengesList');
+    const searchInput = document.getElementById('searchInput');
+    const tagsFilter = document.getElementById('tagsFilter');
+    const modal = document.getElementById('challengeModal');
+    const closeBtn = document.querySelector('.close-btn');
+    const uploadArea = document.getElementById('uploadArea');
+    const adminBar = document.getElementById('adminBar');
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const adminWelcome = document.getElementById('adminWelcome');
+    const flagForm = document.getElementById('flagForm');
+    const flagInput = document.getElementById('flagInput');
+    const submitFlag = document.getElementById('submitFlag');
+    const flagResult = document.getElementById('flagResult');
+
+    // Configuração de autenticação
+    const ADMIN_PASSWORD = "dvison123"; // Troque por uma senha segura
+    const AUTH_KEY = "ctfAdminAuth";
+
+    // Carregar desafios do localStorage
+    let challenges = JSON.parse(localStorage.getItem('ctfChallenges')) || [];
+
+    // Verificar autenticação
+    function checkAuth() {
+      const isAuthenticated = localStorage.getItem(AUTH_KEY) === ADMIN_PASSWORD;
+      if (isAuthenticated) {
+        uploadArea.style.display = 'block';
+        adminBar.style.display = 'block';
+        adminWelcome.textContent = 'Olá, Admin!';
+        adminLoginBtn.style.display = 'none';
+      } else {
+        uploadArea.style.display = 'none';
+        adminBar.style.display = 'none';
+        adminLoginBtn.style.display = 'inline-flex';
+      }
+    }
+
+    // Login
+    adminLoginBtn.addEventListener('click', function() {
+      const password = prompt("Digite a senha de administrador:");
+      if (password === ADMIN_PASSWORD) {
+        localStorage.setItem(AUTH_KEY, password);
+        checkAuth();
+        displayChallenges();
+      } else if (password !== null) {
+        alert("Senha incorreta!");
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener('click', function() {
+      localStorage.removeItem(AUTH_KEY);
+      checkAuth();
+      displayChallenges();
+    });
+
+    // Função para remover desafio
+    function removeChallenge(index) {
+      if (confirm('Tem certeza que deseja remover este desafio?')) {
+        challenges.splice(index, 1);
+        localStorage.setItem('ctfChallenges', JSON.stringify(challenges));
+        displayChallenges();
+        updateTagsFilter();
+        alert('Desafio removido com sucesso!');
+      }
+    }
+
+    // Exibir desafios
+    function displayChallenges(filteredChallenges = challenges) {
+      challengesList.innerHTML = '';
+      
+      if (filteredChallenges.length === 0) {
+        challengesList.innerHTML = '<p class="no-challenges">Nenhum desafio encontrado.</p>';
+        return;
+      }
+
+      const isAdmin = localStorage.getItem(AUTH_KEY) === ADMIN_PASSWORD;
+
+      filteredChallenges.forEach((challenge, index) => {
+        const challengeCard = document.createElement('div');
+        challengeCard.className = 'challenge-card';
+        
+        const removeButton = isAdmin ? 
+          `<button class="remove-btn" onclick="removeChallenge(${index})">
+            <i class="fas fa-trash-alt"></i> Remover
+          </button>` : '';
+        
+        challengeCard.innerHTML = `
+          <h3>${challenge.title}</h3>
+          <div class="challenge-meta">
+            <div>
+              <span><i class="fas fa-tag"></i> ${challenge.category}</span>
+              <span class="difficulty difficulty-${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</span>
+              <span><i class="fas fa-star"></i> ${challenge.points} pts</span>
+            </div>
+            <div class="challenge-tags"></div>
+          </div>
+          <div class="challenge-excerpt">${marked.parse(challenge.content.substring(0, 200) + '...')}</div>
+          <div class="challenge-actions">
+            <button class="read-more" onclick="openChallenge(${index})">
+              <i class="fas fa-flag"></i> Ver Desafio
+            </button>
+            ${removeButton}
+          </div>
+        `;
+        challengesList.appendChild(challengeCard);
+      });
+    }
+
+    // Abrir desafio no modal
+    function openChallenge(index) {
+      const challenge = challenges[index];
+      document.getElementById('modalTitle').textContent = challenge.title;
+      document.getElementById('modalMeta').innerHTML = `
+        <div>
+          <span><i class="fas fa-tag"></i> ${challenge.category}</span>
+          <span class="difficulty difficulty-${challenge.difficulty.toLowerCase()}">${challenge.difficulty}</span>
+          <span><i class="fas fa-star"></i> ${challenge.points} pts</span>
+        </div>
+      `;
+      document.getElementById('modalBody').innerHTML = marked.parse(challenge.content);
+      
+      // Configurar o formulário de flag
+      flagInput.value = '';
+      flagResult.textContent = '';
+      
+      modal.style.display = 'block';
+      
+      // Aplicar highlight ao código
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+      });
+    }
+
+    // Verificar flag (simulação)
+    submitFlag.addEventListener('click', function() {
+      const flag = flagInput.value.trim();
+      if (flag) {
+        // Simulação - em um sistema real, você verificaria no servidor
+        flagResult.textContent = "Flag correta! Desafio resolvido!";
+        flagResult.style.color = "#10b981";
+      } else {
+        flagResult.textContent = "Por favor, insira uma flag";
+        flagResult.style.color = "#ef4444";
+      }
+    });
+
+    // Fechar modal
+    closeBtn.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+
+    // Fechar modal ao clicar fora
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Upload de novo desafio
+    uploadForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const title = document.getElementById('challengeTitle').value;
+      const category = document.getElementById('challengeCategory').value;
+      const difficulty = document.getElementById('challengeDifficulty').value;
+      const points = document.getElementById('challengePoints').value;
+      const file = document.getElementById('challengeFile').files[0];
+      
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const content = e.target.result;
+        
+        const newChallenge = {
+          title,
+          category,
+          difficulty,
+          points,
+          content,
+          date: new Date().toISOString()
+        };
+        
+        challenges.unshift(newChallenge);
+        localStorage.setItem('ctfChallenges', JSON.stringify(challenges));
+        
+        // Reset form
+        uploadForm.reset();
+        displayChallenges();
+        updateTagsFilter();
+        
+        alert('Desafio publicado com sucesso!');
+      };
+      reader.readAsText(file);
+    });
+
+    // Filtro de busca
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const filtered = challenges.filter(challenge => 
+        challenge.title.toLowerCase().includes(searchTerm) ||
+        challenge.content.toLowerCase().includes(searchTerm) ||
+        challenge.category.toLowerCase().includes(searchTerm)
+      );
+      displayChallenges(filtered);
+    });
+
+    // Filtro por tags
+    function updateTagsFilter() {
+      const allCategories = [...new Set(challenges.map(challenge => challenge.category))];
+      tagsFilter.innerHTML = allCategories.map(category => 
+        `<span class="tag-filter" onclick="filterByCategory('${category}')">${category}</span>`
+      ).join('');
+    }
+
+    function filterByCategory(category) {
+      const filtered = challenges.filter(challenge => 
+        challenge.category === category
+      );
+      displayChallenges(filtered);
+    }
+
+    // Inicialização
+    checkAuth();
+    displayChallenges();
+    updateTagsFilter();
+
+    // Expor funções para o escopo global
+    window.removeChallenge = removeChallenge;
+    window.openChallenge = openChallenge;
+    window.filterByCategory = filterByCategory;
+  </script>
+</body>
+</html>
