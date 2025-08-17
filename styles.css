@@ -418,3 +418,35 @@ ul:not(nav ul) li::before {
     font-size: 2rem;
   }
 }
+/* Botão de CTF (mesmo estilo do botão "Voltar", mas com cor temática) */
+/* Botão CTF Fixo no canto direito */
+.ctf-btn-fixed {
+  position: fixed;
+  top: 20px;
+  right: 110px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 45, 117, 0.2);
+  color: var(--cyber);
+  border: 1px solid var(--cyber);
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ctf-btn-fixed:hover {
+  background: var(--cyber);
+  color: var(--dark);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 45, 117, 0.4);
+}
+
+/* Ajuste para não sobrepor o conteúdo */
+.container {
+  position: relative;
+  padding-top: 20px; /* Espaço para o botão fixo */
+}
