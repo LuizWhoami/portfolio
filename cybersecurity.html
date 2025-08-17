@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity Projects | Dvison Luiz</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #10b981;
+      --cyber: #ff2d75;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f8fafc;
+      --gray: #94a3b8;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, var(--darker), var(--dark));
+      color: var(--light);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 20%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Barra de admin */
+    #adminBar {
+      background: rgba(255, 45, 117, 0.2);
+      padding: 0.5rem 2rem;
+      border-bottom: 1px solid var(--cyber);
+      display: none;
+    }
+
+    .admin-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .admin-btn {
+      background: var(--cyber);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+
+    .admin-btn:hover {
+      background: #ff1a5e;
+    }
+
+    #adminWelcome {
+      color: var(--light);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Botão de voltar */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.8rem 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .back-btn:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    /* Cabeçalho */
+    .page-header {
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.8rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .cyber-title {
+      background: linear-gradient(90deg, var(--cyber), #ff6b9c);
+    }
+
+    /* Área de upload */
+    .upload-area {
+      background: rgba(255, 45, 117, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px dashed var(--cyber);
+      display: none;
+    }
+
+    .upload-area h3 {
+      color: var(--cyber);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: var(--light);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .upload-btn {
+      background: linear-gradient(45deg, var(--cyber), #ff6b9c);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .upload-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 45, 117, 0.4);
+    }
+
+    /* Filtros */
+    .filters {
+      margin-bottom: 2rem;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      color: var(--light);
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 1rem;
+    }
+
+    .tags-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag-filter {
+      background: rgba(255, 45, 117, 0.2);
+      color: var(--cyber);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tag-filter:hover {
+      background: var(--cyber);
+      color: white;
+    }
+
+    /* Lista de projetos */
+    .projects-list {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card h3 {
+      color: var(--cyber);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: rgba(255, 45, 117, 0.2);
+      color: var(--cyber);
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+    }
+
+    .project-excerpt {
+      margin-bottom: 1.5rem;
+      color: var(--light);
+      font-size: 0.95rem;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .read-more {
+      background: transparent;
+      color: var(--cyber);
+      border: 1px solid var(--cyber);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .read-more:hover {
+      background: rgba(255, 45, 117, 0.1);
+    }
+
+    .remove-btn {
+      background: transparent;
+      color: #ff4d4d;
+      border: 1px solid #ff4d4d;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .remove-btn:hover {
+      background: rgba(255, 77, 77, 0.1);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background: var(--dark);
+      margin: 2% auto;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 1.5rem;
+      top: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--gray);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: none;
+      border: none;
+    }
+
+    .close-btn:hover {
+      color: var(--light);
+    }
+
+    .modal h2 {
+      color: var(--cyber);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .modal-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      color: var(--gray);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    .modal-tags {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .modal-body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      color: var(--light);
+    }
+
+    .modal-body h1,
+    .modal-body h2,
+    .modal-body h3,
+    .modal-body h4,
+    .modal-body h5,
+    .modal-body h6 {
+      color: var(--cyber);
+      margin: 1.5rem 0 1rem;
+    }
+
+    .modal-body a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .modal-body a:hover {
+      text-decoration: underline;
+    }
+
+    .modal-body code {
+      font-family: 'Courier New', monospace;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+
+    .modal-body pre {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .modal-body blockquote {
+      border-left: 3px solid var(--cyber);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 4rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--glass);
+      border-radius: 50%;
+      color: var(--gray);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    footer p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Botão de login */
+    .admin-login-btn {
+      background: transparent;
+      color: var(--gray);
+      border: 1px solid var(--gray);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .admin-login-btn:hover {
+      color: var(--cyber);
+      border-color: var(--cyber);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .modal-content {
+        margin: 1rem auto;
+        padding: 1.5rem;
+      }
+
+      .project-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .project-actions {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      .project-card {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de administração (oculta por padrão) -->
+  <div id="adminBar">
+    <div class="admin-controls">
+      <button id="logoutBtn" class="admin-btn">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+      <span id="adminWelcome"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Voltar
+    </a>
+
+    <div class="page-header">
+      <h1 class="page-title cyber-title">Projetos de Cybersecurity</h1>
+      <p>Artigos, pesquisas e projetos sobre segurança da informação</p>
+      
+      <!-- Área de Upload (visível apenas para admin) -->
+      <div class="upload-area" id="uploadArea">
+        <h3><i class="fas fa-cloud-upload-alt"></i> Publicar Novo Projeto</h3>
+        <form id="uploadForm">
+          <div class="form-group">
+            <label for="projectTitle">Título do Projeto:</label>
+            <input type="text" id="projectTitle" required>
+          </div>
+          <div class="form-group">
+            <label for="projectTags">Tags (separadas por vírgula):</label>
+            <input type="text" id="projectTags" placeholder="pentest, redes, vulnerabilidade">
+          </div>
+          <div class="form-group">
+            <label for="projectFile">Arquivo README.md:</label>
+            <input type="file" id="projectFile" accept=".md" required>
+          </div>
+          <button type="submit" class="upload-btn">
+            <i class="fas fa-upload"></i> Publicar Projeto
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Buscar projetos...">
+      <div class="tags-filter" id="tagsFilter"></div>
+    </div>
+
+    <!-- Lista de Projetos -->
+    <div class="projects-list" id="projectsList">
+      <!-- Projetos serão carregados aqui via JavaScript -->
+    </div>
+
+    <!-- Modal para visualização do projeto -->
+    <div class="modal" id="projectModal">
+      <div class="modal-content">
+        <button class="close-btn">&times;</button>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div class="modal-body markdown-body" id="modalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="social-links">
+      <a href="https://github.com/LuizWhoami" class="social-link" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" class="social-link" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://www.youtube.com/channel/UClmmR_QRJD9n82XzOjMWJ9g" class="social-link" target="_blank">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+    <button id="adminLoginBtn" class="admin-login-btn">
+      <i class="fas fa-lock"></i> Acesso Admin
+    </button>
+    <p>&copy; 2023 Dvison Luiz. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>
+    
+    // Configuração do Marked e Highlight.js
+    marked.setOptions({
+      highlight: function(code, lang) {
+        if (hljs.getLanguage(lang)) {
+          return hljs.highlight(lang, code).value;
+        }
+        return hljs.highlightAuto(code).value;
+      },
+      langPrefix: 'hljs language-'
+    });
+
+    // Elementos do DOM
+    const uploadForm = document.getElementById('uploadForm');
+    const projectsList = document.getElementById('projectsList');
+    const searchInput = document.getElementById('searchInput');
+    const tagsFilter = document.getElementById('tagsFilter');
+    const modal = document.getElementById('projectModal');
+    const closeBtn = document.querySelector('.close-btn');
+    const uploadArea = document.getElementById('uploadArea');
+    const adminBar = document.getElementById('adminBar');
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const adminWelcome = document.getElementById('adminWelcome');
+
+    // Configuração de autenticação
+    const ADMIN_PASSWORD = "dvison123"; // Troque por uma senha segura
+    const AUTH_KEY = "cyberAdminAuth";
+
+    // Carregar projetos do localStorage
+    let projects = JSON.parse(localStorage.getItem('cyberProjects')) || [];
+
+    // Verificar autenticação
+    function checkAuth() {
+      const isAuthenticated = localStorage.getItem(AUTH_KEY) === ADMIN_PASSWORD;
+      if (isAuthenticated) {
+        uploadArea.style.display = 'block';
+        adminBar.style.display = 'block';
+        adminWelcome.textContent = 'Olá, Admin!';
+        adminLoginBtn.style.display = 'none';
+      } else {
+        uploadArea.style.display = 'none';
+        adminBar.style.display = 'none';
+        adminLoginBtn.style.display = 'inline-flex';
+      }
+    }
+
+    // Login
+    adminLoginBtn.addEventListener('click', () => {
+      const password = prompt("Digite a senha de administrador:");
+      if (password === ADMIN_PASSWORD) {
+        localStorage.setItem(AUTH_KEY, password);
+        checkAuth();
+        displayProjects(); // Atualiza a exibição para mostrar botões de remoção
+      } else if (password) {
+        alert("Senha incorreta!");
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem(AUTH_KEY);
+      checkAuth();
+      displayProjects(); // Atualiza a exibição para esconder botões de remoção
+    });
+
+    // Função para remover projeto
+    function removeProject(index) {
+      if (confirm('Tem certeza que deseja remover este projeto?')) {
+        projects.splice(index, 1);
+        localStorage.setItem('cyberProjects', JSON.stringify(projects));
+        displayProjects();
+        updateTagsFilter();
+        alert('Projeto removido com sucesso!');
+      }
+    }
+
+    // Exibir projetos
+    function displayProjects(filteredProjects = projects) {
+      projectsList.innerHTML = '';
+      
+      if (filteredProjects.length === 0) {
+        projectsList.innerHTML = '<p class="no-projects">Nenhum projeto encontrado.</p>';
+        return;
+      }
+
+      const isAdmin = localStorage.getItem(AUTH_KEY) === ADMIN_PASSWORD;
+
+      filteredProjects.forEach((project, index) => {
+        const projectCard = document.createElement('div');
+        projectCard.className = 'project-card';
+        
+        const removeButton = isAdmin ? 
+          `<button class="remove-btn" onclick="removeProject(${index})">
+            <i class="fas fa-trash-alt"></i> Remover
+          </button>` : '';
+        
+        projectCard.innerHTML = `
+          <h3>${project.title}</h3>
+          <div class="project-meta">
+            <span><i class="fas fa-calendar-alt"></i> ${new Date(project.date).toLocaleDateString()}</span>
+            <div class="project-tags">${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+          </div>
+          <div class="project-excerpt">${marked.parse(project.content.substring(0, 200) + '...')}</div>
+          <div class="project-actions">
+            <button class="read-more cyber-read" onclick="openProject(${index})">
+              <i class="fas fa-book-open"></i> Ler Artigo
+            </button>
+            ${removeButton}
+          </div>
+        `;
+        projectsList.appendChild(projectCard);
+      });
+    }
+
+    // Abrir projeto no modal
+    function openProject(index) {
+      const project = projects[index];
+      document.getElementById('modalTitle').textContent = project.title;
+      document.getElementById('modalMeta').innerHTML = `
+        <span><i class="fas fa-calendar-alt"></i> ${new Date(project.date).toLocaleDateString()}</span>
+        <div class="modal-tags">${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+      `;
+      document.getElementById('modalBody').innerHTML = marked.parse(project.content);
+      modal.style.display = 'block';
+      
+      // Aplicar highlight ao código
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+      });
+    }
+
+    // Fechar modal
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Fechar modal ao clicar fora
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Upload de novo projeto
+    uploadForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const title = document.getElementById('projectTitle').value;
+      const tags = document.getElementById('projectTags').value
+        .split(',')
+        .map(tag => tag.trim())
+        .filter(tag => tag !== '');
+      const file = document.getElementById('projectFile').files[0];
+      
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const content = e.target.result;
+        
+        const newProject = {
+          title,
+          tags,
+          content,
+          date: new Date().toISOString()
+        };
+        
+        projects.unshift(newProject);
+        localStorage.setItem('cyberProjects', JSON.stringify(projects));
+        
+        // Reset form
+        uploadForm.reset();
+        displayProjects();
+        updateTagsFilter();
+        
+        alert('Projeto publicado com sucesso!');
+      };
+      reader.readAsText(file);
+    });
+
+    // Filtro de busca
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const filtered = projects.filter(project => 
+        project.title.toLowerCase().includes(searchTerm) ||
+        project.content.toLowerCase().includes(searchTerm) ||
+        project.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+      );
+      displayProjects(filtered);
+    });
+
+    // Filtro por tags
+    function updateTagsFilter() {
+      const allTags = [...new Set(projects.flatMap(project => project.tags))];
+      tagsFilter.innerHTML = allTags.map(tag => 
+        `<span class="tag-filter" onclick="filterByTag('${tag}')">${tag}</span>`
+      ).join('');
+    }
+
+    function filterByTag(tag) {
+      const filtered = projects.filter(project => 
+        project.tags.includes(tag));
+      displayProjects(filtered);
+    }
+
+    // Inicialização
+    checkAuth();
+    displayProjects();
+    updateTagsFilter();
+
+    // Expor funções para o escopo global
+    window.removeProject = removeProject;
+    window.openProject = openProject;
+    window.filterByTag = filterByTag;
+  </script>
+  
+</body>
+</html>
