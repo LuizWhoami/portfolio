@@ -19,14 +19,37 @@
           <li><a href="cybersecurity.html">Cybersecurity</a></li>
         </ul>
       </nav>
+      <div class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
     </header>
 
     <section class="hero">
-      <h1>Dvison Luiz</h1>
-      <h2>Desenvolvedor de <span class="highlight">Automações</span> e Especialista em <span class="cyber-highlight">Cybersecurity</span></h2>
+      <div class="hero-content">
+        <h1>Dvison Luiz</h1>
+        <h2>Desenvolvedor de <span class="highlight">Automações</span> e Especialista em <span class="cyber-highlight">Cybersecurity</span></h2>
+        <p>Transformando processos complexos em soluções simples e seguras.</p>
+        <div class="hero-buttons">
+          <a href="#automation" class="btn btn-primary">Automações</a>
+          <a href="#cybersecurity" class="btn btn-secondary">Cybersecurity</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="code-animation">
+          <pre><code class="language-python"># Exemplo de automação
+import pyautogui
+import time
+
+def automate_task():
+    pyautogui.click(100, 100)
+    pyautogui.typewrite('Hello, World!')
+    time.sleep(1)
+    pyautogui.hotkey('ctrl', 's')</code></pre>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section id="automation" class="services">
       <h2 class="section-title">Áreas de Atuação</h2>
       <div class="cards-grid">
         <div class="card">
@@ -35,6 +58,12 @@
           </div>
           <h3>Automações</h3>
           <p>Desenvolvimento de soluções automatizadas para otimizar processos e aumentar a produtividade.</p>
+          <ul class="skills-list">
+            <li>Python</li>
+            <li>Selenium</li>
+            <li>PyAutoGUI</li>
+            <li>RPA</li>
+          </ul>
           <a href="automacoes.html" class="card-link">
             Ver Projetos
             <i class="fas fa-arrow-right"></i>
@@ -47,6 +76,12 @@
           </div>
           <h3>Cybersecurity</h3>
           <p>Análise de vulnerabilidades, pentest e desenvolvimento de soluções de segurança cibernética.</p>
+          <ul class="skills-list">
+            <li>Pentest</li>
+            <li>Ethical Hacking</li>
+            <li>Segurança de Redes</li>
+            <li>OWASP</li>
+          </ul>
           <a href="cybersecurity.html" class="card-link">
             Ver Artigos
             <i class="fas fa-arrow-right"></i>
@@ -55,20 +90,90 @@
       </div>
     </section>
 
-    <footer>
-      <div class="social-links">
-        <a href="https://github.com/LuizWhoami" class="social-link" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" class="social-link" target="_blank">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.youtube.com/channel/UClmmR_QRJD9n82XzOjMWJ9g" class="social-link" target="_blank">
-          <i class="fab fa-youtube"></i>
-        </a>
+    <section id="cybersecurity" class="cyber-section">
+      <div class="cyber-content">
+        <h2>Cybersecurity Insights</h2>
+        <div class="cyber-post">
+          <h3>Proteção Contra Ataques</h3>
+          <p>Análise das principais vulnerabilidades em sistemas web e como se proteger contra elas.</p>
+          <a href="cybersecurity.html#protecao" class="read-more">Ler mais</a>
+        </div>
+        <div class="cyber-post">
+          <h3>Ferramentas de Pentest</h3>
+          <p>Review das melhores ferramentas para testes de penetração em 2023.</p>
+          <a href="cybersecurity.html#ferramentas" class="read-more">Ler mais</a>
+        </div>
       </div>
-      <p>&copy; 2023 Dvison Luiz. Todos os direitos reservados.</p>
+      <div class="cyber-image">
+        <div class="terminal-animation">
+          <div class="terminal-header">
+            <span class="red-dot"></span>
+            <span class="yellow-dot"></span>
+            <span class="green-dot"></span>
+          </div>
+          <div class="terminal-body">
+            <p>$ nmap -sV 192.168.1.1</p>
+            <p>Starting Nmap 7.93...</p>
+            <p>PORT     STATE SERVICE VERSION</p>
+            <p>80/tcp   open  http    Apache 2.4.52</p>
+            <p>443/tcp  open  ssl/http Apache 2.4.52</p>
+            <p class="blinking-cursor">_</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="automation-section">
+      <h2 class="section-title">Projetos de Automação</h2>
+      <div class="automation-grid">
+        <div class="automation-card">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <h3>Automação Financeira</h3>
+          <p>Sistema para processamento automático de faturas e relatórios financeiros.</p>
+        </div>
+        <div class="automation-card">
+          <i class="fas fa-shopping-cart"></i>
+          <h3>E-commerce Automation</h3>
+          <p>Automação de processos de cadastro e atualização de produtos em marketplaces.</p>
+        </div>
+        <div class="automation-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email Automation</h3>
+          <p>Sistema inteligente para classificação e resposta automática de e-mails.</p>
+        </div>
+      </div>
+      <div class="center-button">
+        <a href="automacoes.html" class="btn btn-primary">Ver Todos os Projetos</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Contato</h3>
+          <p><i class="fas fa-envelope"></i> dvison@example.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>Redes Sociais</h3>
+          <div class="social-links">
+            <a href="https://github.com/LuizWhoami" class="social-link" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" class="social-link" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UClmmR_QRJD9n82XzOjMWJ9g" class="social-link" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Dvison Luiz. Todos os direitos reservados.</p>
+      </div>
     </footer>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
