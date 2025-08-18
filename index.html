@@ -7,761 +7,657 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    /* Global Styles */
+    /* Reset e Variáveis */
     :root {
-      --primary-color: #4a6fa5;
-      --secondary-color: #166088;
-      --ctf-color: #FF6B35;
-      --dark-color: #0a0a0a;
-      --light-color: #f8f9fa;
-      --gray-color: #6c757d;
-      --danger-color: #d00000;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --ctf: #f59e0b;
+      --ctf-dark: #d97706;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --success: #10b981;
+      --danger: #ef4444;
     }
-
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
-      color: #333;
-      background-color: #fff;
+      color: var(--dark);
+      background-color: var(--light);
     }
-
+    
+    /* Layout */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 1rem;
     }
-
-    h1, h2, h3, h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      line-height: 1.2;
+    
+    section {
+      padding: 4rem 0;
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .btn-primary {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--secondary-color);
-      transform: translateY(-2px);
-    }
-
-    .btn-ctf {
-      background-color: var(--ctf-color);
-      color: white;
-    }
-
-    .btn-ctf:hover {
-      background-color: #e05a2b;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      background-color: var(--primary-color);
-      color: white;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 50px;
-      font-size: 2.2rem;
-      position: relative;
-    }
-
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: var(--primary-color);
-      margin: 15px auto;
-    }
-
-    .highlight {
-      color: var(--primary-color);
-    }
-
-    .ctf-highlight {
-      color: var(--ctf-color);
-    }
-
-    /* Header Styles */
+    
+    /* Header */
     header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+    
+    .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      padding: 15px 20px;
+      padding: 1rem 0;
     }
-
+    
     .logo {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--dark-color);
+      font-size: 1.5rem;
+      color: var(--primary);
     }
-
-    nav ul {
+    
+    .nav-links {
       display: flex;
+      gap: 2rem;
       list-style: none;
     }
-
-    nav ul li {
-      margin-left: 30px;
-    }
-
-    nav ul li a {
+    
+    .nav-links a {
       font-weight: 600;
-      transition: color 0.3s ease;
+      color: var(--dark);
+      transition: color 0.3s;
       position: relative;
     }
-
-    nav ul li a:hover {
-      color: var(--primary-color);
+    
+    .nav-links a:hover {
+      color: var(--primary);
     }
-
-    nav ul li a.active {
-      color: var(--primary-color);
-    }
-
-    nav ul li a.active::after {
+    
+    .nav-links a.active::after {
       content: '';
       position: absolute;
       bottom: -5px;
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: var(--primary-color);
+      background: var(--primary);
     }
-
+    
     .mobile-menu {
       display: none;
       font-size: 1.5rem;
       cursor: pointer;
     }
-
+    
     /* Hero Section */
     .hero {
-      display: flex;
+      padding-top: 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
       align-items: center;
-      justify-content: space-between;
-      min-height: 100vh;
-      padding-top: 100px;
-      padding-bottom: 50px;
     }
-
-    .hero-content {
-      flex: 1;
-      padding-right: 50px;
+    
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
     }
-
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
+    
+    .hero-content h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: var(--gray);
     }
-
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 30px;
-      font-weight: 500;
+    
+    .hero-content h2 span {
+      color: var(--primary);
+      font-weight: 600;
     }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      max-width: 500px;
+    
+    .hero-content p {
+      margin-bottom: 2rem;
     }
-
+    
     .hero-buttons {
       display: flex;
-      gap: 15px;
+      gap: 1rem;
     }
-
-    .hero-image {
-      flex: 1;
-      position: relative;
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s;
     }
-
-    .code-animation {
-      background-color: #1e1e1e;
-      border-radius: 10px;
-      padding: 20px;
-      color: #d4d4d4;
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    .btn-ctf {
+      background: var(--ctf);
+      color: white;
+    }
+    
+    .btn-ctf:hover {
+      background: var(--ctf-dark);
+      transform: translateY(-2px);
+    }
+    
+    .hero-code {
+      background: #1e293b;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      color: #f8fafc;
       font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
     }
-
-    .code-animation pre {
-      margin: 0;
+    
+    .code-keyword {
+      color: #60a5fa;
     }
-
-    .language-python .keyword {
-      color: #569cd6;
+    
+    .code-function {
+      color: #d9f99d;
     }
-
-    .language-python .function {
-      color: #dcdcaa;
+    
+    .code-string {
+      color: #fca5a5;
     }
-
-    .language-python .string {
-      color: #ce9178;
+    
+    .code-comment {
+      color: #64748b;
     }
-
-    .language-python .comment {
-      color: #6a9955;
+    
+    /* Sobre */
+    .about {
+      background: white;
     }
-
-    /* Cards Grid */
-    .cards-grid {
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+    }
+    
+    .skills-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 30px;
+      gap: 2rem;
     }
-
-    .card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-top: 4px solid var(--primary-color);
+    
+    .skill-card {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    
+    .skill-card:hover {
+      transform: translateY(-5px);
     }
-
-    .card.ctf {
-      border-top-color: var(--ctf-color);
+    
+    .skill-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
     }
-
-    .card-icon {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      margin-bottom: 20px;
+    
+    .skill-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
     }
-
-    .card.ctf .card-icon {
-      color: var(--ctf-color);
+    
+    .skill-card p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
     }
-
-    .card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      margin-bottom: 20px;
-      color: var(--gray-color);
-    }
-
-    .card-link {
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      color: var(--primary-color);
-    }
-
-    .card-link i {
-      margin-left: 5px;
-      transition: transform 0.3s ease;
-    }
-
-    .card-link:hover i {
-      transform: translateX(5px);
-    }
-
-    .card.ctf .card-link {
-      color: var(--ctf-color);
-    }
-
-    .skills-list {
+    
+    .skill-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 0.5rem;
     }
-
-    .skills-list li {
-      background-color: #f0f0f0;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--dark-color);
+    
+    .skill-tag {
+      background: #e2e8f0;
+      color: var(--dark);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
     }
-
+    
     /* CTF Section */
-    .ctf-section {
-      background-color: #f9f9f9;
-      padding: 80px 0;
+    .ctf {
+      background: #f1f5f9;
     }
-
-    .ctf-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+    
+    .ctf-container {
+      max-width: 800px;
+      margin: 0 auto;
     }
-
-    .ctf-card {
-      background-color: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
+    
+    .ctf-post {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
     }
-
-    .ctf-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .ctf-image {
-      height: 200px;
-      background-color: var(--ctf-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 3rem;
-    }
-
-    .ctf-content {
-      padding: 20px;
-    }
-
-    .ctf-content h3 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-
-    .ctf-content p {
-      color: var(--gray-color);
-      margin-bottom: 15px;
-    }
-
-    .ctf-meta {
+    
+    .ctf-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.9rem;
-      color: var(--gray-color);
+      align-items: center;
+      margin-bottom: 1rem;
     }
-
+    
+    .ctf-title {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .ctf-meta {
+      display: flex;
+      gap: 1rem;
+      color: var(--gray);
+      font-size: 0.875rem;
+    }
+    
     .ctf-difficulty {
       font-weight: 600;
     }
-
+    
     .ctf-difficulty.easy {
-      color: #4CAF50;
+      color: var(--success);
     }
-
+    
     .ctf-difficulty.medium {
-      color: #FFC107;
+      color: var(--ctf);
     }
-
+    
     .ctf-difficulty.hard {
-      color: #F44336;
+      color: var(--danger);
     }
-
-    /* Automation Section */
-    .automation-section {
-      padding: 80px 0;
+    
+    .ctf-content {
+      margin-bottom: 1.5rem;
     }
-
-    .automation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
+    
+    .ctf-content h3 {
+      font-size: 1.25rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--dark);
     }
-
-    .automation-card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease;
+    
+    .ctf-content p {
+      margin-bottom: 1rem;
     }
-
-    .automation-card:hover {
-      transform: translateY(-10px);
+    
+    .ctf-content pre {
+      background: #1e293b;
+      color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
     }
-
-    .automation-card i {
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      margin-bottom: 20px;
+    
+    .ctf-content code {
+      background: #e2e8f0;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.25rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
     }
-
-    .automation-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-    }
-
-    .automation-card p {
-      color: var(--gray-color);
-      margin-bottom: 20px;
-    }
-
-    .center-button {
-      text-align: center;
-      margin-top: 50px;
-    }
-
+    
     /* Footer */
     footer {
-      background-color: var(--dark-color);
+      background: var(--dark);
       color: white;
-      padding: 50px 0 20px;
+      padding: 3rem 0 1rem;
     }
-
-    .footer-content {
+    
+    .footer-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      margin-bottom: 30px;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
-
-    .footer-section h3 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
+    
+    .footer-col h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-links a {
+      color: #cbd5e1;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
       color: white;
     }
-
-    .footer-section p {
-      margin-bottom: 10px;
-      color: #aaa;
-    }
-
+    
     .social-links {
       display: flex;
-      gap: 15px;
+      gap: 1rem;
+      margin-top: 1rem;
     }
-
-    .social-link {
+    
+    .social-links a {
       display: flex;
       align-items: center;
       justify-content: center;
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background-color: #333;
+      background: #334155;
       color: white;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
     }
-
-    .social-link:hover {
-      background-color: var(--primary-color);
+    
+    .social-links a:hover {
+      background: var(--primary);
       transform: translateY(-3px);
     }
-
+    
     .footer-bottom {
       text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid #333;
-      color: #aaa;
-      font-size: 0.9rem;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 0.875rem;
     }
-
-    /* Responsive */
+    
+    /* Responsivo */
     @media (max-width: 768px) {
       .hero {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 150px;
+        grid-template-columns: 1fr;
+        padding-top: 5rem;
       }
-
+      
       .hero-content {
-        padding-right: 0;
-        margin-bottom: 50px;
+        order: 1;
+        text-align: center;
       }
-
+      
       .hero-buttons {
         justify-content: center;
       }
-
-      nav ul {
+      
+      .nav-links {
         display: none;
       }
-
+      
       .mobile-menu {
         display: block;
-      }
-
-      .section-title {
-        font-size: 1.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
+  <!-- Header -->
+  <header>
+    <div class="container nav-container">
       <div class="logo">Dvison Luiz</div>
-      <nav>
-        <ul>
-          <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#automation">Automações</a></li>
-          <li><a href="#ctf">CTFs</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </nav>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#ctf">CTFs</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
       <div class="mobile-menu">
         <i class="fas fa-bars"></i>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h1>Dvison Luiz</h1>
-        <h2>Desenvolvedor de <span class="highlight">Automações</span> e Entusiasta de <span class="ctf-highlight">CTFs</span></h2>
-        <p>Crio soluções inteligentes para otimizar processos e compartilho meus aprendizados em desafios de segurança.</p>
-        <div class="hero-buttons">
-          <a href="#automation" class="btn btn-primary">Automações</a>
-          <a href="#ctf" class="btn btn-ctf">CTFs</a>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Dvison Luiz</h1>
+      <h2>Desenvolvedor de <span>Automações</span> e Entusiasta de CTFs</h2>
+      <p>Crio soluções inteligentes para otimizar processos e compartilho meus aprendizados em desafios de segurança.</p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">Meus Projetos</a>
+        <a href="#ctf" class="btn btn-ctf">Ver CTFs</a>
+      </div>
+    </div>
+    <div class="hero-code">
+      <pre><code><span class="code-keyword">import</span> pyautogui
+<span class="code-keyword">import</span> time
+
+<span class="code-keyword">def</span> <span class="code-function">automate_task</span>():
+    <span class="code-comment"># Clica na posição (100, 100)</span>
+    pyautogui.<span class="code-function">click</span>(100, 100)
+    
+    <span class="code-comment"># Digita o texto</span>
+    pyautogui.<span class="code-function">typewrite</span>(<span class="code-string">'Hello, World!'</span>)
+    
+    <span class="code-comment"># Espera 1 segundo</span>
+    time.<span class="code-function">sleep</span>(1)
+    
+    <span class="code-comment"># Salva o arquivo</span>
+    pyautogui.<span class="code-function">hotkey</span>(<span class="code-string">'ctrl'</span>, <span class="code-string">'s'</span>)</code></pre>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">Minhas Habilidades</h2>
+      <div class="skills-container">
+        <div class="skill-card">
+          <i class="fas fa-robot"></i>
+          <h3>Automações</h3>
+          <p>Desenvolvimento de soluções automatizadas para otimizar processos e aumentar a produtividade.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Selenium</span>
+            <span class="skill-tag">PyAutoGUI</span>
+            <span class="skill-tag">RPA</span>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <i class="fas fa-code"></i>
+          <h3>Desenvolvimento</h3>
+          <p>Criação de aplicações web e scripts personalizados para diversas necessidades.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+        
+        <div class="skill-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Segurança</h3>
+          <p>Conhecimentos em segurança ofensiva e defensiva, com foco em aplicações web.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Pentest</span>
+            <span class="skill-tag">OWASP</span>
+            <span class="skill-tag">Burp Suite</span>
+            <span class="skill-tag">Nmap</span>
+          </div>
         </div>
       </div>
-      <div class="hero-image">
-        <div class="code-animation">
-          <pre><code class="language-python"># Exemplo de automação
-import pyautogui
-import time
+    </div>
+  </section>
 
-def automate_task():
-    pyautogui.click(100, 100)
-    pyautogui.typewrite('Hello, World!')
-    time.sleep(1)
-    pyautogui.hotkey('ctrl', 's')</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <section id="automation" class="automation-section">
-      <h2 class="section-title">Automações</h2>
-      <div class="cards-grid">
-        <div class="card">
-          <div class="card-icon">
-            <i class="fas fa-robot"></i>
-          </div>
-          <h3>Automação Financeira</h3>
-          <p>Sistema para processamento automático de faturas e relatórios financeiros com Python e Pandas.</p>
-          <ul class="skills-list">
-            <li>Python</li>
-            <li>Pandas</li>
-            <li>OpenPyXL</li>
-            <li>Automation</li>
-          </ul>
-          <a href="#" class="card-link">
-            Ver Detalhes
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-          <h3>E-commerce Automation</h3>
-          <p>Automação de processos de cadastro e atualização de produtos em marketplaces.</p>
-          <ul class="skills-list">
-            <li>Selenium</li>
-            <li>BeautifulSoup</li>
-            <li>API</li>
-            <li>Web Scraping</li>
-          </ul>
-          <a href="#" class="card-link">
-            Ver Detalhes
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <h3>Email Automation</h3>
-          <p>Sistema inteligente para classificação e resposta automática de e-mails.</p>
-          <ul class="skills-list">
-            <li>IMAP</li>
-            <li>SMTP</li>
-            <li>NLP</li>
-            <li>Automation</li>
-          </ul>
-          <a href="#" class="card-link">
-            Ver Detalhes
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="ctf" class="ctf-section">
-      <h2 class="section-title">CTF Challenges</h2>
-      <div class="ctf-grid">
-        <div class="ctf-card">
-          <div class="ctf-image">
-            <i class="fas fa-flag"></i>
-          </div>
-          <div class="ctf-content">
-            <h3>Web Exploitation</h3>
-            <p>Desafios de exploração de vulnerabilidades web como SQLi, XSS e CSRF.</p>
+  <!-- CTF Section -->
+  <section id="ctf" class="ctf">
+    <div class="container">
+      <h2 class="section-title">Meus CTFs</h2>
+      <div class="ctf-container">
+        <!-- Modelo de Post CTF -->
+        <div class="ctf-post">
+          <div class="ctf-header">
+            <h2 class="ctf-title">Desafio Web: SQL Injection</h2>
             <div class="ctf-meta">
               <span class="ctf-difficulty easy">Fácil</span>
-              <span>5 writeups</span>
+              <span>20/10/2023</span>
             </div>
           </div>
-        </div>
-
-        <div class="ctf-card">
-          <div class="ctf-image">
-            <i class="fas fa-lock"></i>
-          </div>
+          
           <div class="ctf-content">
-            <h3>Criptografia</h3>
-            <p>Desafios de criptografia clássica e moderna, incluindo RSA e AES.</p>
-            <div class="ctf-meta">
-              <span class="ctf-difficulty medium">Médio</span>
-              <span>3 writeups</span>
-            </div>
+            <h3>Descrição do Desafio</h3>
+            <p>O desafio consiste em explorar uma vulnerabilidade de SQL Injection em um sistema de login para obter acesso à conta do administrador.</p>
+            
+            <h3>Solução</h3>
+            <p>1. Identifiquei que o campo de login estava vulnerável a SQL Injection através de testes básicos com aspas simples.</p>
+            
+            <p>2. Utilizei a seguinte payload para bypassar a autenticação:</p>
+            <pre><code>admin' -- </code></pre>
+            
+            <p>3. Isso resultou na seguinte query sendo executada no banco de dados:</p>
+            <pre><code>SELECT * FROM users WHERE username = 'admin' -- ' AND password = 'qualquer'</code></pre>
+            
+            <p>4. O comentário (--) fez com que a verificação da senha fosse ignorada, permitindo o login como admin.</p>
+            
+            <h3>Flag Capturada</h3>
+            <pre><code>HTB{sql1_3asy_p34sy}</code></pre>
+            
+            <h3>Prevenção</h3>
+            <p>Para prevenir esse tipo de ataque, recomendo:</p>
+            <ul>
+              <li>Usar prepared statements</li>
+              <li>Validar e sanitizar todas as entradas</li>
+              <li>Implementar WAF (Web Application Firewall)</li>
+            </ul>
           </div>
         </div>
-
-        <div class="ctf-card">
-          <div class="ctf-image">
-            <i class="fas fa-terminal"></i>
-          </div>
-          <div class="ctf-content">
-            <h3>Reversing</h3>
-            <p>Análise de binários e engenharia reversa de aplicações.</p>
-            <div class="ctf-meta">
-              <span class="ctf-difficulty hard">Difícil</span>
-              <span>2 writeups</span>
-            </div>
-          </div>
-        </div>
+        
+        <!-- Espaço para adicionar novos CTFs -->
+        <!-- Copie o modelo acima e cole aqui para adicionar novos CTFs -->
+        
       </div>
-      <div class="center-button">
-        <a href="#" class="btn btn-ctf">Ver Todos os CTFs</a>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Entre em Contato</h2>
+      <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+        <p>Interessado em meus serviços de automação ou quer discutir sobre CTFs? Me envie uma mensagem!</p>
+        <a href="mailto:dvison@example.com" class="btn btn-primary" style="margin-top: 2rem;">
+          <i class="fas fa-envelope"></i> Enviar Email
+        </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" class="cta-section">
-      <h2>Interessado em meus serviços?</h2>
-      <p>Entre em contato para discutir como posso ajudar com automações ou compartilhar conhecimentos sobre CTFs.</p>
-      <a href="#" class="btn btn-primary">Fale Comigo</a>
-    </section>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Contato</h3>
-          <p><i class="fas fa-envelope"></i> dvison@example.com</p>
-          <p><i class="fas fa-phone"></i> (00) 1234-5678</p>
-        </div>
-        <div class="footer-section">
-          <h3>Redes Sociais</h3>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Dvison Luiz</h3>
+          <p>Desenvolvedor de automações e entusiasta de segurança cibernética.</p>
           <div class="social-links">
-            <a href="https://github.com/LuizWhoami" class="social-link" target="_blank">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" class="social-link" target="_blank">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://www.youtube.com/channel/UClmmR_QRJD9n82XzOjMWJ9g" class="social-link" target="_blank">
-              <i class="fab fa-youtube"></i>
-            </a>
+            <a href="https://github.com/LuizWhoami" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/channel/UClmmR_QRJD9n82XzOjMWJ9g" target="_blank"><i class="fab fa-youtube"></i></a>
           </div>
         </div>
-        <div class="footer-section">
+        
+        <div class="footer-col">
+          <h3>Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Habilidades</a></li>
+            <li><a href="#ctf">CTFs</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
           <h3>CTF Profiles</h3>
-          <p><i class="fas fa-flag"></i> HackTheBox</p>
-          <p><i class="fas fa-flag"></i> TryHackMe</p>
-          <p><i class="fas fa-flag"></i> CTFTime</p>
+          <ul class="footer-links">
+            <li><a href="#" target="_blank">HackTheBox</a></li>
+            <li><a href="#" target="_blank">TryHackMe</a></li>
+            <li><a href="#" target="_blank">CTFTime</a></li>
+          </ul>
         </div>
       </div>
+      
       <div class="footer-bottom">
         <p>&copy; 2023 Dvison Luiz. Todos os direitos reservados.</p>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 
   <script>
-    // Mobile menu toggle
+    // Mobile Menu Toggle
     document.querySelector('.mobile-menu').addEventListener('click', function() {
-      const nav = document.querySelector('nav ul');
+      const nav = document.querySelector('.nav-links');
       nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
     });
-
-    // Smooth scrolling for anchor links
+    
+    // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
         document.querySelector(this.getAttribute('href')).scrollIntoView({
           behavior: 'smooth'
         });
-
+        
         // Update active link
-        document.querySelectorAll('nav ul li a').forEach(link => {
+        document.querySelectorAll('.nav-links a').forEach(link => {
           link.classList.remove('active');
         });
         this.classList.add('active');
       });
     });
-
+    
     // Update active link on scroll
     window.addEventListener('scroll', function() {
       const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('nav ul li a');
+      const navLinks = document.querySelectorAll('.nav-links a');
       
       let current = '';
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 300) {
+        if (pageYOffset >= sectionTop - 100) {
           current = section.getAttribute('id');
         }
       });
-
+      
       navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
