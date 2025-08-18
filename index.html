@@ -3,10 +3,535 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dvison Luiz | Automações & Cybersecurity</title>
+  <title>Dvison Luiz | Automações & CTFs</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #4a6fa5;
+      --secondary-color: #166088;
+      --ctf-color: #FF6B35;
+      --dark-color: #0a0a0a;
+      --light-color: #f8f9fa;
+      --gray-color: #6c757d;
+      --danger-color: #d00000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .btn-ctf {
+      background-color: var(--ctf-color);
+      color: white;
+    }
+
+    .btn-ctf:hover {
+      background-color: #e05a2b;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary-color);
+      margin: 15px auto;
+    }
+
+    .highlight {
+      color: var(--primary-color);
+    }
+
+    .ctf-highlight {
+      color: var(--ctf-color);
+    }
+
+    /* Header Styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 30px;
+    }
+
+    nav ul li a {
+      font-weight: 600;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+
+    nav ul li a.active {
+      color: var(--primary-color);
+    }
+
+    nav ul li a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+
+    .mobile-menu {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding-top: 100px;
+      padding-bottom: 50px;
+    }
+
+    .hero-content {
+      flex: 1;
+      padding-right: 50px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .hero-image {
+      flex: 1;
+      position: relative;
+    }
+
+    .code-animation {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      color: #d4d4d4;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .code-animation pre {
+      margin: 0;
+    }
+
+    .language-python .keyword {
+      color: #569cd6;
+    }
+
+    .language-python .function {
+      color: #dcdcaa;
+    }
+
+    .language-python .string {
+      color: #ce9178;
+    }
+
+    .language-python .comment {
+      color: #6a9955;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid var(--primary-color);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card.ctf {
+      border-top-color: var(--ctf-color);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .card.ctf .card-icon {
+      color: var(--ctf-color);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      margin-bottom: 20px;
+      color: var(--gray-color);
+    }
+
+    .card-link {
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .card-link i {
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .card-link:hover i {
+      transform: translateX(5px);
+    }
+
+    .card.ctf .card-link {
+      color: var(--ctf-color);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .skills-list li {
+      background-color: #f0f0f0;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--dark-color);
+    }
+
+    /* CTF Section */
+    .ctf-section {
+      background-color: #f9f9f9;
+      padding: 80px 0;
+    }
+
+    .ctf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .ctf-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .ctf-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .ctf-image {
+      height: 200px;
+      background-color: var(--ctf-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .ctf-content {
+      padding: 20px;
+    }
+
+    .ctf-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .ctf-content p {
+      color: var(--gray-color);
+      margin-bottom: 15px;
+    }
+
+    .ctf-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--gray-color);
+    }
+
+    .ctf-difficulty {
+      font-weight: 600;
+    }
+
+    .ctf-difficulty.easy {
+      color: #4CAF50;
+    }
+
+    .ctf-difficulty.medium {
+      color: #FFC107;
+    }
+
+    .ctf-difficulty.hard {
+      color: #F44336;
+    }
+
+    /* Automation Section */
+    .automation-section {
+      padding: 80px 0;
+    }
+
+    .automation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .automation-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .automation-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .automation-card i {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .automation-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .automation-card p {
+      color: var(--gray-color);
+      margin-bottom: 20px;
+    }
+
+    .center-button {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 50px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .footer-section p {
+      margin-bottom: 10px;
+      color: #aaa;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #333;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 150px;
+      }
+
+      .hero-content {
+        padding-right: 0;
+        margin-bottom: 50px;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,9 +539,10 @@
       <div class="logo">Dvison Luiz</div>
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="automacoes.html">Automações</a></li>
-          <li><a href="cybersecurity.html">Cybersecurity</a></li>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#automation">Automações</a></li>
+          <li><a href="#ctf">CTFs</a></li>
+          <li><a href="#contact">Contato</a></li>
         </ul>
       </nav>
       <div class="mobile-menu">
@@ -24,14 +550,14 @@
       </div>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero">
       <div class="hero-content">
         <h1>Dvison Luiz</h1>
-        <h2>Desenvolvedor de <span class="highlight">Automações</span> e Especialista em <span class="cyber-highlight">Cybersecurity</span></h2>
-        <p>Transformando processos complexos em soluções simples e seguras.</p>
+        <h2>Desenvolvedor de <span class="highlight">Automações</span> e Entusiasta de <span class="ctf-highlight">CTFs</span></h2>
+        <p>Crio soluções inteligentes para otimizar processos e compartilho meus aprendizados em desafios de segurança.</p>
         <div class="hero-buttons">
           <a href="#automation" class="btn btn-primary">Automações</a>
-          <a href="#cybersecurity" class="btn btn-secondary">Cybersecurity</a>
+          <a href="#ctf" class="btn btn-ctf">CTFs</a>
         </div>
       </div>
       <div class="hero-image">
@@ -49,102 +575,119 @@ def automate_task():
       </div>
     </section>
 
-    <section id="automation" class="services">
-      <h2 class="section-title">Áreas de Atuação</h2>
+    <section id="automation" class="automation-section">
+      <h2 class="section-title">Automações</h2>
       <div class="cards-grid">
         <div class="card">
           <div class="card-icon">
             <i class="fas fa-robot"></i>
           </div>
-          <h3>Automações</h3>
-          <p>Desenvolvimento de soluções automatizadas para otimizar processos e aumentar a produtividade.</p>
+          <h3>Automação Financeira</h3>
+          <p>Sistema para processamento automático de faturas e relatórios financeiros com Python e Pandas.</p>
           <ul class="skills-list">
             <li>Python</li>
-            <li>Selenium</li>
-            <li>PyAutoGUI</li>
-            <li>RPA</li>
+            <li>Pandas</li>
+            <li>OpenPyXL</li>
+            <li>Automation</li>
           </ul>
-          <a href="automacoes.html" class="card-link">
-            Ver Projetos
+          <a href="#" class="card-link">
+            Ver Detalhes
             <i class="fas fa-arrow-right"></i>
           </a>
         </div>
 
-        <div class="card cyber">
+        <div class="card">
           <div class="card-icon">
-            <i class="fas fa-shield-alt"></i>
+            <i class="fas fa-shopping-cart"></i>
           </div>
-          <h3>Cybersecurity</h3>
-          <p>Análise de vulnerabilidades, pentest e desenvolvimento de soluções de segurança cibernética.</p>
-          <ul class="skills-list">
-            <li>Pentest</li>
-            <li>Ethical Hacking</li>
-            <li>Segurança de Redes</li>
-            <li>OWASP</li>
-          </ul>
-          <a href="cybersecurity.html" class="card-link">
-            Ver Artigos
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="cybersecurity" class="cyber-section">
-      <div class="cyber-content">
-        <h2>Cybersecurity Insights</h2>
-        <div class="cyber-post">
-          <h3>Proteção Contra Ataques</h3>
-          <p>Análise das principais vulnerabilidades em sistemas web e como se proteger contra elas.</p>
-          <a href="cybersecurity.html#protecao" class="read-more">Ler mais</a>
-        </div>
-        <div class="cyber-post">
-          <h3>Ferramentas de Pentest</h3>
-          <p>Review das melhores ferramentas para testes de penetração em 2023.</p>
-          <a href="cybersecurity.html#ferramentas" class="read-more">Ler mais</a>
-        </div>
-      </div>
-      <div class="cyber-image">
-        <div class="terminal-animation">
-          <div class="terminal-header">
-            <span class="red-dot"></span>
-            <span class="yellow-dot"></span>
-            <span class="green-dot"></span>
-          </div>
-          <div class="terminal-body">
-            <p>$ nmap -sV 192.168.1.1</p>
-            <p>Starting Nmap 7.93...</p>
-            <p>PORT     STATE SERVICE VERSION</p>
-            <p>80/tcp   open  http    Apache 2.4.52</p>
-            <p>443/tcp  open  ssl/http Apache 2.4.52</p>
-            <p class="blinking-cursor">_</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="automation-section">
-      <h2 class="section-title">Projetos de Automação</h2>
-      <div class="automation-grid">
-        <div class="automation-card">
-          <i class="fas fa-file-invoice-dollar"></i>
-          <h3>Automação Financeira</h3>
-          <p>Sistema para processamento automático de faturas e relatórios financeiros.</p>
-        </div>
-        <div class="automation-card">
-          <i class="fas fa-shopping-cart"></i>
           <h3>E-commerce Automation</h3>
           <p>Automação de processos de cadastro e atualização de produtos em marketplaces.</p>
+          <ul class="skills-list">
+            <li>Selenium</li>
+            <li>BeautifulSoup</li>
+            <li>API</li>
+            <li>Web Scraping</li>
+          </ul>
+          <a href="#" class="card-link">
+            Ver Detalhes
+            <i class="fas fa-arrow-right"></i>
+          </a>
         </div>
-        <div class="automation-card">
-          <i class="fas fa-envelope"></i>
+
+        <div class="card">
+          <div class="card-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
           <h3>Email Automation</h3>
           <p>Sistema inteligente para classificação e resposta automática de e-mails.</p>
+          <ul class="skills-list">
+            <li>IMAP</li>
+            <li>SMTP</li>
+            <li>NLP</li>
+            <li>Automation</li>
+          </ul>
+          <a href="#" class="card-link">
+            Ver Detalhes
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="ctf" class="ctf-section">
+      <h2 class="section-title">CTF Challenges</h2>
+      <div class="ctf-grid">
+        <div class="ctf-card">
+          <div class="ctf-image">
+            <i class="fas fa-flag"></i>
+          </div>
+          <div class="ctf-content">
+            <h3>Web Exploitation</h3>
+            <p>Desafios de exploração de vulnerabilidades web como SQLi, XSS e CSRF.</p>
+            <div class="ctf-meta">
+              <span class="ctf-difficulty easy">Fácil</span>
+              <span>5 writeups</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctf-card">
+          <div class="ctf-image">
+            <i class="fas fa-lock"></i>
+          </div>
+          <div class="ctf-content">
+            <h3>Criptografia</h3>
+            <p>Desafios de criptografia clássica e moderna, incluindo RSA e AES.</p>
+            <div class="ctf-meta">
+              <span class="ctf-difficulty medium">Médio</span>
+              <span>3 writeups</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ctf-card">
+          <div class="ctf-image">
+            <i class="fas fa-terminal"></i>
+          </div>
+          <div class="ctf-content">
+            <h3>Reversing</h3>
+            <p>Análise de binários e engenharia reversa de aplicações.</p>
+            <div class="ctf-meta">
+              <span class="ctf-difficulty hard">Difícil</span>
+              <span>2 writeups</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="center-button">
-        <a href="automacoes.html" class="btn btn-primary">Ver Todos os Projetos</a>
+        <a href="#" class="btn btn-ctf">Ver Todos os CTFs</a>
       </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+      <h2>Interessado em meus serviços?</h2>
+      <p>Entre em contato para discutir como posso ajudar com automações ou compartilhar conhecimentos sobre CTFs.</p>
+      <a href="#" class="btn btn-primary">Fale Comigo</a>
     </section>
 
     <footer>
@@ -152,6 +695,7 @@ def automate_task():
         <div class="footer-section">
           <h3>Contato</h3>
           <p><i class="fas fa-envelope"></i> dvison@example.com</p>
+          <p><i class="fas fa-phone"></i> (00) 1234-5678</p>
         </div>
         <div class="footer-section">
           <h3>Redes Sociais</h3>
@@ -167,6 +711,12 @@ def automate_task():
             </a>
           </div>
         </div>
+        <div class="footer-section">
+          <h3>CTF Profiles</h3>
+          <p><i class="fas fa-flag"></i> HackTheBox</p>
+          <p><i class="fas fa-flag"></i> TryHackMe</p>
+          <p><i class="fas fa-flag"></i> CTFTime</p>
+        </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2023 Dvison Luiz. Todos os direitos reservados.</p>
@@ -174,6 +724,51 @@ def automate_task():
     </footer>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+      const nav = document.querySelector('nav ul');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+
+        // Update active link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+          link.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+
+    // Update active link on scroll
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav ul li a');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 300) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
