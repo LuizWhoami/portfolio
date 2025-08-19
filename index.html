@@ -1,670 +1,760 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dvison Luiz | Automações & CTFs</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset e Variáveis */
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --ctf: #f59e0b;
-      --ctf-dark: #d97706;
-      --dark: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
-      --success: #10b981;
-      --danger: #ef4444;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      color: var(--dark);
-      background-color: var(--light);
-    }
-    
-    /* Layout */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    
-    section {
-      padding: 4rem 0;
-    }
-    
-    /* Header */
-    header {
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: fixed;
-      width: 100%;
-      z-index: 100;
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
-    
-    .logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: var(--primary);
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-    
-    .nav-links a {
-      font-weight: 600;
-      color: var(--dark);
-      transition: color 0.3s;
-      position: relative;
-    }
-    
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-    
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--primary);
-    }
-    
-    .mobile-menu {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    /* Hero Section */
-    .hero {
-      padding-top: 6rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-    
-    .hero-content h2 {
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin-bottom: 1.5rem;
-      color: var(--gray);
-    }
-    
-    .hero-content h2 span {
-      color: var(--primary);
-      font-weight: 600;
-    }
-    
-    .hero-content p {
-      margin-bottom: 2rem;
-    }
-    
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-    
-    .btn-ctf {
-      background: var(--ctf);
-      color: white;
-    }
-    
-    .btn-ctf:hover {
-      background: var(--ctf-dark);
-      transform: translateY(-2px);
-    }
-    
-    .hero-code {
-      background: #1e293b;
-      border-radius: 0.5rem;
-      padding: 1.5rem;
-      color: #f8fafc;
-      font-family: 'Courier New', monospace;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-    }
-    
-    .code-keyword {
-      color: #60a5fa;
-    }
-    
-    .code-function {
-      color: #d9f99d;
-    }
-    
-    .code-string {
-      color: #fca5a5;
-    }
-    
-    .code-comment {
-      color: #64748b;
-    }
-    
-    /* Sobre */
-    .about {
-      background: white;
-    }
-    
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2rem;
-    }
-    
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .skill-card {
-      background: white;
-      border-radius: 0.5rem;
-      padding: 2rem;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    
-    .skill-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .skill-card i {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    
-    .skill-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-    
-    .skill-card p {
-      color: var(--gray);
-      margin-bottom: 1.5rem;
-    }
-    
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .skill-tag {
-      background: #e2e8f0;
-      color: var(--dark);
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    
-    /* CTF Section */
-    .ctf {
-      background: #f1f5f9;
-    }
-    
-    .ctf-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .ctf-post {
-      background: white;
-      border-radius: 0.5rem;
-      padding: 2rem;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-    
-    .ctf-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    
-    .ctf-title {
-      font-size: 1.5rem;
-      color: var(--primary);
-    }
-    
-    .ctf-meta {
-      display: flex;
-      gap: 1rem;
-      color: var(--gray);
-      font-size: 0.875rem;
-    }
-    
-    .ctf-difficulty {
-      font-weight: 600;
-    }
-    
-    .ctf-difficulty.easy {
-      color: var(--success);
-    }
-    
-    .ctf-difficulty.medium {
-      color: var(--ctf);
-    }
-    
-    .ctf-difficulty.hard {
-      color: var(--danger);
-    }
-    
-    .ctf-content {
-      margin-bottom: 1.5rem;
-    }
-    
-    .ctf-content h3 {
-      font-size: 1.25rem;
-      margin: 1.5rem 0 1rem;
-      color: var(--dark);
-    }
-    
-    .ctf-content p {
-      margin-bottom: 1rem;
-    }
-    
-    .ctf-content pre {
-      background: #1e293b;
-      color: white;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      overflow-x: auto;
-      margin: 1rem 0;
-      font-family: 'Courier New', monospace;
-    }
-    
-    .ctf-content code {
-      background: #e2e8f0;
-      padding: 0.2rem 0.4rem;
-      border-radius: 0.25rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.875rem;
-    }
-    
-    /* Footer */
-    footer {
-      background: var(--dark);
-      color: white;
-      padding: 3rem 0 1rem;
-    }
-    
-    .footer-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .footer-col h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 0.75rem;
-    }
-    
-    .footer-links a {
-      color: #cbd5e1;
-      transition: color 0.3s;
-    }
-    
-    .footer-links a:hover {
-      color: white;
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #334155;
-      color: white;
-      transition: all 0.3s;
-    }
-    
-    .social-links a:hover {
-      background: var(--primary);
-      transform: translateY(-3px);
-    }
-    
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid #334155;
-      color: #94a3b8;
-      font-size: 0.875rem;
-    }
-    
-    /* Responsivo */
-    @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 5rem;
-      }
-      
-      .hero-content {
-        order: 1;
-        text-align: center;
-      }
-      
-      .hero-buttons {
-        justify-content: center;
-      }
-      
-      .nav-links {
-        display: none;
-      }
-      
-      .mobile-menu {
-        display: block;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dvison Luiz - NOC N1 | Cybersecurity | Python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --cyber: #10b981;
+            --cyber-dark: #059669;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --danger: #ef4444;
+            --hackthebox: #9fef00;
+            --tryhackme: #2d2d2d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--cyber);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 80px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .cyber {
+            color: var(--cyber);
+            font-weight: 600;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-cyber {
+            background-color: var(--cyber);
+            color: white;
+        }
+        
+        .btn-cyber:hover {
+            background-color: var(--cyber-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 15px auto;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        
+        /* Certifications */
+        .certifications {
+            padding: 80px 0;
+            background-color: #f1f5f9;
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .cert-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .cert-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .cert-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+        
+        /* CTF Section */
+        .ctf {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .ctf-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .ctf-post {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--cyber);
+        }
+        
+        .ctf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .ctf-title {
+            font-size: 1.5rem;
+            color: var(--cyber);
+        }
+        
+        .ctf-platform {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .tryhackme {
+            background-color: var(--tryhackme);
+            color: white;
+        }
+        
+        .hackthebox {
+            background-color: var(--hackthebox);
+            color: black;
+        }
+        
+        .ctf-difficulty {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-right: 10px;
+        }
+        
+        .easy {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .medium {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .hard {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .ctf-content h3 {
+            font-size: 1.25rem;
+            margin: 20px 0 10px;
+            color: var(--dark);
+        }
+        
+        .ctf-content p {
+            margin-bottom: 15px;
+        }
+        
+        .ctf-content pre {
+            background-color: #1e293b;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+        
+        .ctf-content code {
+            background-color: #e2e8f0;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 80px 0;
+            background-color: #f1f5f9;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .project-header {
+            padding: 20px;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        .project-content p {
+            margin-bottom: 20px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background-color: #e2e8f0;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+        
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #334155;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding-top: 120px;
+                text-align: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container nav-container">
-      <div class="logo">Dvison Luiz</div>
-      <ul class="nav-links">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#ctf">CTFs</a></li>
-        <li><a href="#contact">Contato</a></li>
-      </ul>
-      <div class="mobile-menu">
-        <i class="fas fa-bars"></i>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Dvison Luiz</h1>
-      <h2>Desenvolvedor de <span>Automações</span> e Entusiasta de CTFs</h2>
-      <p>Crio soluções inteligentes para otimizar processos e compartilho meus aprendizados em desafios de segurança.</p>
-      <div class="hero-buttons">
-        <a href="#about" class="btn btn-primary">Meus Projetos</a>
-        <a href="#ctf" class="btn btn-ctf">Ver CTFs</a>
-      </div>
-    </div>
-    <div class="hero-code">
-      <pre><code><span class="code-keyword">import</span> pyautogui
-<span class="code-keyword">import</span> time
-
-<span class="code-keyword">def</span> <span class="code-function">automate_task</span>():
-    <span class="code-comment"># Clica na posição (100, 100)</span>
-    pyautogui.<span class="code-function">click</span>(100, 100)
-    
-    <span class="code-comment"># Digita o texto</span>
-    pyautogui.<span class="code-function">typewrite</span>(<span class="code-string">'Hello, World!'</span>)
-    
-    <span class="code-comment"># Espera 1 segundo</span>
-    time.<span class="code-function">sleep</span>(1)
-    
-    <span class="code-comment"># Salva o arquivo</span>
-    pyautogui.<span class="code-function">hotkey</span>(<span class="code-string">'ctrl'</span>, <span class="code-string">'s'</span>)</code></pre>
-    </div>
-  </section>
-
-  <!-- Sobre -->
-  <section id="about" class="about">
-    <div class="container">
-      <h2 class="section-title">Minhas Habilidades</h2>
-      <div class="skills-container">
-        <div class="skill-card">
-          <i class="fas fa-robot"></i>
-          <h3>Automações</h3>
-          <p>Desenvolvimento de soluções automatizadas para otimizar processos e aumentar a produtividade.</p>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Selenium</span>
-            <span class="skill-tag">PyAutoGUI</span>
-            <span class="skill-tag">RPA</span>
-          </div>
-        </div>
-        
-        <div class="skill-card">
-          <i class="fas fa-code"></i>
-          <h3>Desenvolvimento</h3>
-          <p>Criação de aplicações web e scripts personalizados para diversas necessidades.</p>
-          <div class="skill-tags">
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">HTML/CSS</span>
-            <span class="skill-tag">SQL</span>
-          </div>
-        </div>
-        
-        <div class="skill-card">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Segurança</h3>
-          <p>Conhecimentos em segurança ofensiva e defensiva, com foco em aplicações web.</p>
-          <div class="skill-tags">
-            <span class="skill-tag">Pentest</span>
-            <span class="skill-tag">OWASP</span>
-            <span class="skill-tag">Burp Suite</span>
-            <span class="skill-tag">Nmap</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTF Section -->
-  <section id="ctf" class="ctf">
-    <div class="container">
-      <h2 class="section-title">Meus CTFs</h2>
-      <div class="ctf-container">
-        <!-- Modelo de Post CTF -->
-        <div class="ctf-post">
-          <div class="ctf-header">
-            <h2 class="ctf-title">Desafio Web: SQL Injection</h2>
-            <div class="ctf-meta">
-              <span class="ctf-difficulty easy">Fácil</span>
-              <span>20/10/2023</span>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Dvison <span>Luiz</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#certifications">Certificações</a></li>
+                    <li><a href="#ctf">CTFs</a></li>
+                    <li><a href="#projects">Projetos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
             </div>
-          </div>
-          
-          <div class="ctf-content">
-            <h3>Descrição do Desafio</h3>
-            <p>O desafio consiste em explorar uma vulnerabilidade de SQL Injection em um sistema de login para obter acesso à conta do administrador.</p>
-            
-            <h3>Solução</h3>
-            <p>1. Identifiquei que o campo de login estava vulnerável a SQL Injection através de testes básicos com aspas simples.</p>
-            
-            <p>2. Utilizei a seguinte payload para bypassar a autenticação:</p>
-            <pre><code>admin' -- </code></pre>
-            
-            <p>3. Isso resultou na seguinte query sendo executada no banco de dados:</p>
-            <pre><code>SELECT * FROM users WHERE username = 'admin' -- ' AND password = 'qualquer'</code></pre>
-            
-            <p>4. O comentário (--) fez com que a verificação da senha fosse ignorada, permitindo o login como admin.</p>
-            
-            <h3>Flag Capturada</h3>
-            <pre><code>HTB{sql1_3asy_p34sy}</code></pre>
-            
-            <h3>Prevenção</h3>
-            <p>Para prevenir esse tipo de ataque, recomendo:</p>
-            <ul>
-              <li>Usar prepared statements</li>
-              <li>Validar e sanitizar todas as entradas</li>
-              <li>Implementar WAF (Web Application Firewall)</li>
-            </ul>
-          </div>
         </div>
-        
-        <!-- Espaço para adicionar novos CTFs -->
-        <!-- Copie o modelo acima e cole aqui para adicionar novos CTFs -->
-        
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Contato -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Entre em Contato</h2>
-      <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-        <p>Interessado em meus serviços de automação ou quer discutir sobre CTFs? Me envie uma mensagem!</p>
-        <a href="mailto:dvison@example.com" class="btn btn-primary" style="margin-top: 2rem;">
-          <i class="fas fa-envelope"></i> Enviar Email
-        </a>
-      </div>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dvison Luiz</h1>
+            <h2>NOC N1 | Estudante de <span class="cyber">Cybersecurity</span> | Especialista em <span class="highlight">Automações Python</span></h2>
+            <p>Atuo como NOC N1 com foco em segurança ofensiva e desenvolvimento de soluções automatizadas para otimização de processos.</p>
+            <div>
+                <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+                <a href="#ctf" class="btn btn-cyber">Ver CTFs</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Código Python" width="500">
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-container">
-        <div class="footer-col">
-          <h3>Dvison Luiz</h3>
-          <p>Desenvolvedor de automações e entusiasta de segurança cibernética.</p>
-          <div class="social-links">
-            <a href="https://github.com/LuizWhoami" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.youtube.com/channel/UClmmR_QRJD9n82XzOjMWJ9g" target="_blank"><i class="fab fa-youtube"></i></a>
-          </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Sou profissional de TI atuando como NOC N1, com formação em redes e segurança da informação. Minha paixão por cybersecurity me levou a me especializar em segurança ofensiva, realizando diversos cursos e certificações na área.</p>
+                    <p>Paralelamente, desenvolvo habilidades em programação Python com foco em automações de processos, criação de bots e ferramentas para otimização de tarefas repetitivas.</p>
+                    <p>Meu objetivo é unir conhecimentos de redes, segurança e programação para desenvolver soluções inovadoras e seguras.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Segurança da Informação" width="400">
+                </div>
+            </div>
         </div>
-        
-        <div class="footer-col">
-          <h3>Links</h3>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Habilidades</a></li>
-            <li><a href="#ctf">CTFs</a></li>
-            <li><a href="#contact">Contato</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-col">
-          <h3>CTF Profiles</h3>
-          <ul class="footer-links">
-            <li><a href="#" target="_blank">HackTheBox</a></li>
-            <li><a href="#" target="_blank">TryHackMe</a></li>
-            <li><a href="#" target="_blank">CTFTime</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>&copy; 2023 Dvison Luiz. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <script>
-    // Mobile Menu Toggle
-    document.querySelector('.mobile-menu').addEventListener('click', function() {
-      const nav = document.querySelector('.nav-links');
-      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-    });
-    
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
+    <!-- Certifications -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certificações</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Boas Práticas de Cibersegurança</h3>
+                    <p>Cybersecurity Awareness</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Introduction to Cybersecurity</h3>
+                    <p>Fundamentos de segurança cibernética</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Ethical Hacking e Pentest</h3>
+                    <p>Udemy - Do ZERO na Prática</p>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Pentest em Sites e Aplicações Web</h3>
+                    <p>Udemy - Do ZERO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTF Section -->
+    <section id="ctf" class="ctf">
+        <div class="container">
+            <h2 class="section-title">CTF Challenges</h2>
+            <div class="ctf-container">
+                <div class="ctf-post">
+                    <div class="ctf-header">
+                        <h2 class="ctf-title">Basic Pentesting - TryHackMe</h2>
+                        <span class="ctf-platform tryhackme">TryHackMe</span>
+                    </div>
+                    <div class="ctf-content">
+                        <span class="ctf-difficulty easy">Fácil</span>
+                        <span class="ctf-difficulty">Web Security</span>
+                        
+                        <h3>Descrição</h3>
+                        <p>Este desafio envolve a exploração de vulnerabilidades em um servidor web mal configurado, incluindo enumeração de diretórios, brute force e exploração de serviços desatualizados.</p>
+                        
+                        <h3>Passos da Solução</h3>
+                        <p>1. Enumeração inicial com nmap:</p>
+                        <pre>nmap -sV -sC -oA scan 10.10.10.10</pre>
+                        
+                        <p>2. Identificação do serviço SMB exposto:</p>
+                        <pre>smbclient -L //10.10.10.10</pre>
+                        
+                        <p>3. Exploração do diretório compartilhado:</p>
+                        <pre>smbclient //10.10.10.10/anonymous</pre>
+                        
+                        <h3>Flags Capturadas</h3>
+                        <pre>THM{basic_pentesting_done}</pre>
+                        
+                        <h3>Aprendizados</h3>
+                        <ul>
+                            <li>Importância de desativar compartilhamentos anônimos</li>
+                            <li>Necessidade de manter serviços atualizados</li>
+                            <li>Técnicas básicas de enumeração</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projetos de Automação</h2>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Gestão Bot WhatsApp</h3>
+                </div>
+                <div class="project-content">
+                    <p>Bot para WhatsApp desenvolvido em Python que automatiza respostas, envio de mensagens programadas e gestão de contatos. Ideal para pequenos negócios que precisam automatizar atendimento.</p>
+                    
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Selenium</span>
+                        <span class="tech-tag">PyAutoGUI</span>
+                        <span class="tech-tag">WhatsApp Web</span>
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/LuizWhoami/Gest-o-Bot-Whatsapp-Python" target="_blank">
+                            <i class="fab fa-github"></i> Ver no GitHub
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-code"></i> Ver Demonstração
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container" style="text-align: center; padding: 80px 0;">
+            <h2 class="section-title">Contato</h2>
+            <p style="margin-bottom: 30px;">Interessado em colaborar ou quer saber mais sobre meu trabalho?</p>
+            <a href="mailto:dvison@example.com" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Enviar Email
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Dvison Luiz</h3>
+                    <p>NOC N1 | Cybersecurity | Python Developer</p>
+                    <div class="social-links">
+                        <a href="https://github.com/LuizWhoami" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/dvison-luiz-614593265/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://tryhackme.com/" target="_blank"><i class="fas fa-flag"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#certifications">Certificações</a></li>
+                        <li><a href="#ctf">CTFs</a></li>
+                        <li><a href="#projects">Projetos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Plataformas</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://tryhackme.com/" target="_blank">TryHackMe</a></li>
+                        <li><a href="https://www.hackthebox.com/" target="_blank">HackTheBox</a></li>
+                        <li><a href="https://www.udemy.com/" target="_blank">Udemy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Dvison Luiz. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         });
         
-        // Update active link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-          link.classList.remove('active');
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active link
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
         });
-        this.classList.add('active');
-      });
-    });
-    
-    // Update active link on scroll
-    window.addEventListener('scroll', function() {
-      const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('.nav-links a');
-      
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 100) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-          link.classList.add('active');
-        }
-      });
-    });
-  </script>
+        
+        // Update active link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
