@@ -1,697 +1,1231 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luiz — Cybersecurity & Fullstack Developer</title>
-  <link rel="stylesheet" href="style.css" />
-  <!-- Fonte principal: JetBrains Mono (leitura técnica) + Syne (display) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-  <!-- ═══════════════════════════════════════
-       CURSOR PERSONALIZADO
-  ═══════════════════════════════════════ -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
-
-  <!-- ═══════════════════════════════════════
-       NAVBAR FIXA
-  ═══════════════════════════════════════ -->
-  <header class="navbar" id="navbar">
-    <div class="nav-logo">
-      <span class="logo-bracket">&lt;</span>
-      <span class="logo-name">luiz</span>
-      <span class="logo-bracket"> /&gt;</span>
-    </div>
-    <nav class="nav-links" id="navLinks">
-      <a href="#sobre" class="nav-item">Sobre</a>
-      <a href="#skills" class="nav-item">Skills</a>
-      <a href="#projetos" class="nav-item">Projetos</a>
-      <a href="#security" class="nav-item">Cybersec</a>
-      <a href="#contato" class="nav-item">Contato</a>
-    </nav>
-    <!-- Hamburguer para mobile -->
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
-
-  <main>
-
-    <!-- ═══════════════════════════════════════
-         HERO / INTRO COM EFEITO TERMINAL
-    ═══════════════════════════════════════ -->
-    <section class="hero" id="home">
-      <!-- Partículas de fundo -->
-      <canvas class="hero-canvas" id="heroCanvas"></canvas>
-
-      <div class="hero-content">
-        <div class="hero-tag">
-          <span class="tag-dot"></span>
-          <span>Disponível para projetos</span>
-        </div>
-
-        <h1 class="hero-title">
-          <span class="hero-name">Luiz</span>
-        </h1>
-
-        <!-- Terminal digitando -->
-        <div class="terminal-line">
-          <span class="terminal-prompt">~/luiz $</span>
-          <span class="terminal-typed" id="terminalTyped"></span>
-          <span class="terminal-cursor">█</span>
-        </div>
-
-        <p class="hero-desc">
-          Desenvolvedor Fullstack com foco em segurança ofensiva. Construo sistemas, 
-          automatizo processos e procuro vulnerabilidades antes que alguém mal-intencionado as encontre.
-        </p>
-
-        <div class="hero-cta">
-          <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
-          <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
-        </div>
-
-        <!-- Stats rápidos -->
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number" data-target="15">0</span>
-            <span class="stat-label">Projetos</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-number" data-target="30">0</span>
-            <span class="stat-label">Labs HTB</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-number" data-target="3">0</span>
-            <span class="stat-label">Anos estudando</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div class="scroll-hint">
-        <span>scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         SOBRE MIM
-    ═══════════════════════════════════════ -->
-    <section class="section sobre" id="sobre">
-      <div class="container">
-        <div class="sobre-grid">
-
-          <!-- Foto de perfil -->
-          <div class="sobre-foto fade-in">
-            <div class="foto-wrapper">
-              <!-- Substitua o src pela sua foto -->
-              <img
-                src="https://via.placeholder.com/320x320/0a0a0a/39ff14?text=FOTO"
-                alt="Foto de Luiz"
-                class="profile-img"
-                id="profileImg"
-              />
-              <div class="foto-border"></div>
-              <!-- Badge de status -->
-              <div class="foto-badge">
-                <span class="badge-dot"></span>
-                <span>Open to work</span>
-              </div>
-            </div>
-
-            <!-- Pequeno terminal lateral -->
-            <div class="mini-terminal">
-              <div class="mini-term-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="mini-term-title">whoami.sh</span>
-              </div>
-              <div class="mini-term-body">
-                <p><span class="t-green">$</span> whoami</p>
-                <p class="t-white">luiz</p>
-                <p><span class="t-green">$</span> uname -a</p>
-                <p class="t-white">Kali Linux 6.x</p>
-                <p><span class="t-green">$</span> cat /etc/role</p>
-                <p class="t-white">Hacker | Dev | Builder</p>
-                <p><span class="t-green">$</span> <span class="blink-cursor">▊</span></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Texto -->
-          <div class="sobre-texto fade-in">
-            <div class="section-label">// sobre mim</div>
-            <h2 class="section-title">Construo. <br/>Testo. <br/>Quebranco.</h2>
-
-            <p class="sobre-p">
-              Não sou o tipo que aprende só teoria. Cada conceito de segurança que estudo 
-              vai direto para o lab — seja num ambiente Kali/Metasploitable, num desafio 
-              no Hack The Box, ou num projeto real.
-            </p>
-            <p class="sobre-p">
-              No lado de desenvolvimento, Python é minha linguagem principal para automação, 
-              scripts de pentest e construção de ferramentas. No frontend, construo interfaces 
-              limpas que comunicam resultado — sem dependências desnecessárias.
-            </p>
-            <p class="sobre-p">
-              Meu objetivo é atuar na interseção entre desenvolvimento e segurança: 
-              construir sistemas com mentalidade de atacante para defender como profissional.
-            </p>
-
-            <!-- Tags de interesse -->
-            <div class="interesse-tags">
-              <span class="tag">Red Team</span>
-              <span class="tag">Bug Bounty</span>
-              <span class="tag">Python Automation</span>
-              <span class="tag">Web Security</span>
-              <span class="tag">Linux</span>
-              <span class="tag">API Security</span>
-            </div>
-
-            <!-- Download CV -->
-            <a href="#" class="btn btn-outline" download>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download CV
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         SKILLS
-    ═══════════════════════════════════════ -->
-    <section class="section skills" id="skills">
-      <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-label">// habilidades técnicas</div>
-          <h2 class="section-title">Stack & Ferramentas</h2>
-        </div>
-
-        <div class="skills-grid">
-
-          <!-- Frontend -->
-          <div class="skill-card fade-in">
-            <div class="skill-card-header">
-              <div class="skill-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-              </div>
-              <h3 class="skill-card-title">Frontend</h3>
-            </div>
-            <div class="skill-list">
-              <div class="skill-item">
-                <div class="skill-info"><span>HTML5 / CSS3</span><span class="skill-pct">85%</span></div>
-                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>JavaScript (ES6+)</span><span class="skill-pct">78%</span></div>
-                <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>UI/UX & Design Systems</span><span class="skill-pct">70%</span></div>
-                <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>REST APIs (consumo)</span><span class="skill-pct">82%</span></div>
-                <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Backend -->
-          <div class="skill-card fade-in">
-            <div class="skill-card-header">
-              <div class="skill-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              </div>
-              <h3 class="skill-card-title">Backend & Dev</h3>
-            </div>
-            <div class="skill-list">
-              <div class="skill-item">
-                <div class="skill-info"><span>Python 3</span><span class="skill-pct">88%</span></div>
-                <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Automação & Scripts</span><span class="skill-pct">85%</span></div>
-                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>APIs REST (criação)</span><span class="skill-pct">72%</span></div>
-                <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Git / GitHub</span><span class="skill-pct">80%</span></div>
-                <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cybersecurity -->
-          <div class="skill-card skill-card-sec fade-in">
-            <div class="skill-card-header">
-              <div class="skill-icon skill-icon-sec">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <h3 class="skill-card-title">Cybersecurity</h3>
-            </div>
-            <div class="skill-list">
-              <div class="skill-item">
-                <div class="skill-info"><span>Pentest Web (OWASP)</span><span class="skill-pct">75%</span></div>
-                <div class="skill-bar"><div class="skill-fill sec" data-width="75"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Linux / Kali</span><span class="skill-pct">83%</span></div>
-                <div class="skill-bar"><div class="skill-fill sec" data-width="83"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Nmap / Recon</span><span class="skill-pct">80%</span></div>
-                <div class="skill-bar"><div class="skill-fill sec" data-width="80"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Burp Suite</span><span class="skill-pct">70%</span></div>
-                <div class="skill-bar"><div class="skill-fill sec" data-width="70"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Networking / Wireshark</span><span class="skill-pct">68%</span></div>
-                <div class="skill-bar"><div class="skill-fill sec" data-width="68"></div></div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Metasploit Framework</span><span class="skill-pct">65%</span></div>
-                <div class="skill-bar"><div class="skill-fill sec" data-width="65"></div></div>
-              </div>
-            </div>
-
-            <!-- Ferramentas em pills -->
-            <div class="tools-pills">
-              <span class="tool-pill">Nmap</span>
-              <span class="tool-pill">Burp Suite</span>
-              <span class="tool-pill">Metasploit</span>
-              <span class="tool-pill">Wireshark</span>
-              <span class="tool-pill">Nikto</span>
-              <span class="tool-pill">SQLMap</span>
-              <span class="tool-pill">Hydra</span>
-              <span class="tool-pill">John</span>
-              <span class="tool-pill">Gobuster</span>
-              <span class="tool-pill">ffuf</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         PROJETOS
-    ═══════════════════════════════════════ -->
-    <section class="section projetos" id="projetos">
-      <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-label">// projetos reais</div>
-          <h2 class="section-title">O que construí</h2>
-        </div>
-
-        <!-- Filtros -->
-        <div class="filter-tabs fade-in">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="dev">Dev</button>
-          <button class="filter-btn" data-filter="sec">Segurança</button>
-          <button class="filter-btn" data-filter="hybrid">Híbrido</button>
-        </div>
-
-        <div class="projects-grid" id="projectsGrid">
-
-          <!-- Card 1: Bot Telegram -->
-          <article class="project-card fade-in" data-type="hybrid">
-            <div class="project-header">
-              <div class="project-type hybrid">Híbrido</div>
-              <div class="project-links">
-                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-
-            <h3 class="project-title">TeleAlert — Bot de Monitoramento</h3>
-            <p class="project-desc">
-              Bot Telegram que monitora endpoints HTTP, detecta mudanças de status e envia alertas 
-              com latência, código de resposta e diff de conteúdo. Ideal para detectar mudanças 
-              suspeitas em aplicações monitoradas durante recon passivo.
-            </p>
-
-            <div class="project-tech">
-              <span>Python</span>
-              <span>python-telegram-bot</span>
-              <span>aiohttp</span>
-              <span>asyncio</span>
-            </div>
-
-            <div class="project-footer">
-              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
-              <a href="#" class="btn btn-sm btn-ghost-sm">Live demo</a>
-            </div>
-          </article>
-
-          <!-- Card 2: Log Analyzer -->
-          <article class="project-card fade-in" data-type="sec">
-            <div class="project-header">
-              <div class="project-type sec">Segurança</div>
-              <div class="project-links">
-                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-
-            <h3 class="project-title">LogHunter — Análise de Logs SSH</h3>
-            <p class="project-desc">
-              Script Python que analisa logs do sistema (/var/log/auth.log) em busca de 
-              tentativas de brute-force, IPs suspeitos e padrões de ataque. Gera relatório 
-              em JSON com geolocalização de IPs e score de risco.
-            </p>
-
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Regex</span>
-              <span>GeoIP2</span>
-              <span>JSON</span>
-            </div>
-
-            <div class="project-footer">
-              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
-            </div>
-          </article>
-
-          <!-- Card 3: Dashboard -->
-          <article class="project-card fade-in" data-type="dev">
-            <div class="project-header">
-              <div class="project-type dev">Dev</div>
-              <div class="project-links">
-                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-
-            <h3 class="project-title">SecDash — Dashboard de Vulnerabilidades</h3>
-            <p class="project-desc">
-              Interface web para visualização e triagem de vulnerabilidades encontradas em scans. 
-              Integra com saída do Nmap (XML) e exibe hosts, portas abertas, serviços e CVEs 
-              relacionados com filtros interativos. 100% vanilla JS.
-            </p>
-
-            <div class="project-tech">
-              <span>HTML/CSS</span>
-              <span>JavaScript</span>
-              <span>Nmap XML</span>
-              <span>NVD API</span>
-            </div>
-
-            <div class="project-footer">
-              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
-              <a href="#" class="btn btn-sm btn-ghost-sm">Ver projeto</a>
-            </div>
-          </article>
-
-          <!-- Card 4: Recon Tool -->
-          <article class="project-card fade-in" data-type="sec">
-            <div class="project-header">
-              <div class="project-type sec">Segurança</div>
-              <div class="project-links">
-                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-
-            <h3 class="project-title">AutoRecon-Py — Enumeração Automatizada</h3>
-            <p class="project-desc">
-              Ferramenta de reconhecimento que orquestra Nmap, Gobuster, Whatweb e Nikto 
-              em sequência lógica, salva output estruturado por alvo e gera sumário automático 
-              com surface de ataque identificada.
-            </p>
-
-            <div class="project-tech">
-              <span>Python</span>
-              <span>subprocess</span>
-              <span>Nmap</span>
-              <span>Gobuster</span>
-            </div>
-
-            <div class="project-footer">
-              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
-            </div>
-          </article>
-
-          <!-- Card 5: API Fuzzer -->
-          <article class="project-card fade-in" data-type="hybrid">
-            <div class="project-header">
-              <div class="project-type hybrid">Híbrido</div>
-              <div class="project-links">
-                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-
-            <h3 class="project-title">API-Fuzz — Tester de Endpoints REST</h3>
-            <p class="project-desc">
-              Ferramenta para análise de segurança de APIs REST. Testa injeção de parâmetros, 
-              headers malformados, bypass de autenticação e rate limiting. Relatório final 
-              em HTML com evidências e recomendações OWASP API Top 10.
-            </p>
-
-            <div class="project-tech">
-              <span>Python</span>
-              <span>requests</span>
-              <span>OWASP</span>
-              <span>Jinja2</span>
-            </div>
-
-            <div class="project-footer">
-              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
-              <a href="#" class="btn btn-sm btn-ghost-sm">Ver projeto</a>
-            </div>
-          </article>
-
-          <!-- Card 6: Pentest Lab -->
-          <article class="project-card fade-in" data-type="sec">
-            <div class="project-header">
-              <div class="project-type sec">Segurança</div>
-            </div>
-
-            <h3 class="project-title">Home Lab — Ambiente de Pentest Local</h3>
-            <p class="project-desc">
-              Ambiente virtualizado com Kali Linux, Metasploitable 2/3, DVWA e VulnHub machines. 
-              Documentação de exploits realizados, vetores utilizados e mitigações aplicadas. 
-              Serve como prova prática de metodologia ofensiva.
-            </p>
-
-            <div class="project-tech">
-              <span>VirtualBox</span>
-              <span>Kali Linux</span>
-              <span>Metasploitable</span>
-              <span>DVWA</span>
-            </div>
-
-            <div class="project-footer">
-              <a href="#" class="btn btn-sm">Ver writeups</a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         CYBERSECURITY — SEÇÃO DIFERENCIAL
-    ═══════════════════════════════════════ -->
-    <section class="section security" id="security">
-      <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-label">// atividade ofensiva</div>
-          <h2 class="section-title">Cybersecurity Lab</h2>
-        </div>
-
-        <div class="security-grid">
-
-          <!-- Plataformas -->
-          <div class="sec-platforms fade-in">
-            <h3 class="sec-subtitle">Plataformas & Estudos</h3>
-
-            <div class="platform-list">
-              <div class="platform-item">
-                <div class="platform-icon htb">HTB</div>
-                <div class="platform-info">
-                  <strong>Hack The Box</strong>
-                  <span>30+ máquinas resolvidas — foco em web e Linux privesc</span>
-                </div>
-                <div class="platform-badge">Ativo</div>
-              </div>
-
-              <div class="platform-item">
-                <div class="platform-icon tryhack">THM</div>
-                <div class="platform-info">
-                  <strong>TryHackMe</strong>
-                  <span>Paths concluídos: Jr Penetration Tester, SOC Analyst</span>
-                </div>
-                <div class="platform-badge">Concluído</div>
-              </div>
-
-              <div class="platform-item">
-                <div class="platform-icon lab">LAB</div>
-                <div class="platform-info">
-                  <strong>Home Lab</strong>
-                  <span>Kali + Metasploitable + DVWA + VulnHub machines</span>
-                </div>
-                <div class="platform-badge">Contínuo</div>
-              </div>
-
-              <div class="platform-item">
-                <div class="platform-icon bb">BB</div>
-                <div class="platform-info">
-                  <strong>Bug Bounty</strong>
-                  <span>HackerOne — programas públicos, foco em recon e XSS</span>
-                </div>
-                <div class="platform-badge">Em progresso</div>
-              </div>
-            </div>
-
-            <!-- Metodologia -->
-            <div class="methodology">
-              <h4 class="meth-title">Metodologia</h4>
-              <div class="meth-steps">
-                <div class="meth-step">
-                  <span class="step-num">01</span>
-                  <span>Recon & OSINT</span>
-                </div>
-                <div class="meth-arrow">→</div>
-                <div class="meth-step">
-                  <span class="step-num">02</span>
-                  <span>Enumeração</span>
-                </div>
-                <div class="meth-arrow">→</div>
-                <div class="meth-step">
-                  <span class="step-num">03</span>
-                  <span>Exploração</span>
-                </div>
-                <div class="meth-arrow">→</div>
-                <div class="meth-step">
-                  <span class="step-num">04</span>
-                  <span>Relatório</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Console interativo simulado -->
-          <div class="console-wrapper fade-in">
-            <div class="console-window">
-              <div class="console-header">
-                <div class="console-dots">
-                  <span class="dot red"></span>
-                  <span class="dot yellow"></span>
-                  <span class="dot green"></span>
-                </div>
-                <span class="console-title">kali@lab:~$ — pentest session</span>
-                <button class="console-run-btn" id="consoleRunBtn">▶ Executar scan</button>
-              </div>
-
-              <div class="console-body" id="consoleBody">
-                <div class="console-line static">
-                  <span class="c-prompt">kali@lab:~$</span>
-                  <span class="c-cmd"> nmap -sV -sC -p- --min-rate 5000 192.168.1.100</span>
-                </div>
-                <div class="console-line static c-comment"># Clique em "Executar scan" para simular</div>
-              </div>
-            </div>
-
-            <!-- Vulnerabilidades encontradas (aparece após scan) -->
-            <div class="vuln-report" id="vulnReport" style="display:none;">
-              <div class="vuln-header">
-                <span class="vuln-title">Findings — 192.168.1.100</span>
-                <span class="vuln-count" id="vulnCount">0 vulns</span>
-              </div>
-              <div class="vuln-list" id="vulnList"></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         CONTATO
-    ═══════════════════════════════════════ -->
-    <section class="section contato" id="contato">
-      <div class="container">
-        <div class="contato-inner fade-in">
-          <div class="section-label">// vamos conversar</div>
-          <h2 class="section-title contato-title">
-            Pronto para<br/>
-            <span class="title-accent">colaborar?</span>
-          </h2>
-          <p class="contato-desc">
-            Aberto a oportunidades em segurança ofensiva, desenvolvimento e projetos híbridos. 
-            Prefiro trabalho técnico sério com times que valorizam aprendizado contínuo.
-          </p>
-
-          <!-- Contato principal -->
-          <a href="mailto:luiz@email.com" class="email-link">
-            luiz@email.com
-            <span class="email-arrow">↗</span>
-          </a>
-
-          <!-- Redes sociais -->
-          <div class="social-links">
-
-            <a href="https://github.com/seuusuario" target="_blank" class="social-btn" title="GitHub">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
-            </a>
-
-            <a href="https://linkedin.com/in/seuusuario" target="_blank" class="social-btn" title="LinkedIn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              LinkedIn
-            </a>
-
-            <a href="https://t.me/seuusuario" target="_blank" class="social-btn" title="Telegram">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-              Telegram
-            </a>
-
-            <a href="mailto:luiz@email.com" class="social-btn" title="Email">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              Email
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ═══════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <span class="footer-brand">&lt;luiz /&gt;</span>
-        <span class="footer-phrase">Construído com intenção. Protegido por conhecimento.</span>
-        <span class="footer-copy">© 2025 Luiz. Todos os direitos reservados.</span>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+/* ═══════════════════════════════════════════════════════════════
+   PORTFÓLIO — LUIZ | Cybersecurity & Fullstack Developer
+   style.css — Design escuro, minimalista, técnico
+   Tipografia: JetBrains Mono (monospace técnico) + Syne (display)
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── VARIÁVEIS & RESET ─────────────────────────────────── */
+:root {
+  --black:      #080b0f;
+  --dark-1:     #0d1117;
+  --dark-2:     #161b22;
+  --dark-3:     #21262d;
+  --dark-4:     #30363d;
+  --grey-soft:  #8b949e;
+  --grey-mid:   #c9d1d9;
+  --white:      #f0f6fc;
+
+  --green:      #39ff14;
+  --green-dim:  #1a7a09;
+  --green-glow: rgba(57, 255, 20, 0.15);
+  --blue:       #58a6ff;
+  --red-soft:   #ff6b6b;
+  --yellow-soft:#e3b341;
+
+  --font-mono:  'JetBrains Mono', monospace;
+  --font-display: 'Syne', sans-serif;
+
+  --nav-h:      68px;
+  --radius:     6px;
+  --radius-lg:  12px;
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--black);
+  color: var(--grey-mid);
+  font-family: var(--font-mono);
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: none; /* cursor personalizado ativo */
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark-1); }
+::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+/* ─── CURSOR PERSONALIZADO ──────────────────────────────── */
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s;
+  box-shadow: 0 0 8px var(--green);
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--green);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease, width 0.2s, height 0.2s, border-color 0.2s;
+  opacity: 0.6;
+}
+
+.cursor-ring.hover {
+  width: 44px;
+  height: 44px;
+  border-color: var(--blue);
+  opacity: 1;
+}
+
+/* ─── UTILITÁRIOS ────────────────────────────────────────── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--green);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 48px;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+/* ─── BOTÕES ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  letter-spacing: 0.04em;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--black);
+  border-color: var(--green);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--green);
+  box-shadow: 0 0 24px var(--green-glow);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--dark-4);
+}
+.btn-ghost:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--green);
+  border-color: var(--green);
+  margin-top: 28px;
+}
+.btn-outline:hover {
+  background: var(--green-glow);
+}
+
+.btn-sm {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.btn-sm:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.btn-ghost-sm {
+  border-color: transparent;
+  color: var(--grey-soft);
+}
+.btn-ghost-sm:hover {
+  color: var(--white);
+  border-color: transparent;
+}
+
+/* ─── FADE-IN (via JS IntersectionObserver) ─────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Delay escalonado para cards em grid */
+.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.fade-in:nth-child(4) { transition-delay: 0.3s; }
+.fade-in:nth-child(5) { transition-delay: 0.1s; }
+.fade-in:nth-child(6) { transition-delay: 0.2s; }
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  background: rgba(8, 11, 15, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.navbar.scrolled {
+  border-bottom-color: var(--dark-3);
+  background: rgba(8, 11, 15, 0.95);
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.logo-bracket { color: var(--green); }
+.logo-name    { color: var(--white); margin: 0 2px; }
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-item {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--grey-soft);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  letter-spacing: 0.04em;
+}
+.nav-item:hover,
+.nav-item.active {
+  color: var(--green);
+  background: var(--green-glow);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-h);
+  overflow: hidden;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.35;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  padding: 0 24px;
+  margin: 0 auto;
+  animation: heroReveal 1s ease forwards;
+}
+
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--green);
+  border: 1px solid var(--green-dim);
+  border-radius: 99px;
+  padding: 4px 14px;
+  margin-bottom: 28px;
+  background: var(--green-glow);
+}
+
+.tag-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.7); }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 800;
+  line-height: 0.95;
+  margin-bottom: 24px;
+}
+
+.hero-name {
+  color: var(--white);
+  display: block;
+  /* Linha de sublinhado verde estilizado */
+  background: linear-gradient(90deg, var(--green) 0%, transparent 100%);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 60% 3px;
+  padding-bottom: 8px;
+}
+
+/* Terminal line abaixo do nome */
+.terminal-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  margin-bottom: 28px;
+  font-size: 0.9rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.terminal-prompt {
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.terminal-typed {
+  color: var(--white);
+}
+
+.terminal-cursor {
+  color: var(--green);
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.hero-desc {
+  font-size: 0.95rem;
+  color: var(--grey-soft);
+  max-width: 560px;
+  margin-bottom: 36px;
+  line-height: 1.8;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+/* Stats */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--grey-soft);
+  margin-top: 4px;
+  letter-spacing: 0.06em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--dark-4);
+}
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: var(--dark-4);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--dark-4), transparent);
+  animation: scrollDown 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollDown {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ─── SOBRE ──────────────────────────────────────────────── */
+.sobre {
+  background: var(--dark-1);
+  border-top: 1px solid var(--dark-3);
+  border-bottom: 1px solid var(--dark-3);
+}
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* Foto */
+.sobre-foto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.foto-wrapper {
+  position: relative;
+  width: 260px;
+}
+
+.profile-img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+  filter: grayscale(20%);
+  transition: filter var(--transition);
+}
+.profile-img:hover { filter: grayscale(0%); }
+
+.foto-border {
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--green);
+  border-radius: calc(var(--radius-lg) + 4px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.foto-badge {
+  position: absolute;
+  bottom: -12px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: 99px;
+  padding: 5px 12px;
+  font-size: 0.74rem;
+  color: var(--green);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Mini terminal no canto */
+.mini-terminal {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 260px;
+  margin-top: 20px;
+}
+
+.mini-term-header {
+  background: var(--dark-3);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot.red    { background: #ff5f57; }
+.dot.yellow { background: #febc2e; }
+.dot.green  { background: #28c840; }
+
+.mini-term-title {
+  font-size: 0.7rem;
+  color: var(--grey-soft);
+  margin-left: 6px;
+}
+
+.mini-term-body {
+  padding: 14px 16px;
+  font-size: 0.78rem;
+  line-height: 1.8;
+}
+
+.mini-term-body p { margin: 0; }
+.t-green  { color: var(--green); }
+.t-white  { color: var(--white); padding-left: 12px; }
+.blink-cursor { animation: blink 0.8s step-end infinite; color: var(--green); }
+
+/* Sobre texto */
+.sobre-texto { padding-top: 8px; }
+
+.sobre-p {
+  color: var(--grey-soft);
+  font-size: 0.92rem;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+.interesse-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 28px 0;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--blue);
+  background: rgba(88, 166, 255, 0.08);
+  border: 1px solid rgba(88, 166, 255, 0.2);
+  border-radius: 4px;
+  padding: 4px 12px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── SKILLS ─────────────────────────────────────────────── */
+.skills { background: var(--black); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 20px;
+}
+
+.skill-card {
+  background: var(--dark-1);
+  border: 1px solid var(--dark-3);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.skill-card:hover {
+  border-color: var(--dark-4);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.skill-card-sec {
+  border-color: rgba(57, 255, 20, 0.15);
+}
+.skill-card-sec:hover {
+  border-color: rgba(57, 255, 20, 0.35);
+  box-shadow: 0 8px 32px rgba(57, 255, 20, 0.08);
+}
+
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.skill-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--dark-3);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey-mid);
+}
+
+.skill-icon-sec { background: var(--green-glow); color: var(--green); }
+
+.skill-card-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* Barras de progresso */
+.skill-list { display: flex; flex-direction: column; gap: 14px; }
+
+.skill-item {}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--grey-soft);
+  margin-bottom: 6px;
+}
+
+.skill-pct { color: var(--grey-mid); }
+
+.skill-bar {
+  height: 3px;
+  background: var(--dark-3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  width: 0; /* animado pelo JS */
+  background: var(--blue);
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-fill.sec {
+  background: var(--green);
+  box-shadow: 0 0 6px rgba(57, 255, 20, 0.4);
+}
+
+/* Pills de ferramentas */
+.tools-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--dark-3);
+}
+
+.tool-pill {
+  font-size: 0.7rem;
+  color: var(--green);
+  background: var(--green-glow);
+  border: 1px solid rgba(57, 255, 20, 0.2);
+  border-radius: 4px;
+  padding: 3px 9px;
+}
+
+/* ─── PROJETOS ───────────────────────────────────────────── */
+.projetos { background: var(--dark-1); border-top: 1px solid var(--dark-3); border-bottom: 1px solid var(--dark-3); }
+
+/* Filtros */
+.filter-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 7px 16px;
+  background: transparent;
+  color: var(--grey-soft);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.04em;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  color: var(--white);
+  border-color: var(--green);
+  background: var(--green-glow);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* Card de projeto */
+.project-card {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-3);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.project-card:hover {
+  border-color: var(--dark-4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+
+.project-card.hidden { display: none; }
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Badge de tipo */
+.project-type {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.project-type.dev    { background: rgba(88,166,255,0.12); color: var(--blue); border: 1px solid rgba(88,166,255,0.25); }
+.project-type.sec    { background: rgba(57,255,20,0.1); color: var(--green); border: 1px solid rgba(57,255,20,0.2); }
+.project-type.hybrid { background: rgba(227,179,65,0.1); color: var(--yellow-soft); border: 1px solid rgba(227,179,65,0.2); }
+
+.project-links { display: flex; gap: 8px; }
+
+.proj-link {
+  color: var(--grey-soft);
+  transition: color var(--transition);
+}
+.proj-link:hover { color: var(--white); }
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.project-desc {
+  font-size: 0.8rem;
+  color: var(--grey-soft);
+  line-height: 1.8;
+  flex: 1;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-tech span {
+  font-size: 0.7rem;
+  color: var(--grey-soft);
+  background: var(--dark-3);
+  border-radius: 4px;
+  padding: 3px 9px;
+}
+
+.project-footer {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--dark-3);
+  flex-wrap: wrap;
+}
+
+/* ─── SECURITY ───────────────────────────────────────────── */
+.security { background: var(--black); }
+
+.security-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.sec-subtitle {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 24px;
+  letter-spacing: 0.03em;
+}
+
+/* Plataformas */
+.platform-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+
+.platform-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--dark-2);
+  border: 1px solid var(--dark-3);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  transition: border-color var(--transition);
+}
+.platform-item:hover { border-color: var(--dark-4); }
+
+.platform-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.platform-icon.htb     { background: rgba(158,0,255,0.2); color: #9e00ff; border: 1px solid rgba(158,0,255,0.3); }
+.platform-icon.tryhack { background: rgba(255,88,88,0.15); color: var(--red-soft); border: 1px solid rgba(255,88,88,0.25); }
+.platform-icon.lab     { background: var(--green-glow); color: var(--green); border: 1px solid rgba(57,255,20,0.2); }
+.platform-icon.bb      { background: rgba(227,179,65,0.1); color: var(--yellow-soft); border: 1px solid rgba(227,179,65,0.2); }
+
+.platform-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.platform-info strong { font-size: 0.85rem; color: var(--white); }
+.platform-info span   { font-size: 0.74rem; color: var(--grey-soft); }
+
+.platform-badge {
+  font-size: 0.68rem;
+  color: var(--green);
+  background: var(--green-glow);
+  border: 1px solid rgba(57,255,20,0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* Metodologia */
+.methodology {}
+.meth-title {
+  font-size: 0.78rem;
+  color: var(--grey-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.meth-steps {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.meth-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--dark-2);
+  border: 1px solid var(--dark-3);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 0.75rem;
+  color: var(--grey-mid);
+}
+
+.step-num {
+  font-size: 0.65rem;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.meth-arrow { color: var(--dark-4); font-size: 1rem; }
+
+/* Console interativo */
+.console-wrapper { display: flex; flex-direction: column; gap: 16px; }
+
+.console-window {
+  background: var(--dark-1);
+  border: 1px solid var(--dark-3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.console-header {
+  background: var(--dark-3);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.console-dots { display: flex; gap: 6px; }
+
+.console-title {
+  font-size: 0.72rem;
+  color: var(--grey-soft);
+  margin-left: 6px;
+  flex: 1;
+}
+
+.console-run-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: var(--green-glow);
+  color: var(--green);
+  border: 1px solid rgba(57,255,20,0.3);
+  border-radius: 4px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.04em;
+}
+.console-run-btn:hover { background: var(--green); color: var(--black); }
+.console-run-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.console-body {
+  padding: 20px;
+  font-size: 0.8rem;
+  line-height: 2;
+  min-height: 220px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+/* Linhas do console */
+.console-line { display: block; }
+.console-line.static { color: var(--grey-mid); }
+.c-prompt  { color: var(--green); }
+.c-cmd     { color: var(--white); }
+.c-comment { color: var(--dark-4); }
+.c-ok      { color: var(--green); }
+.c-warn    { color: var(--yellow-soft); }
+.c-err     { color: var(--red-soft); }
+.c-info    { color: var(--blue); }
+
+/* Relatório de vulnerabilidades */
+.vuln-report {
+  background: var(--dark-2);
+  border: 1px solid var(--dark-3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.vuln-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--dark-3);
+  background: var(--dark-3);
+}
+
+.vuln-title {
+  font-size: 0.8rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.vuln-count {
+  font-size: 0.72rem;
+  color: var(--red-soft);
+  background: rgba(255,107,107,0.1);
+  border: 1px solid rgba(255,107,107,0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.vuln-list { padding: 12px 18px; }
+
+.vuln-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--dark-3);
+  font-size: 0.76rem;
+}
+.vuln-item:last-child { border-bottom: none; }
+
+.vuln-sev {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.vuln-sev.high   { background: rgba(255,107,107,0.15); color: var(--red-soft); }
+.vuln-sev.med    { background: rgba(227,179,65,0.15);  color: var(--yellow-soft); }
+.vuln-sev.low    { background: rgba(88,166,255,0.1);   color: var(--blue); }
+
+.vuln-desc { color: var(--grey-soft); }
+
+/* ─── CONTATO ────────────────────────────────────────────── */
+.contato {
+  background: var(--dark-1);
+  border-top: 1px solid var(--dark-3);
+}
+
+.contato-inner {
+  max-width: 640px;
+}
+
+.contato-title { margin-bottom: 20px; }
+
+.title-accent {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--green);
+  /* fallback */
+  background: linear-gradient(90deg, var(--green), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.contato-desc {
+  font-size: 0.9rem;
+  color: var(--grey-soft);
+  line-height: 1.9;
+  margin-bottom: 40px;
+  max-width: 520px;
+}
+
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 4px;
+  margin-bottom: 48px;
+  transition: color var(--transition);
+}
+.email-link:hover { color: var(--green); }
+.email-arrow { color: var(--green); }
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--grey-soft);
+  background: var(--dark-2);
+  border: 1px solid var(--dark-4);
+  border-radius: var(--radius);
+  padding: 10px 18px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.social-btn:hover {
+  color: var(--white);
+  border-color: var(--green);
+  background: var(--green-glow);
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+.footer {
+  background: var(--dark-1);
+  border-top: 1px solid var(--dark-3);
+  padding: 32px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.footer-phrase {
+  font-size: 0.78rem;
+  color: var(--grey-soft);
+  font-style: italic;
+}
+
+.footer-copy {
+  font-size: 0.72rem;
+  color: var(--dark-4);
+}
+
+/* ─── RESPONSIVO ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .skills-grid    { grid-template-columns: 1fr 1fr; }
+  .skill-card-sec { grid-column: span 2; }
+  .projects-grid  { grid-template-columns: repeat(2, 1fr); }
+  .security-grid  { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  /* Nav mobile */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    background: var(--dark-1);
+    border-bottom: 1px solid var(--dark-3);
+    flex-direction: column;
+    padding: 16px;
+    gap: 4px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-item { padding: 12px 16px; }
+  .nav-toggle { display: flex; }
+
+  /* Cursor off em mobile */
+  .cursor-dot, .cursor-ring { display: none; }
+  body { cursor: auto; }
+
+  .sobre-grid   { grid-template-columns: 1fr; gap: 40px; }
+  .foto-wrapper { width: 200px; }
+  .profile-img  { width: 200px; height: 200px; }
+  .mini-terminal { width: 100%; }
+  .skills-grid  { grid-template-columns: 1fr; }
+  .skill-card-sec { grid-column: auto; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .section      { padding: 72px 0; }
+  .meth-steps   { gap: 4px; }
+  .meth-arrow   { display: none; }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cta   { flex-direction: column; }
+  .btn        { width: 100%; justify-content: center; }
+  .hero-stats { gap: 18px; }
+}
