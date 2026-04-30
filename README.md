@@ -1,1 +1,1 @@
-<link rsc='https://luizwhoami.github.io/portfolio/'/>
+<a href='https://luizwhoami.github.io/portfolio/'/>
