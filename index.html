@@ -1,208 +1,253 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Portfólio de Luiz - Cybersecurity | Fullstack Developer. Especialista em pentest, automação Python e desenvolvimento seguro.">
-  <title>Luiz · Cybersecurity & Fullstack Dev</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luiz | Cybersecurity & Fullstack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <header class="header">
-    <div class="container header-container">
-      <div class="logo">
-        <h1>Luiz</h1>
-        <span class="typing-badge" id="typingEffect"></span>
-      </div>
-      <nav class="navbar">
-        <ul class="nav-list">
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#cybersec">Cybersec</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- Seção Sobre -->
-    <section id="sobre" class="section">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-image">
-            <img src="https://ui-avatars.com/api/?background=0A0F1E&color=00FFAA&bold=true&size=150&name=Luiz&length=1&fontsize=0.65&rounded=true" alt="Luiz Profile" class="profile-img">
-          </div>
-          <div class="about-content">
-            <h2 class="section-title">Sobre mim</h2>
-            <p class="about-text">
-              Profissional com mentalidade <span class="highlight">disciplinada e prática</span>, atuando na interseção entre <strong>cibersegurança ofensiva</strong> e <strong>desenvolvimento fullstack</strong>. 
-              Utilizo Python para automação de reconhecimento, análise de logs e integração de ferramentas de pentest. 
-              Minha rotina envolve estudos diários em Hack The Box, montagem de laboratórios com Kali e Metasploitable, 
-              além da criação de dashboards e scripts que resolvem problemas reais. 
-              Evolução constante e pensamento adversário guiam minha prática.
-            </p>
-            <div class="about-stats">
-              <div class="stat"><span>🔐</span> Pentest & Red Teaming</div>
-              <div class="stat"><span>⚙️</span> Automação Python</div>
-              <div class="stat"><span>📡</span> Análise de vulnerabilidades</div>
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Luiz</h1>
+                <span class="typing-badge" id="typingEffect"></span>
             </div>
-          </div>
+            <nav class="navbar">
+                <ul class="nav-list">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#journey">Jornada</a></li>
+                    <li><a href="#certificacoes">Certificações</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <!-- Seção Skills com barras de progresso -->
-    <section id="skills" class="section bg-dark">
-      <div class="container">
-        <h2 class="section-title centered">Competências Técnicas</h2>
-        <div class="skills-grid">
-          <!-- Frontend -->
-          <div class="skill-category">
-            <div class="category-icon">🖥️</div>
-            <h3>Frontend</h3>
-            <div class="skill-item"><span>HTML5 & Semântica</span><div class="progress-bar"><div class="progress" style="width: 88%"></div></div></div>
-            <div class="skill-item"><span>CSS3 (Flex/Grid/Animações)</span><div class="progress-bar"><div class="progress" style="width: 82%"></div></div></div>
-            <div class="skill-item"><span>JavaScript (Vanilla)</span><div class="progress-bar"><div class="progress" style="width: 80%"></div></div></div>
-          </div>
-          <!-- Backend -->
-          <div class="skill-category">
-            <div class="category-icon">🐍</div>
-            <h3>Backend & Automação</h3>
-            <div class="skill-item"><span>Python (Flask, requests, async)</span><div class="progress-bar"><div class="progress" style="width: 90%"></div></div></div>
-            <div class="skill-item"><span>APIs REST & Webhooks</span><div class="progress-bar"><div class="progress" style="width: 85%"></div></div></div>
-            <div class="skill-item"><span>Automação de tarefas & Scraping</span><div class="progress-bar"><div class="progress" style="width: 87%"></div></div></div>
-          </div>
-          <!-- Cybersecurity -->
-          <div class="skill-category">
-            <div class="category-icon">🛡️</div>
-            <h3>Cybersecurity</h3>
-            <div class="skill-item"><span>Pentest (Recon, Enumeração, Exploração)</span><div class="progress-bar"><div class="progress" style="width: 78%"></div></div></div>
-            <div class="skill-item"><span>Análise de vulnerabilidades (CVE, CVSS)</span><div class="progress-bar"><div class="progress" style="width: 80%"></div></div></div>
-            <div class="skill-item"><span>Linux (Kali, hardening, scripts bash)</span><div class="progress-bar"><div class="progress" style="width: 88%"></div></div></div>
-            <div class="skill-item"><span>Ferramentas: Nmap, Burp Suite, Metasploit</span><div class="progress-bar"><div class="progress" style="width: 75%"></div></div></div>
-          </div>
+    <main>
+        <!-- Seção Sobre -->
+        <section id="sobre" class="section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="https://ui-avatars.com/api/?background=0A0F1E&color=00FFAA&bold=true&size=150&name=Luiz&length=4&fontsize=0.55&rounded=true" alt="Luiz Profile" class="profile-img">
+                    </div>
+                    <div class="about-content">
+                        <h2 class="section-title">Sobre mim</h2>
+                        <p class="about-text">
+                            Profissional com mentalidade <span class="highlight">disciplinada e prática</span>, atuando na interseção entre <strong>cibersegurança ofensiva</strong> e <strong>desenvolvimento fullstack</strong>. Atualmente cursando <strong>Cibersegurança na Anhanguera</strong> e atuando como <strong>NOC na TuxNet</strong>, onde aplico conceitos de monitoramento e resposta a incidentes.
+                        </p>
+                        <p class="about-text">
+                            Utilizo <strong>Python</strong> para automação de reconhecimento, análise de logs e integração de ferramentas de pentest. Minha rotina envolve estudos diários em <strong>Hack The Box</strong>, montagem de laboratórios com Kali e Metasploitable, além da criação de dashboards e scripts que resolvem problemas reais. Evolução constante e pensamento adversário guiam minha prática.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat"><i class="fas fa-shield-alt"></i> Pentest & Red Teaming</div>
+                            <div class="stat"><i class="fas fa-robot"></i> Automação Python</div>
+                            <div class="stat"><i class="fas fa-chart-line"></i> Análise de vulnerabilidades</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Skills -->
+        <section id="skills" class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title centered">Competências Técnicas</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <div class="category-icon"><i class="fas fa-code"></i></div>
+                        <h3>Frontend</h3>
+                        <div class="skill-item"><span>HTML5 & Semântica</span><div class="progress-bar"><div class="progress" style="width: 88%"></div></div></div>
+                        <div class="skill-item"><span>CSS3 (Flex/Grid/Animações)</span><div class="progress-bar"><div class="progress" style="width: 82%"></div></div></div>
+                        <div class="skill-item"><span>JavaScript (Vanilla)</span><div class="progress-bar"><div class="progress" style="width: 80%"></div></div></div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="category-icon"><i class="fab fa-python"></i></div>
+                        <h3>Backend & Automação</h3>
+                        <div class="skill-item"><span>Python (Flask, Selenium, Scapy)</span><div class="progress-bar"><div class="progress" style="width: 90%"></div></div></div>
+                        <div class="skill-item"><span>APIs REST & Webhooks</span><div class="progress-bar"><div class="progress" style="width: 85%"></div></div></div>
+                        <div class="skill-item"><span>Automação de tarefas & Scraping</span><div class="progress-bar"><div class="progress" style="width: 87%"></div></div></div>
+                        <div class="skill-item"><span>Bash Scripting</span><div class="progress-bar"><div class="progress" style="width: 85%"></div></div></div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="category-icon"><i class="fas fa-user-secret"></i></div>
+                        <h3>Cybersecurity</h3>
+                        <div class="skill-item"><span>Pentest (Recon, Enumeração, Exploração)</span><div class="progress-bar"><div class="progress" style="width: 78%"></div></div></div>
+                        <div class="skill-item"><span>Análise de vulnerabilidades (CVE, CVSS)</span><div class="progress-bar"><div class="progress" style="width: 80%"></div></div></div>
+                        <div class="skill-item"><span>Linux (Kali, hardening, scripts)</span><div class="progress-bar"><div class="progress" style="width: 88%"></div></div></div>
+                        <div class="skill-item"><span>Ferramentas: Nmap, Burp Suite, Metasploit, Wireshark</span><div class="progress-bar"><div class="progress" style="width: 85%"></div></div></div>
+                        <div class="skill-item"><span>Análise de Logs & Detecção de Ameaças</span><div class="progress-bar"><div class="progress" style="width: 82%"></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos em Destaque -->
+        <section id="projetos" class="section">
+            <div class="container">
+                <h2 class="section-title centered">Projetos em Destaque</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-badge seguranca">Segurança</div>
+                        <h3>Varredura RedScan</h3>
+                        <p>Script em Bash para análise de logs de acesso (access.log), focado na detecção de atividades maliciosas como XSS, SQL Injection, Directory Traversal, scanners automatizados e força bruta.</p>
+                        <div class="project-tech">Bash · Linux · Log Analysis</div>
+                        <div class="card-buttons">
+                            <a href="https://github.com/LuizWhoami/varredura-redscan" class="btn-outline" target="_blank"><i class="fab fa-github"></i> Ver código</a>
+                            <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-badge hibrido">Híbrido</div>
+                        <h3>PriceHunter Bot</h3>
+                        <p>Bot para Telegram que automatiza a busca e monitoramento de produtos, coleta dados de preços via web scraping e envia alertas em tempo real para grupos e canais de ofertas.</p>
+                        <div class="project-tech">Python · Selenium · BeautifulSoup · Telegram API</div>
+                        <div class="card-buttons">
+                            <a href="https://github.com/LuizWhoami/PriceHunter-Bot" class="btn-outline" target="_blank"><i class="fab fa-github"></i> Ver código</a>
+                            <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-badge seguranca">Segurança</div>
+                        <h3>Sentinel Network</h3>
+                        <p>Sistema em Python para monitoramento de dispositivos conectados à rede local, com detecção de intrusos e envio de alertas em tempo real via Telegram. Utiliza Scapy para scans ARP.</p>
+                        <div class="project-tech">Python · Scapy · Telegram API · JSON</div>
+                        <div class="card-buttons">
+                            <a href="https://github.com/LuizWhoami/Sentinel-Network" class="btn-outline" target="_blank"><i class="fab fa-github"></i> Ver código</a>
+                            <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-badge desenvolvimento">Infraestrutura</div>
+                        <h3>Corporate Network Infrastructure</h3>
+                        <p>Projeto de infraestrutura corporativa completa utilizando Cisco Packet Tracer, com VLAN segmentation, inter-VLAN routing, servidor DHCP centralizado e redes wireless segregadas.</p>
+                        <div class="project-tech">Cisco Packet Tracer · VLAN · DHCP · Hierarchical Model</div>
+                        <div class="card-buttons">
+                            <a href="https://github.com/LuizWhoami/Cabeamento-estruturado-Cisco-packet-tracer" class="btn-outline" target="_blank"><i class="fab fa-github"></i> Ver código</a>
+                            <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-badge desenvolvimento">Desenvolvimento</div>
+                        <h3>Gestão Bot WhatsApp</h3>
+                        <p>Bot em Python para automação de gestão no WhatsApp, em desenvolvimento. Projetado para facilitar comunicação e tarefas repetitivas via mensageria.</p>
+                        <div class="project-tech">Python · WhatsApp API · Automation</div>
+                        <div class="card-buttons">
+                            <a href="https://github.com/LuizWhoami/Gest-o-Bot-Whatsapp-Python" class="btn-outline" target="_blank"><i class="fab fa-github"></i> Ver código</a>
+                            <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jornada em Cybersegurança (HTB + PortSwigger) -->
+        <section id="journey" class="section bg-dark">
+            <div class="container">
+                <h2 class="section-title centered">🧪 Jornada em Cybersegurança</h2>
+                <div class="journey-grid">
+                    <div class="journey-card">
+                        <h3><i class="fab fa-hackthebox"></i> Hack The Box</h3>
+                        <div class="htb-stats">
+                            <div class="htb-machine completed">
+                                <span class="machine-name">TwoMillion</span>
+                                <span class="machine-badge">✓ Finalizada</span>
+                                <p class="machine-desc">Máquina Easy - Comemoração de 2 milhões de usuários, exploit de command injection e CVE-2023-0386 para escalação de privilégios.</p>
+                            </div>
+                            <div class="htb-machine completed">
+                                <span class="machine-name">Cap</span>
+                                <span class="machine-badge">✓ Finalizada</span>
+                                <p class="machine-desc">Máquina Easy - IDOR para captura de arquivos PCAP, extração de credenciais e escalação via Linux capabilities.</p>
+                            </div>
+                            <div class="htb-machine completed">
+                                <span class="machine-name">Spookifier</span>
+                                <span class="machine-badge">✓ Finalizada</span>
+                                <p class="machine-desc">Web Challenge - SSTI (Server-Side Template Injection) em Mako template engine.</p>
+                            </div>
+                            <div class="htb-machine in-progress">
+                                <span class="machine-name">Support</span>
+                                <span class="machine-badge status-progress">⟳ Em progresso</span>
+                                <p class="machine-desc">Máquina focada em enumeração SMB, análise de binários .NET e LDAP.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="journey-card">
+                        <h3><i class="fas fa-bug"></i> PortSwigger Academy</h3>
+                        <div class="portswigger-labs">
+                            <div class="lab completed">
+                                <span class="lab-name">Detecting NoSQL injection</span>
+                                <span class="lab-badge">✓ Concluído</span>
+                                <p class="lab-desc">Detecção de injeção NoSQL através de payloads especiais para manipular consultas MongoDB.</p>
+                            </div>
+                            <div class="lab completed">
+                                <span class="lab-name">Username enumeration via different responses</span>
+                                <span class="lab-badge">✓ Concluído</span>
+                                <p class="lab-desc">Enumeração de usuários através de diferenças nas respostas do servidor durante autenticação.</p>
+                            </div>
+                        </div>
+                        <div class="osint-focus">
+                            <p><i class="fas fa-chart-line"></i> Foco atual: <strong>AD exploitation, Linux privesc, Bypass WAF</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificações -->
+        <section id="certificacoes" class="section">
+            <div class="container">
+                <h2 class="section-title centered">Certificações</h2>
+                <div class="certs-grid">
+                    <div class="cert-card"><i class="fab fa-linux"></i> <span>Segurança em Linux - IBSEC</span></div>
+                    <div class="cert-card"><i class="fas fa-network-wired"></i> <span>Introduction to Cybersecurity - Cisco</span></div>
+                    <div class="cert-card"><i class="fas fa-shield-haltered"></i> <span>Boas práticas de cibersegurança - IBSEC</span></div>
+                    <div class="cert-card"><i class="fab fa-cisco"></i> <span>Cisco Certified Network Basics</span></div>
+                    <div class="cert-card"><i class="fas fa-graduation-cap"></i> <span>Técnico Em TI - CETEP</span></div>
+                    <div class="cert-card"><i class="fas fa-user-secret"></i> <span>Fundamentos de Ethical Hacking e Pentest - Udemy</span></div>
+                    <div class="cert-card"><i class="fas fa-globe"></i> <span>Pentest e hacking em sites e aplicações Web do Zero - Udemy</span></div>
+                </div>
+                <div class="ongoing-studies">
+                    <h3><i class="fas fa-sync-alt"></i> Em andamento</h3>
+                    <div class="study-list">
+                        <span class="study-item">RedScan Academy</span>
+                        <span class="study-item">Ethical Hacking - Cisco</span>
+                        <span class="study-item">Cibersegurança - Anhanguera (Faculdade)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="section bg-dark">
+            <div class="container contact-container">
+                <h2 class="section-title centered">Conecte-se</h2>
+                <div class="contact-links">
+                    <a href="https://github.com/LuizWhoami" class="contact-card" target="_blank"><i class="fab fa-github"></i> <span>GitHub</span> /LuizWhoami</a>
+                    <a href="#" class="contact-card" target="_blank"><i class="fab fa-linkedin"></i> <span>LinkedIn</span> /in/luiz-cyber</a>
+                    <a href="#" class="contact-card" target="_blank"><i class="fas fa-envelope"></i> <span>Email</span> luiz@cybersec.dev</a>
+                    <a href="#" class="contact-card" target="_blank"><i class="fab fa-telegram"></i> <span>Telegram</span> @luiz_h4x</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>"Segurança não é produto, é processo — evolução contínua."</p>
+            <p class="copyright">© 2025 Luiz • Cybersecurity & Fullstack Developer</p>
         </div>
-      </div>
-    </section>
-
-    <!-- Projetos - cards -->
-    <section id="projetos" class="section">
-      <div class="container">
-        <h2 class="section-title centered">Projetos reais (Dev + Security)</h2>
-        <div class="projects-grid">
-          <!-- Projeto 1 -->
-          <div class="project-card">
-            <div class="project-badge híbrido">Híbrido</div>
-            <h3>TeleSec Bot</h3>
-            <p>Bot para Telegram que automatiza varredura de subdomínios, verificação de headers de segurança e notifica sobre novas CVEs usando APIs públicas. Integração com Python e asyncio.</p>
-            <div class="project-tech">Python · Telegram API · aiohttp</div>
-            <div class="card-buttons">
-              <a href="#" class="btn-outline" target="_blank">Ver código</a>
-              <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
-            </div>
-          </div>
-          <!-- Projeto 2 -->
-          <div class="project-card">
-            <div class="project-badge segurança">Segurança</div>
-            <h3>LogGuardian</h3>
-            <p>Script Python que analisa logs de autenticação (auth.log, syslog) e detecta padrões de bruteforce, gera relatórios e dispara alertas via webhook. Ideal para hardening de servidores.</p>
-            <div class="project-tech">Python · Regex · Pandas (análise)</div>
-            <div class="card-buttons">
-              <a href="#" class="btn-outline" target="_blank">Ver código</a>
-              <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
-            </div>
-          </div>
-          <!-- Projeto 3 -->
-          <div class="project-card">
-            <div class="project-badge desenvolvimento">Desenvolvimento</div>
-            <h3>VulnDashboard</h3>
-            <p>Dashboard web interativo que consome a API do NVD (National Vulnerability Database) exibindo tendências de CVEs, gráficos de criticidade e busca customizada. Frontend puro com JS.</p>
-            <div class="project-tech">HTML/CSS/JS · Fetch API · Chart.js (CDN livre)</div>
-            <div class="card-buttons">
-              <a href="#" class="btn-outline" target="_blank">Ver código</a>
-              <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
-            </div>
-          </div>
-          <!-- Projeto 4 -->
-          <div class="project-card">
-            <div class="project-badge segurança">Segurança</div>
-            <h3>HackLab Environment</h3>
-            <p>Laboratório de pentest usando Vagrant + Ansible para provisionar Kali Linux e Metasploitable 3. Scripts de redes e automação de exploração controlada para CTFs.</p>
-            <div class="project-tech">Vagrant · Kali · Metasploit · Docker</div>
-            <div class="card-buttons">
-              <a href="#" class="btn-outline" target="_blank">Ver código</a>
-              <a href="#" class="btn-primary" target="_blank">Ver projeto</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Seção CYBERSECURITY DIFERENCIAL + LOGS SIMULADOS -->
-    <section id="cybersec" class="section bg-dark">
-      <div class="container">
-        <h2 class="section-title centered">🧪 Laboratório ofensivo & Atividades</h2>
-        <div class="cyber-grid">
-          <div class="study-card">
-            <h3>📚 Plataformas / Labs</h3>
-            <ul class="lab-list">
-              <li><span>Hack The Box</span> (Máquinas ativas: 14 pwnd)</li>
-              <li><span>TryHackMe</span> (Top 5% – learning paths)</li>
-              <li><span>VulnHub / Metasploitable</span> (enumeração local)</li>
-              <li><span>PortSwigger Academy</span> (Web pentest)</li>
-            </ul>
-            <div class="osint-focus">
-              <p>🔄 Foco atual: <strong>AD exploitation, Linux privesc, Bypass WAF</strong></p>
-            </div>
-          </div>
-
-          <!-- SIMULAÇÃO DE LOGS (diferencial técnico) -->
-          <div class="live-log-section">
-            <h3>📡 Security Activity Log (simulação)</h3>
-            <div class="log-terminal" id="logTerminal">
-              <div class="log-line">[+] Iniciando monitoramento de rede local...</div>
-              <div class="log-line">[✔] Firewall rules loaded - 23 regras ativas</div>
-              <div class="log-line">[!] Scan SYN detectado na porta 8080 (HTTP-Alt)</div>
-              <div class="log-line">[+] Serviço Apache 2.4.49 identificado - CVE-2021-41773 crítica?</div>
-              <div class="log-line">[🔍] Varredura de diretórios em andamento...</div>
-            </div>
-            <div class="log-controls">
-              <button id="simulateScanBtn" class="cyber-btn">🚀 Simular Escaneamento Rápido</button>
-              <button id="clearLogBtn" class="cyber-btn secondary">Limpar Log</button>
-            </div>
-            <p class="log-legend">Eventos simulados com base em atividades reais de pentest.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="section">
-      <div class="container contact-container">
-        <h2 class="section-title centered">Conecte-se</h2>
-        <div class="contact-links">
-          <a href="#" class="contact-card" target="_blank"><span>🐙 GitHub</span> /luizsec</a>
-          <a href="#" class="contact-card" target="_blank"><span>🔗 LinkedIn</span> /in/luiz-cyber</a>
-          <a href="#" class="contact-card" target="_blank"><span>✉️ Email</span> luiz@cybersec.dev</a>
-          <a href="#" class="contact-card" target="_blank"><span>📡 Telegram</span> @luiz_h4x</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>“Segurança não é produto, é processo — evolução contínua.”</p>
-      <p class="copyright">© 2025 Luiz • Cybersecurity & Fullstack Developer</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    </footer>
 </body>
 </html>
