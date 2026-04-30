@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luiz — Cybersecurity & Fullstack Developer</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Fonte principal: JetBrains Mono (leitura técnica) + Syne (display) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       CURSOR PERSONALIZADO
+  ═══════════════════════════════════════ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ═══════════════════════════════════════
+       NAVBAR FIXA
+  ═══════════════════════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">luiz</span>
+      <span class="logo-bracket"> /&gt;</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#sobre" class="nav-item">Sobre</a>
+      <a href="#skills" class="nav-item">Skills</a>
+      <a href="#projetos" class="nav-item">Projetos</a>
+      <a href="#security" class="nav-item">Cybersec</a>
+      <a href="#contato" class="nav-item">Contato</a>
+    </nav>
+    <!-- Hamburguer para mobile -->
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════
+         HERO / INTRO COM EFEITO TERMINAL
+    ═══════════════════════════════════════ -->
+    <section class="hero" id="home">
+      <!-- Partículas de fundo -->
+      <canvas class="hero-canvas" id="heroCanvas"></canvas>
+
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="tag-dot"></span>
+          <span>Disponível para projetos</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-name">Luiz</span>
+        </h1>
+
+        <!-- Terminal digitando -->
+        <div class="terminal-line">
+          <span class="terminal-prompt">~/luiz $</span>
+          <span class="terminal-typed" id="terminalTyped"></span>
+          <span class="terminal-cursor">█</span>
+        </div>
+
+        <p class="hero-desc">
+          Desenvolvedor Fullstack com foco em segurança ofensiva. Construo sistemas, 
+          automatizo processos e procuro vulnerabilidades antes que alguém mal-intencionado as encontre.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+          <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
+        </div>
+
+        <!-- Stats rápidos -->
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number" data-target="15">0</span>
+            <span class="stat-label">Projetos</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number" data-target="30">0</span>
+            <span class="stat-label">Labs HTB</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-label">Anos estudando</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint">
+        <span>scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SOBRE MIM
+    ═══════════════════════════════════════ -->
+    <section class="section sobre" id="sobre">
+      <div class="container">
+        <div class="sobre-grid">
+
+          <!-- Foto de perfil -->
+          <div class="sobre-foto fade-in">
+            <div class="foto-wrapper">
+              <!-- Substitua o src pela sua foto -->
+              <img
+                src="https://via.placeholder.com/320x320/0a0a0a/39ff14?text=FOTO"
+                alt="Foto de Luiz"
+                class="profile-img"
+                id="profileImg"
+              />
+              <div class="foto-border"></div>
+              <!-- Badge de status -->
+              <div class="foto-badge">
+                <span class="badge-dot"></span>
+                <span>Open to work</span>
+              </div>
+            </div>
+
+            <!-- Pequeno terminal lateral -->
+            <div class="mini-terminal">
+              <div class="mini-term-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="mini-term-title">whoami.sh</span>
+              </div>
+              <div class="mini-term-body">
+                <p><span class="t-green">$</span> whoami</p>
+                <p class="t-white">luiz</p>
+                <p><span class="t-green">$</span> uname -a</p>
+                <p class="t-white">Kali Linux 6.x</p>
+                <p><span class="t-green">$</span> cat /etc/role</p>
+                <p class="t-white">Hacker | Dev | Builder</p>
+                <p><span class="t-green">$</span> <span class="blink-cursor">▊</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Texto -->
+          <div class="sobre-texto fade-in">
+            <div class="section-label">// sobre mim</div>
+            <h2 class="section-title">Construo. <br/>Testo. <br/>Quebranco.</h2>
+
+            <p class="sobre-p">
+              Não sou o tipo que aprende só teoria. Cada conceito de segurança que estudo 
+              vai direto para o lab — seja num ambiente Kali/Metasploitable, num desafio 
+              no Hack The Box, ou num projeto real.
+            </p>
+            <p class="sobre-p">
+              No lado de desenvolvimento, Python é minha linguagem principal para automação, 
+              scripts de pentest e construção de ferramentas. No frontend, construo interfaces 
+              limpas que comunicam resultado — sem dependências desnecessárias.
+            </p>
+            <p class="sobre-p">
+              Meu objetivo é atuar na interseção entre desenvolvimento e segurança: 
+              construir sistemas com mentalidade de atacante para defender como profissional.
+            </p>
+
+            <!-- Tags de interesse -->
+            <div class="interesse-tags">
+              <span class="tag">Red Team</span>
+              <span class="tag">Bug Bounty</span>
+              <span class="tag">Python Automation</span>
+              <span class="tag">Web Security</span>
+              <span class="tag">Linux</span>
+              <span class="tag">API Security</span>
+            </div>
+
+            <!-- Download CV -->
+            <a href="#" class="btn btn-outline" download>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SKILLS
+    ═══════════════════════════════════════ -->
+    <section class="section skills" id="skills">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="section-label">// habilidades técnicas</div>
+          <h2 class="section-title">Stack & Ferramentas</h2>
+        </div>
+
+        <div class="skills-grid">
+
+          <!-- Frontend -->
+          <div class="skill-card fade-in">
+            <div class="skill-card-header">
+              <div class="skill-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <h3 class="skill-card-title">Frontend</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>HTML5 / CSS3</span><span class="skill-pct">85%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>JavaScript (ES6+)</span><span class="skill-pct">78%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>UI/UX & Design Systems</span><span class="skill-pct">70%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>REST APIs (consumo)</span><span class="skill-pct">82%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="skill-card fade-in">
+            <div class="skill-card-header">
+              <div class="skill-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <h3 class="skill-card-title">Backend & Dev</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>Python 3</span><span class="skill-pct">88%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Automação & Scripts</span><span class="skill-pct">85%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>APIs REST (criação)</span><span class="skill-pct">72%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Git / GitHub</span><span class="skill-pct">80%</span></div>
+                <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cybersecurity -->
+          <div class="skill-card skill-card-sec fade-in">
+            <div class="skill-card-header">
+              <div class="skill-icon skill-icon-sec">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3 class="skill-card-title">Cybersecurity</h3>
+            </div>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div class="skill-info"><span>Pentest Web (OWASP)</span><span class="skill-pct">75%</span></div>
+                <div class="skill-bar"><div class="skill-fill sec" data-width="75"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Linux / Kali</span><span class="skill-pct">83%</span></div>
+                <div class="skill-bar"><div class="skill-fill sec" data-width="83"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Nmap / Recon</span><span class="skill-pct">80%</span></div>
+                <div class="skill-bar"><div class="skill-fill sec" data-width="80"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Burp Suite</span><span class="skill-pct">70%</span></div>
+                <div class="skill-bar"><div class="skill-fill sec" data-width="70"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Networking / Wireshark</span><span class="skill-pct">68%</span></div>
+                <div class="skill-bar"><div class="skill-fill sec" data-width="68"></div></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Metasploit Framework</span><span class="skill-pct">65%</span></div>
+                <div class="skill-bar"><div class="skill-fill sec" data-width="65"></div></div>
+              </div>
+            </div>
+
+            <!-- Ferramentas em pills -->
+            <div class="tools-pills">
+              <span class="tool-pill">Nmap</span>
+              <span class="tool-pill">Burp Suite</span>
+              <span class="tool-pill">Metasploit</span>
+              <span class="tool-pill">Wireshark</span>
+              <span class="tool-pill">Nikto</span>
+              <span class="tool-pill">SQLMap</span>
+              <span class="tool-pill">Hydra</span>
+              <span class="tool-pill">John</span>
+              <span class="tool-pill">Gobuster</span>
+              <span class="tool-pill">ffuf</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PROJETOS
+    ═══════════════════════════════════════ -->
+    <section class="section projetos" id="projetos">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="section-label">// projetos reais</div>
+          <h2 class="section-title">O que construí</h2>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filter-tabs fade-in">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="dev">Dev</button>
+          <button class="filter-btn" data-filter="sec">Segurança</button>
+          <button class="filter-btn" data-filter="hybrid">Híbrido</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <!-- Card 1: Bot Telegram -->
+          <article class="project-card fade-in" data-type="hybrid">
+            <div class="project-header">
+              <div class="project-type hybrid">Híbrido</div>
+              <div class="project-links">
+                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="project-title">TeleAlert — Bot de Monitoramento</h3>
+            <p class="project-desc">
+              Bot Telegram que monitora endpoints HTTP, detecta mudanças de status e envia alertas 
+              com latência, código de resposta e diff de conteúdo. Ideal para detectar mudanças 
+              suspeitas em aplicações monitoradas durante recon passivo.
+            </p>
+
+            <div class="project-tech">
+              <span>Python</span>
+              <span>python-telegram-bot</span>
+              <span>aiohttp</span>
+              <span>asyncio</span>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
+              <a href="#" class="btn btn-sm btn-ghost-sm">Live demo</a>
+            </div>
+          </article>
+
+          <!-- Card 2: Log Analyzer -->
+          <article class="project-card fade-in" data-type="sec">
+            <div class="project-header">
+              <div class="project-type sec">Segurança</div>
+              <div class="project-links">
+                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="project-title">LogHunter — Análise de Logs SSH</h3>
+            <p class="project-desc">
+              Script Python que analisa logs do sistema (/var/log/auth.log) em busca de 
+              tentativas de brute-force, IPs suspeitos e padrões de ataque. Gera relatório 
+              em JSON com geolocalização de IPs e score de risco.
+            </p>
+
+            <div class="project-tech">
+              <span>Python</span>
+              <span>Regex</span>
+              <span>GeoIP2</span>
+              <span>JSON</span>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
+            </div>
+          </article>
+
+          <!-- Card 3: Dashboard -->
+          <article class="project-card fade-in" data-type="dev">
+            <div class="project-header">
+              <div class="project-type dev">Dev</div>
+              <div class="project-links">
+                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="project-title">SecDash — Dashboard de Vulnerabilidades</h3>
+            <p class="project-desc">
+              Interface web para visualização e triagem de vulnerabilidades encontradas em scans. 
+              Integra com saída do Nmap (XML) e exibe hosts, portas abertas, serviços e CVEs 
+              relacionados com filtros interativos. 100% vanilla JS.
+            </p>
+
+            <div class="project-tech">
+              <span>HTML/CSS</span>
+              <span>JavaScript</span>
+              <span>Nmap XML</span>
+              <span>NVD API</span>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
+              <a href="#" class="btn btn-sm btn-ghost-sm">Ver projeto</a>
+            </div>
+          </article>
+
+          <!-- Card 4: Recon Tool -->
+          <article class="project-card fade-in" data-type="sec">
+            <div class="project-header">
+              <div class="project-type sec">Segurança</div>
+              <div class="project-links">
+                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="project-title">AutoRecon-Py — Enumeração Automatizada</h3>
+            <p class="project-desc">
+              Ferramenta de reconhecimento que orquestra Nmap, Gobuster, Whatweb e Nikto 
+              em sequência lógica, salva output estruturado por alvo e gera sumário automático 
+              com surface de ataque identificada.
+            </p>
+
+            <div class="project-tech">
+              <span>Python</span>
+              <span>subprocess</span>
+              <span>Nmap</span>
+              <span>Gobuster</span>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
+            </div>
+          </article>
+
+          <!-- Card 5: API Fuzzer -->
+          <article class="project-card fade-in" data-type="hybrid">
+            <div class="project-header">
+              <div class="project-type hybrid">Híbrido</div>
+              <div class="project-links">
+                <a href="https://github.com/seuusuario" target="_blank" class="proj-link" title="GitHub">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="project-title">API-Fuzz — Tester de Endpoints REST</h3>
+            <p class="project-desc">
+              Ferramenta para análise de segurança de APIs REST. Testa injeção de parâmetros, 
+              headers malformados, bypass de autenticação e rate limiting. Relatório final 
+              em HTML com evidências e recomendações OWASP API Top 10.
+            </p>
+
+            <div class="project-tech">
+              <span>Python</span>
+              <span>requests</span>
+              <span>OWASP</span>
+              <span>Jinja2</span>
+            </div>
+
+            <div class="project-footer">
+              <a href="https://github.com/seuusuario" target="_blank" class="btn btn-sm">Ver código</a>
+              <a href="#" class="btn btn-sm btn-ghost-sm">Ver projeto</a>
+            </div>
+          </article>
+
+          <!-- Card 6: Pentest Lab -->
+          <article class="project-card fade-in" data-type="sec">
+            <div class="project-header">
+              <div class="project-type sec">Segurança</div>
+            </div>
+
+            <h3 class="project-title">Home Lab — Ambiente de Pentest Local</h3>
+            <p class="project-desc">
+              Ambiente virtualizado com Kali Linux, Metasploitable 2/3, DVWA e VulnHub machines. 
+              Documentação de exploits realizados, vetores utilizados e mitigações aplicadas. 
+              Serve como prova prática de metodologia ofensiva.
+            </p>
+
+            <div class="project-tech">
+              <span>VirtualBox</span>
+              <span>Kali Linux</span>
+              <span>Metasploitable</span>
+              <span>DVWA</span>
+            </div>
+
+            <div class="project-footer">
+              <a href="#" class="btn btn-sm">Ver writeups</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CYBERSECURITY — SEÇÃO DIFERENCIAL
+    ═══════════════════════════════════════ -->
+    <section class="section security" id="security">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="section-label">// atividade ofensiva</div>
+          <h2 class="section-title">Cybersecurity Lab</h2>
+        </div>
+
+        <div class="security-grid">
+
+          <!-- Plataformas -->
+          <div class="sec-platforms fade-in">
+            <h3 class="sec-subtitle">Plataformas & Estudos</h3>
+
+            <div class="platform-list">
+              <div class="platform-item">
+                <div class="platform-icon htb">HTB</div>
+                <div class="platform-info">
+                  <strong>Hack The Box</strong>
+                  <span>30+ máquinas resolvidas — foco em web e Linux privesc</span>
+                </div>
+                <div class="platform-badge">Ativo</div>
+              </div>
+
+              <div class="platform-item">
+                <div class="platform-icon tryhack">THM</div>
+                <div class="platform-info">
+                  <strong>TryHackMe</strong>
+                  <span>Paths concluídos: Jr Penetration Tester, SOC Analyst</span>
+                </div>
+                <div class="platform-badge">Concluído</div>
+              </div>
+
+              <div class="platform-item">
+                <div class="platform-icon lab">LAB</div>
+                <div class="platform-info">
+                  <strong>Home Lab</strong>
+                  <span>Kali + Metasploitable + DVWA + VulnHub machines</span>
+                </div>
+                <div class="platform-badge">Contínuo</div>
+              </div>
+
+              <div class="platform-item">
+                <div class="platform-icon bb">BB</div>
+                <div class="platform-info">
+                  <strong>Bug Bounty</strong>
+                  <span>HackerOne — programas públicos, foco em recon e XSS</span>
+                </div>
+                <div class="platform-badge">Em progresso</div>
+              </div>
+            </div>
+
+            <!-- Metodologia -->
+            <div class="methodology">
+              <h4 class="meth-title">Metodologia</h4>
+              <div class="meth-steps">
+                <div class="meth-step">
+                  <span class="step-num">01</span>
+                  <span>Recon & OSINT</span>
+                </div>
+                <div class="meth-arrow">→</div>
+                <div class="meth-step">
+                  <span class="step-num">02</span>
+                  <span>Enumeração</span>
+                </div>
+                <div class="meth-arrow">→</div>
+                <div class="meth-step">
+                  <span class="step-num">03</span>
+                  <span>Exploração</span>
+                </div>
+                <div class="meth-arrow">→</div>
+                <div class="meth-step">
+                  <span class="step-num">04</span>
+                  <span>Relatório</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Console interativo simulado -->
+          <div class="console-wrapper fade-in">
+            <div class="console-window">
+              <div class="console-header">
+                <div class="console-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <span class="console-title">kali@lab:~$ — pentest session</span>
+                <button class="console-run-btn" id="consoleRunBtn">▶ Executar scan</button>
+              </div>
+
+              <div class="console-body" id="consoleBody">
+                <div class="console-line static">
+                  <span class="c-prompt">kali@lab:~$</span>
+                  <span class="c-cmd"> nmap -sV -sC -p- --min-rate 5000 192.168.1.100</span>
+                </div>
+                <div class="console-line static c-comment"># Clique em "Executar scan" para simular</div>
+              </div>
+            </div>
+
+            <!-- Vulnerabilidades encontradas (aparece após scan) -->
+            <div class="vuln-report" id="vulnReport" style="display:none;">
+              <div class="vuln-header">
+                <span class="vuln-title">Findings — 192.168.1.100</span>
+                <span class="vuln-count" id="vulnCount">0 vulns</span>
+              </div>
+              <div class="vuln-list" id="vulnList"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CONTATO
+    ═══════════════════════════════════════ -->
+    <section class="section contato" id="contato">
+      <div class="container">
+        <div class="contato-inner fade-in">
+          <div class="section-label">// vamos conversar</div>
+          <h2 class="section-title contato-title">
+            Pronto para<br/>
+            <span class="title-accent">colaborar?</span>
+          </h2>
+          <p class="contato-desc">
+            Aberto a oportunidades em segurança ofensiva, desenvolvimento e projetos híbridos. 
+            Prefiro trabalho técnico sério com times que valorizam aprendizado contínuo.
+          </p>
+
+          <!-- Contato principal -->
+          <a href="mailto:luiz@email.com" class="email-link">
+            luiz@email.com
+            <span class="email-arrow">↗</span>
+          </a>
+
+          <!-- Redes sociais -->
+          <div class="social-links">
+
+            <a href="https://github.com/seuusuario" target="_blank" class="social-btn" title="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+
+            <a href="https://linkedin.com/in/seuusuario" target="_blank" class="social-btn" title="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+
+            <a href="https://t.me/seuusuario" target="_blank" class="social-btn" title="Telegram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              Telegram
+            </a>
+
+            <a href="mailto:luiz@email.com" class="social-btn" title="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Email
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-brand">&lt;luiz /&gt;</span>
+        <span class="footer-phrase">Construído com intenção. Protegido por conhecimento.</span>
+        <span class="footer-copy">© 2025 Luiz. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
