@@ -1,4 +1,4 @@
-# 🛡️ Luiz | Cybersecurity & Fullstack Developer
+# 🛡️ Luiz | Cybersecurity & Python Developer
 
 > Portfólio online com foco em **cibersegurança ofensiva**, **automação Python** e **desenvolvimento fullstack**.
 
