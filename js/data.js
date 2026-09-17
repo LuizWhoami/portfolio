@@ -55,10 +55,10 @@ const education = [
 const certifications = [
   {
     name: "CRTA",
-    institution: "RedScan Academy",
+    institution: "CyberWarfare",
     area: "Red Team / Pentest",
     date: null, credentialId: null, link: null, certificate: null,
-    status: "in_progress"
+    status: "completed"
   },
   {
     name: "Introduction to Cybersecurity",
@@ -99,6 +99,13 @@ const certifications = [
     name: "Pentest e Hacking em Sites e Aplicações Web",
     institution: null,
     area: "Web Security",
+    date: null, credentialId: null, link: null, certificate: null,
+    status: "completed"
+  },
+  {
+    name: "Redscan",
+    institution: "RedScan Academy",
+    area: "Red Team / Pentest",
     date: null, credentialId: null, link: null, certificate: null,
     status: "completed"
   }
