@@ -54,6 +54,7 @@ const education = [
 
 const certifications = [
   {
+<<<<<<< HEAD
     name: "Redscan",
     institution: "RedScan Academy",
     area: "Red Team / Pentest",
@@ -66,6 +67,13 @@ const certifications = [
     area: "Red Team / Pentest",
     date: null, credentialId: null, link: null, certificate: null,
     status: "in_progress"
+=======
+    name: "CRTA",
+    institution: "CyberWarfare",
+    area: "Red Team / Pentest",
+    date: null, credentialId: null, link: null, certificate: null,
+    status: "completed"
+>>>>>>> 3113ef3cc5025f6606500d28f21500442cd5c707
   },
 
   {
@@ -109,6 +117,13 @@ const certifications = [
     area: "Web Security",
     date: null, credentialId: null, link: null, certificate: null,
     status: "completed"
+  },
+  {
+    name: "Redscan",
+    institution: "RedScan Academy",
+    area: "Red Team / Pentest",
+    date: null, credentialId: null, link: null, certificate: null,
+    status: "in_progress"
   }
 ];
 
