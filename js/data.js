@@ -107,7 +107,7 @@ const certifications = [
     institution: "RedScan Academy",
     area: "Red Team / Pentest",
     date: null, credentialId: null, link: null, certificate: null,
-    status: "completed"
+    status: "in_progress"
   }
 ];
 
