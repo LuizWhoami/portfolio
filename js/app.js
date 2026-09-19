@@ -120,9 +120,9 @@
     const filters = $$('.filter');
     filters.forEach(btn => {
       btn.addEventListener('click', () => {
-        filters.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
+        filters.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-pressed', 'false'); });
         btn.classList.add('is-active');
-        btn.setAttribute('aria-selected', 'true');
+        btn.setAttribute('aria-pressed', 'true');
 
         const f = btn.dataset.filter;
         $$('.project').forEach(card => {
@@ -139,7 +139,10 @@
     if (m.os)          meta.push(el('div', {}, el('span', { class: 'k' }, 'OS:'), ' ', m.os));
     if (m.difficulty)  meta.push(el('div', {}, el('span', { class: 'k' }, 'Difficulty:'), ' ', m.difficulty));
     if (m.completedAt) meta.push(el('div', {}, el('span', { class: 'k' }, 'Pwned:'), ' ', m.completedAt));
-    if (m.tags && m.tags.length) meta.push(el('div', {}, el('span', { class: 'k' }, 'Tags:'), ' ', el('span', { class: 'machine-tags' }, m.tags.join(' / '))));
+    if (m.tags && m.tags.length) {
+      meta.push(el('div', {}, el('span', { class: 'k' }, 'Tags:'), ' ',
+        el('span', { class: 'machine-tags' }, m.tags.join(' / '))));
+    }
 
     return el('li', { class: `machine ${m.status === 'in_progress' ? 'is-progress' : ''}` },
       el('div', { class: 'machine-head' },
@@ -148,12 +151,36 @@
           m.status === 'completed' ? 'PWNED' : 'IN PROGRESS')
       ),
       meta.length ? el('div', { class: 'machine-meta' }, ...meta) : null,
-      m.link ? el('a', { class: 'machine-link', href: m.link, target: '_blank', rel: 'noopener noreferrer' }, '[ view on platform ↗ ]') : null,
+      m.link    ? el('a', { class: 'machine-link', href: m.link,    target: '_blank', rel: 'noopener noreferrer' }, '[ view on platform ↗ ]') : null,
       m.writeup ? el('a', { class: 'machine-link', href: m.writeup, target: '_blank', rel: 'noopener noreferrer' }, '[ writeup ↗ ]') : null
     );
   }
 
+  function thmItem(r) {
+    const meta = [];
+    if (r.type)        meta.push(el('div', {}, el('span', { class: 'k' }, 'Type:'), ' ', r.type));
+    if (r.difficulty)  meta.push(el('div', {}, el('span', { class: 'k' }, 'Difficulty:'), ' ', r.difficulty));
+    if (r.completedAt) meta.push(el('div', {}, el('span', { class: 'k' }, 'Completed:'), ' ', r.completedAt));
+    if (r.tags && r.tags.length) {
+      meta.push(el('div', {}, el('span', { class: 'k' }, 'Tags:'), ' ',
+        el('span', { class: 'machine-tags' }, r.tags.join(' / '))));
+    }
+
+    return el('li', { class: `machine ${r.status === 'in_progress' ? 'is-progress' : ''}` },
+      el('div', { class: 'machine-head' },
+        el('span', { class: 'machine-name' }, r.name),
+        el('span', { class: `machine-status ${statusClassMachine(r.status)}` },
+          r.status === 'completed' ? 'COMPLETED' : 'IN PROGRESS')
+      ),
+      r.description ? el('p', { class: 'machine-desc' }, r.description) : null,
+      meta.length ? el('div', { class: 'machine-meta' }, ...meta) : null,
+      r.link    ? el('a', { class: 'machine-link', href: r.link,    target: '_blank', rel: 'noopener noreferrer' }, '[ view on TryHackMe ↗ ]') : null,
+      r.writeup ? el('a', { class: 'machine-link', href: r.writeup, target: '_blank', rel: 'noopener noreferrer' }, '[ writeup ↗ ]') : null
+    );
+  }
+
   function renderLabs() {
+    // ── HTB ──
     const htb = $('#htb-list');
     htb.innerHTML = '';
     (htbMachines || []).forEach(m => htb.appendChild(machineItem(m)));
@@ -161,14 +188,10 @@
       htb.appendChild(el('li', { class: 'empty-hint' }, '// nenhuma máquina cadastrada ainda'));
     }
 
+    // ── THM ──
     const thm = $('#thm-list');
     thm.innerHTML = '';
-    (thmRooms || []).forEach(r => {
-      thm.appendChild(machineItem({
-        name: r.name, os: null, difficulty: r.difficulty, status: r.status,
-        completedAt: r.completedAt, tags: r.tags, link: r.link, writeup: r.writeup
-      }));
-    });
+    (thmRooms || []).forEach(r => thm.appendChild(thmItem(r)));
     $('#thm-empty').hidden = !!(thmRooms && thmRooms.length);
   }
 
@@ -367,11 +390,15 @@
     thm() {
       const list = (thmRooms || []);
       if (!list.length) return this.print('// nenhuma room cadastrada ainda');
-      const txt = list.map(r =>
-        `<span class="hl">├── ${r.name}</span>\n` +
-        `│   ├─ Difficulty: ${r.difficulty || '--'}\n` +
-        `│   └─ Status: ${r.status === 'completed' ? 'COMPLETED' : 'IN PROGRESS'}`
-      ).join('\n');
+      const txt = list.map(r => {
+        const lines = [
+          `<span class="hl">├── ${r.name}</span>`,
+          `│   ├─ Type: ${r.type || '--'}`,
+          `│   ├─ Difficulty: ${r.difficulty || '--'}`,
+          `│   └─ Status: ${r.status === 'completed' ? 'COMPLETED' : 'IN PROGRESS'}`
+        ];
+        return lines.join('\n');
+      }).join('\n');
       this.print(txt);
     },
 
