@@ -150,7 +150,96 @@ const htbMachines = [
 /* Adicione rooms assim:
    { name: "...", difficulty: "...", status: "...", completedAt: null, tags: [], link: null, writeup: null }
 */
-const thmRooms = [];
+const thmRooms = [
+  {
+    name: "Investigating Windows",
+    description: "A Windows machine has been hacked — investigate the incident and find clues about what the attacker did.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Windows", "DFIR", "Forensics"],
+    link: "https://tryhackme.com/room/investigatingwindows",
+    writeup: null
+  },
+  {
+    name: "OhSINT",
+    description: "Open Source Intelligence challenge — find information about a target using public data.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["OSINT", "Recon"],
+    link: "https://tryhackme.com/room/ohsint",
+    writeup: null
+  },
+  {
+    name: "c4ptur3-th3-fl4g",
+    description: "Beginner-level CTF covering encoding, hashing, and basic forensic techniques.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["CTF", "Encoding", "Forensics"],
+    link: "https://tryhackme.com/room/c4ptur3th3fl4g",
+    writeup: null
+  },
+  {
+    name: "What is Networking?",
+    description: "Fundamentals of computer networking — bite-sized and interactive introduction.",
+    type: "Walkthrough",
+    difficulty: "Info",
+    status: "completed",
+    completedAt: null,
+    tags: ["Networking", "Fundamentals"],
+    link: "https://tryhackme.com/room/whatisnetworking",
+    writeup: null
+  },
+  {
+    name: "Pentesting Fundamentals",
+    description: "Ethics and methodologies behind every penetration test.",
+    type: "Walkthrough",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Pentest", "Methodology", "Ethics"],
+    link: "https://tryhackme.com/room/pentestingfundamentals",
+    writeup: null
+  },
+  {
+    name: "Offensive Security Intro",
+    description: "Hack your first website in a safe environment and experience the work of an ethical hacker.",
+    type: "Walkthrough",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Offensive", "Web", "Intro"],
+    link: "https://tryhackme.com/room/offensivesecurityintro",
+    writeup: null
+  },
+  {
+    name: "Neighbour",
+    description: "New cloud service 'Authentication Anywhere' — can you find other users' secrets?",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Web", "IDOR", "Access Control"],
+    link: "https://tryhackme.com/room/neighbour",
+    writeup: null
+  },
+  {
+    name: "Defensive Security Intro",
+    description: "Introduction to defensive security: Threat Intelligence, SOC, DFIR, Malware Analysis and SIEM.",
+    type: "Walkthrough",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Blue Team", "SOC", "DFIR", "SIEM"],
+    link: "https://tryhackme.com/room/defensivesecurityintro",
+    writeup: null
+  }
+];
 
 const projects = [
   {
