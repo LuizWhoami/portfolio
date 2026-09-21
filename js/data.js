@@ -163,6 +163,17 @@ const thmRooms = [
     writeup: null
   },
   {
+    name: "Pickle Rick",
+    description: "A Rick and Morty CTF. Help turn Rick back into a human!",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Enumeration", "RCE"],
+    link: "https://tryhackme.com/room/picklerick",
+    writeup: null
+  },
+  {
     name: "OhSINT",
     description: "Open Source Intelligence challenge — find information about a target using public data.",
     type: "Challenge",
