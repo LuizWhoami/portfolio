@@ -110,6 +110,30 @@ const certifications = [
     status: "completed"
   }
 ];
+{
+    name: "Ethical Hacking Pentetration Testing",
+    institution: GoHacking,
+    area: "Ethical Hacking",
+    date: null, credentialId: null, link: null, certificate: null,
+    status: "completed"
+  }
+];
+{
+    name: "Ethical Hacking Web API",
+    institution: GoHacking,
+    area: "WEB API",
+    date: null, credentialId: null, link: null, certificate: null,
+    status: "completed"
+  }
+];
+{
+    name: "GoHacking Security Essentials",
+    institution: GoHacking,
+    area: "Security Essentials",
+    date: null, credentialId: null, link: null, certificate: null,
+    status: "completed"
+  }
+];
 
 const htbMachines = [
   {
@@ -134,12 +158,12 @@ const htbMachines = [
     link: "https://app.hackthebox.com/machines/Cap",
     writeup: null
   },
-  {
-    name: "Support",
+{
+    name: "Orion",
     platform: "Hack The Box",
     os: null,
     difficulty: "Easy",
-    status: "in_progress",
+    status: "Completed",
     completedAt: null,
     tags: [],
     link: "https://app.hackthebox.com/machines/Support",
@@ -249,9 +273,63 @@ const thmRooms = [
     tags: ["Blue Team", "SOC", "DFIR", "SIEM"],
     link: "https://tryhackme.com/room/defensivesecurityintro",
     writeup: null
-  }
+  },
+{
+    name: "The Concierge Knows Too Much",
+    description: "She knows your name, your room, your coffee order, none of which you told her. Word your next question carefully and she'll also hand over the instructions she was told to keep to herself.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Enginer reverse", "Llm"],
+    link: "https://tryhackme.com/room/hh-theconciergeknows-2d7eb4d9",
+    writeup: null
+  },
+{
+    name: "Wi-Fi Fundamentals and Reconnaissance",
+    description: "Learn how Wi-Fi works and use airodump-ng to map networks and reveal hidden SSIDs.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Pentest", "Wifi", "WPA"],
+    link: "https://tryhackme.com/room/wififundamentalsandrecon",
+    writeup: null
+  },
+{
+    name: "Cache Me Outside",
+    description: "Can you find this ex hacker turned outdoorsman?",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["OSINT"],
+    link: "https://tryhackme.com/room/cachemeoutside",
+    writeup: null
+  },
+{
+    name: "W1seGuy",
+    description: "A w1se guy 0nce said, the answer is usually as plain as day.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Cryptography", "Brute Force"],
+    link: "https://tryhackme.com/room/w1seguy",
+    writeup: null
+  },
+{
+    name: "Basic Pentesting",
+    description: "This is a machine that allows you to practise web app hacking and privilege escalation",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Enumeration", "Brute Force", "Exploration", "Privilege Escalation"],
+    link: "https://tryhackme.com/room/basicpentestingjt",
+    writeup: null
+  },
 ];
-
 const projects = [
   {
     name: "Sentinel Network",
@@ -303,6 +381,15 @@ const projects = [
     description: "Aplicação web para agendamento e gestão de barbearia.",
     category: "web",
     stack: ["HTML", "CSS", "JavaScript"],
+    status: "completed",
+    github: null,
+    demo: null
+  },
+{
+    name: "Argus",
+    description: "Agente autônomo de Bug Bounty.",
+    category: "Automation",
+    stack: ["HTML", "CSS", "JavaScript", "Python", "Tools"],
     status: "completed",
     github: null,
     demo: null
