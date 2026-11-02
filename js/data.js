@@ -183,6 +183,17 @@ const thmRooms = [
     link: "https://tryhackme.com/room/investigatingwindows",
     writeup: null
   },
+   {
+    name: "RootMe",
+    description: "A ctf for beginners, can you root me?",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["linux", "privilege escalation", "Reconnaissance", "Web Shell"],
+    link: "https://tryhackme.com/room/rrootme",
+    writeup: null
+  },
   {
     name: "Pickle Rick",
     description: "A Rick and Morty CTF. Help turn Rick back into a human!",
