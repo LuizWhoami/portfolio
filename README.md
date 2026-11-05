@@ -47,12 +47,10 @@ Atualmente cursando **Cibersegurança** e atuando como **NOC** na TuxNet.
 ## 🌐 Contato
 
 - [GitHub](https://github.com/LuizWhoami)
-- [LinkedIn](https://linkedin.com/in/luiz-cyber) *(editar com seu link real)*
-- Telegram: @luiz_h4x
+- [LinkedIn]([https://linkedin.com/in/luiz-cyber](https://www.linkedin.com/in/dvison-luiz-614593265/))
 
 ---
 
-##
 
 > “Segurança não é produto, é processo — evolução contínua.”
 
