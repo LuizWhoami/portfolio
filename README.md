@@ -52,6 +52,8 @@ Atualmente cursando **Cibersegurança** e atuando como **NOC** na TuxNet.
 
 ---
 
+##
+
 > “Segurança não é produto, é processo — evolução contínua.”
 
 #Mypoty
