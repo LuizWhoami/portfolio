@@ -1,9 +1,9 @@
 /* ============================================================
    data.js — Fonte única de verdade do portfólio
    ------------------------------------------------------------
-   • Edite SOMENTE este arquivo para atualizar o site.
-   • Campos com valor null não são renderizados.
-   • NÃO invente links, credenciais ou datas.
+- Edite SOMENTE este arquivo para atualizar o site.
+- Campos com valor null não são renderizados.
+- NÃO invente links, credenciais ou datas.
    ============================================================ */
 
 const profile = {
@@ -183,7 +183,7 @@ const thmRooms = [
     link: "https://tryhackme.com/room/investigatingwindows",
     writeup: null
   },
-   {
+  {
     name: "RootMe",
     description: "A ctf for beginners, can you root me?",
     type: "Challenge",
@@ -335,6 +335,83 @@ const thmRooms = [
     completedAt: null,
     tags: ["Enumeration", "Brute Force", "Exploitation", "Privilege Escalation"],
     link: "https://tryhackme.com/room/basicpentestingjt",
+    writeup: null
+  },
+  {
+    name: "Brooklyn Nine Nine",
+    description: "This room is aimed for beginner level hackers but anyone can try to hack this box. There are two main intended ways to root the box.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Steganography", "Brute Force", "Privilege Escalation", "Linux"],
+    link: "https://tryhackme.com/room/brooklynninenine",
+    writeup: null
+  },
+  {
+    name: "OWASP Top 10 2025: IAAA Failures",
+    description: "Learn about Identification, Authentication, and Authorization (IAAA) failures in the OWASP Top 10 2025.",
+    type: "Walkthrough",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["OWASP", "Web", "Authentication", "Authorization"],
+    link: null,
+    writeup: null
+  },
+  {
+    name: "Simple CTF",
+    description: "Beginner level ctf — enumerate services, exploit a CMS vulnerability, and escalate privileges.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["CTF", "Enumeration", "Privilege Escalation", "Linux"],
+    link: "https://tryhackme.com/room/easyctf",
+    writeup: null
+  },
+  {
+    name: "Security Footage",
+    description: "Network forensics challenge — analyze a packet capture to recover stolen security camera footage.",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["Forensics", "PCAP", "Wireshark", "Network"],
+    link: "https://tryhackme.com/room/securityfootage",
+    writeup: null
+  },
+  {
+    name: "Attacktive Directory",
+    description: "99% of Corporate networks run off of AD. Can you exploit a vulnerable Domain Controller?",
+    type: "Challenge",
+    difficulty: "Medium",
+    status: "completed",
+    completedAt: null,
+    tags: ["Active Directory", "Windows", "Kerberoasting", "Enumeration"],
+    link: "https://tryhackme.com/room/attacktivedirectory",
+    writeup: null
+  },
+  {
+    name: "Mr Robot CTF",
+    description: "Based on the Mr. Robot show — can you root this box and capture all three keys?",
+    type: "Challenge",
+    difficulty: "Medium",
+    status: "completed",
+    completedAt: null,
+    tags: ["CTF", "Web", "WordPress", "Privilege Escalation"],
+    link: "https://tryhackme.com/room/mrrobot",
+    writeup: null
+  },
+  {
+    name: "Bounty Hacker",
+    description: "You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!",
+    type: "Challenge",
+    difficulty: "Easy",
+    status: "completed",
+    completedAt: null,
+    tags: ["FTP", "Brute Force", "Privilege Escalation", "Linux"],
+    link: "https://tryhackme.com/room/bountyhacker",
     writeup: null
   }
 ];
