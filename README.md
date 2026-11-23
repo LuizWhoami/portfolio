@@ -4,7 +4,7 @@
 
 ---
 
-## 🧠 Sobre mim
+## 🧠 Sobre 
 
 Profissional com mentalidade disciplinada e prática, atuando na interseção entre **pentest** e **desenvolvimento**.  
 Atualmente cursando **Cibersegurança** e atuando como **NOC** na TuxNet.
